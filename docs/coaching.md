@@ -7,12 +7,13 @@
 |Nicolai|Daadkracht    |Drammerigheid    |Passiviteit|Geduld        |
 
 **Fabian:**
+Tijdens het gesprek had ik logische redeneren als kwaliteit echter vond ik bij nader inzien dat alhoewel het bij mij past, realistisch nadenken meer van toepassing is. Ik vind mij ook meer in de allergie, uitdaging en valkuil die hierbij horen. Zo merk ik in mijn dagelijks leven dat ik inderdaad onverschillig kan zijn en in eerste instatie niet altijd rekening houd met het gevoel/emotie van de ander. Daarnaast heb ik een hekel aan naïviteit en heb ik inderdaad moeite met openhartig zijn. 
 
 **Julian:**
 Na ons gesprek heb ik gekeken naar welke kwaliteit en valkuil het beste bij mij past en voor mijn gevoel is dat nauwkeurigheid. Ik ben erg perfectionistisch en neem niet snel genoegen met iets. Dit leidt er soms toe dat ik zelfs dingen van andere mensen overneem op het moment dat ik denk dat het verbeterd kan worden. Ik kan er slecht tegen als er veel chaos en onduidelijkheid is en ik wil altijd weten hoe alles gaat. 
 
 **Nicolai:**
-Na het gesprek kwam ik erachter dat mijn kwaliteit daadkracht was iets waar ik al een beetje me bekend was en had mijn valkuil hier ook geleerd deze valkuil is mijn Drammerigheid hier kan ik mij zeker in vinden want ik heb erg veel moeite met mensen hun ideeen te luisteren en hier moet ik dus wel af en toe voor oppassen mijn allergie is passiviteit en dit begrijp ik ook erg goed dat komt omdat ik eigenlijk niet wil stil zitten wil het liefst zo veel mogelijk doen en soms minder te voorbereiden maar meer gewoon doen dit is dus ook mijn uitdaging om geduld te hebben dit heb ik vaak genoeg gehad een voorbeeld hiervan is dat ik vorige sprint te snel verder ging met het project en de code INPV door gaan met het voorbereiden ervan 
+Na het gesprek kwam ik erachter dat mijn kwaliteit daadkracht was iets waar ik al een beetje mee bekend was en had mijn valkuil hier ook geleerd deze valkuil is mijn Drammerigheid hier kan ik mij zeker in vinden want ik heb erg veel moeite met naar mensen hun ideeen te luisteren en hier moet ik dus wel af en toe voor oppassen mijn allergie is passiviteit en dit begrijp ik ook erg goed dat komt omdat ik eigenlijk niet wil stil zitten wil het liefst zo veel mogelijk doen en soms minder te voorbereiden maar meer gewoon doen dit is dus ook mijn uitdaging om geduld te hebben dit heb ik vaak genoeg gehad een voorbeeld hiervan is dat ik vorige sprint te snel verder ging met het project en de code i.p.v. door gaan met het voorbereiden ervan.
 
 ## Belbin-model
 
