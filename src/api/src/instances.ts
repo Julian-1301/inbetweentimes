@@ -5,6 +5,7 @@ import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCha
 import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./characters/ShadyFigureCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { ScrollItem, ScrollItemAlias } from "./items/ScrollItem";
+import { Aztecroom, AztecroomAlias } from "./rooms/AztecRoom";
 import { EgyptianRoom, EgyptianRoomAlias } from "./rooms/EgyptianRoom";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { OfficeRoom, OfficeRoomAlias } from "./rooms/OfficeRoom";
@@ -60,6 +61,9 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case OfficeRoomAlias:
             return new OfficeRoom();
+            
+        case AztecroomAlias:
+            return new Aztecroom();
     }
 
     return undefined;
