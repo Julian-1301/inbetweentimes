@@ -2,12 +2,12 @@ import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Room } from "../base/gameObjects/Room" ;
 
-export const AztecroomAlias : string = "Aztec" ;
+export const AztecRoomAlias : string = "Aztec" ;
 
-export class Aztecroom extends Room {
+export class AztecRoom extends Room {
 
     public constructor() {
-        super(AztecroomAlias);
+        super(AztecRoomAlias);
     }
     public name(): string {
        return "Aztec";
