@@ -8,6 +8,7 @@ import { ScrollItem, ScrollItemAlias } from "./items/ScrollItem";
 import { Aztecroom, AztecroomAlias } from "./rooms/AztecRoom";
 import { EgyptianRoom, EgyptianRoomAlias } from "./rooms/EgyptianRoom";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
+import { OfficeRoom, OfficeRoomAlias } from "./rooms/OfficeRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
 
@@ -54,8 +55,13 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
+
         case EgyptianRoomAlias:
             return new EgyptianRoom();
+
+        case OfficeRoomAlias:
+            return new OfficeRoom();
+            
         case AztecroomAlias:
             return new Aztecroom();
     }
