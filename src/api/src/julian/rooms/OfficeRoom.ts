@@ -1,6 +1,6 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { Room } from "../base/gameObjects/Room";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { Room } from "../../base/gameObjects/Room";
 
 export const OfficeRoomAlias: string = "Office";
 

@@ -17,8 +17,9 @@ import {
     getGameObjectsByAliases,
 } from "./instances";
 import { PlayerSession } from "./types";
-import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
-import { PickupAction, PickupActionAlias } from "./base/actions/PickupAction";
+import { handleRoutes as handleRoutesJulian } from "./julian/routes";
+import { handleRoutes as handleRoutesNicolai } from "./nicolai/routes";
+import { handleRoutes as handleRoutesFabian } from "./fabian/routes";
 
 export const router: Router = Router();
 
@@ -113,15 +114,26 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         return TalkAction.handle(character, choiceId);
     }
 
-    switch (alias) {
-        case ExamineActionAlias:
-            return ExamineAction.handle(gameObjects[0]);
+    if( alias === ExamineActionAlias) {
+        return ExamineAction.handle(gameObjects[0]);
+    }
+    
+    let actionResult: ActionResult | undefined = handleRoutesJulian(room, alias, gameObjects);
 
-        case ExampleActionAlias:
-            return ExampleAction.handle(gameObjects[0]);
+    if (actionResult) {
+        return actionResult;
+    }
 
-        case PickupActionAlias:
-            return PickupAction.handle(gameObjects[0]);
+    actionResult = handleRoutesNicolai(room, alias, gameObjects);
+
+    if (actionResult) {
+        return actionResult;
+    }
+
+    actionResult = handleRoutesFabian(room, alias, gameObjects);
+
+    if (actionResult) {
+        return actionResult;
     }
 
     return CustomAction.handle(alias, gameObjects);

@@ -1,10 +1,10 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Pickup, PickupActionAlias } from "../base/actions/PickupAction";
-import { Item } from "../base/gameObjects/Item";
-import { getPlayerSession } from "../instances";
-import { PlayerSession } from "../types";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
+import { Item } from "../../base/gameObjects/Item";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 export const ScrollItemAlias: string = "scroll";
 

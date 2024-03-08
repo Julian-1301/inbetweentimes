@@ -1,16 +1,16 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { Action } from "../base/actions/Action";
-import { CustomAction } from "../base/actions/CustomAction";
-import { ExamineAction } from "../base/actions/ExamineAction";
-import { PickupAction } from "../base/actions/PickupAction";
-import { TalkAction } from "../base/actions/TalkAction";
-import { GameObject } from "../base/gameObjects/GameObject";
-import { Room } from "../base/gameObjects/Room";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { Action } from "../../base/actions/Action";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { ExamineAction } from "../../base/actions/ExamineAction";
+import { PickupAction } from "../../base/actions/PickupAction";
+import { TalkAction } from "../../base/actions/TalkAction";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { Room } from "../../base/gameObjects/Room";
 import { ShadyFigureCharacter } from "../characters/ShadyFigureCharacter";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { ScrollItem } from "../items/ScrollItem";
-import { PlayerSession } from "../types";
+import { PlayerSession } from "../../types";
 
 export const EgyptianRoomAlias: string ="egyptian";
 

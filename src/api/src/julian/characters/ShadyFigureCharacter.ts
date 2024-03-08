@@ -1,9 +1,9 @@
-import { ActionResult } from "../base/actionResults/ActionResult";
-import { TextActionResult } from "../base/actionResults/TextActionResult";
-import { TalkActionResult } from "../base/actionResults/TalkActionResult";
-import { Examine,  ExamineActionAlias } from "../base/actions/ExamineAction";
-import { Character } from "../base/gameObjects/Character";
-import { TalkChoiceAction } from "../base/actions/TalkAction";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
+import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
+import { Character } from "../../base/gameObjects/Character";
+import { TalkChoiceAction } from "../../base/actions/TalkAction";
 
 export const ShadyFigureCharacterAlias: string = "shadyfigure";
 
