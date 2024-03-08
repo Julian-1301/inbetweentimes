@@ -2,7 +2,10 @@ import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
+import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./characters/ShadyFigureCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
+import { ScrollItem, ScrollItemAlias } from "./items/ScrollItem";
+import { EgyptianRoom, EgyptianRoomAlias } from "./rooms/EgyptianRoom";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
 import { PlayerSession } from "./types";
@@ -16,6 +19,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        pickedUpScroll: false,
     };
 }
 
@@ -49,6 +53,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
+        case EgyptianRoomAlias:
+            return new EgyptianRoom();
     }
 
     return undefined;
@@ -68,6 +74,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+
+        case ScrollItemAlias:
+            return new ScrollItem();
+
+        case ShadyFigureCharacterAlias:
+            return new ShadyFigureCharacter();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
@@ -93,4 +105,6 @@ export function getGameObjectsByAliases(objectAliases?: string[]): GameObject[] 
  */
 export function getGameObjectsFromInventory(): GameObject[] {
     return getGameObjectsByAliases(getPlayerSession().inventory);
+
+    
 }
