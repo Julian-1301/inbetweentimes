@@ -2,15 +2,13 @@ import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
-import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./characters/ShadyFigureCharacter";
+import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./julian/characters/ShadyFigureCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { ScrollItem, ScrollItemAlias } from "./items/ScrollItem";
-import { AztecRoom, AztecRoomAlias } from "./rooms/AztecRoom";
-import { EgyptianRoom, EgyptianRoomAlias } from "./rooms/EgyptianRoom";
-import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
-import { OfficeRoom, OfficeRoomAlias } from "./rooms/OfficeRoom";
-import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
+import { ScrollItem, ScrollItemAlias } from "./julian/items/ScrollItem";
 import { PlayerSession } from "./types";
+import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
+import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
+import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 
 /**
  * Create a new player session object
@@ -49,21 +47,22 @@ export function resetPlayerSession(): void {
  * @returns Instance of the room
  */
 export function getRoomByAlias(alias: string): Room | undefined {
-    switch (alias) {
-        case StartupRoomAlias:
-            return new StartupRoom();
+    let room: Room | undefined = getRoomByAliasJulian(alias);
 
-        case ExampleRoomAlias:
-            return new ExampleRoom();
+    if (room) {
+        return room;
+    }
 
-        case EgyptianRoomAlias:
-            return new EgyptianRoom();
+    room = getRoomByAliasNicolai(alias);
 
-        case OfficeRoomAlias:
-            return new OfficeRoom();
+    if (room) {
+        return room;
+    }
 
-        case AztecRoomAlias:
-            return new AztecRoom();
+    room = getRoomByAliasFabian(alias);
+
+    if (room) {
+        return room;
     }
 
     return undefined;

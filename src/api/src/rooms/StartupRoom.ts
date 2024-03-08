@@ -5,8 +5,8 @@ import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getPlayerSession } from "../instances";
-import { EgyptianRoom } from "./EgyptianRoom";
-import { OfficeRoom } from "./OfficeRoom";
+import { EgyptianRoom } from "../julian/rooms/EgyptianRoom";
+import { OfficeRoom } from "../julian/rooms/OfficeRoom";
 import { AztecRoom } from "./AztecRoom";
 
 export const StartupRoomAlias: string = "startup";
