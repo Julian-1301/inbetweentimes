@@ -61,7 +61,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case OfficeRoomAlias:
             return new OfficeRoom();
-
+            
         case AztecRoomAlias:
             return new AztecRoom();
     }
