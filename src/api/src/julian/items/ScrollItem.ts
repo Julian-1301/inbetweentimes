@@ -30,8 +30,9 @@ export class ScrollItem extends Item implements Examine, Pickup {
 
             return new TextActionResult(["You pick up the scroll"]);
         }
-    
-        return undefined;    
+        else
+        
+        return new TextActionResult(["You already picked up the Scroll"]);
     }
 
 }

@@ -11,6 +11,7 @@ import { ShadyFigureCharacter } from "../characters/ShadyFigureCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { ScrollItem } from "../items/ScrollItem";
 import { PlayerSession } from "../../types";
+import { OfficeRoom } from "./OfficeRoom";
 
 export const EgyptianRoomAlias: string ="egyptian";
 
@@ -31,7 +32,7 @@ export class EgyptianRoom extends Room {
         return [new ExamineAction(), 
             new TalkAction(), 
             new PickupAction(), 
-            new CustomAction("test", "testme", false)];
+            new CustomAction("goto-officeroom", "Go to Office", false)];
     }
 
     public objects(): GameObject[] {
@@ -50,5 +51,18 @@ export class EgyptianRoom extends Room {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
+    }
+
+    public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
+        if (alias === "goto-officeroom") {
+            const room: OfficeRoom = new OfficeRoom();
+
+            //Set the current room to the example room
+            getPlayerSession().currentRoom = room.alias;
+
+            return room.examine();
+        }
+        
+        return undefined;
     }
 }
