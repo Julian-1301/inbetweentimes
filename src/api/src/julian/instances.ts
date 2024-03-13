@@ -1,5 +1,5 @@
 import { Room } from "../base/gameObjects/Room";
-import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
+import { StartupRoom, StartupRoomAlias } from "../rooms/StartupRoom";
 import { EgyptianRoomAlias, EgyptianRoom } from "./rooms/EgyptianRoom";
 import { OfficeRoomAlias, OfficeRoom } from "./rooms/OfficeRoom";
 
