@@ -9,6 +9,7 @@ import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
+import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
 
 /**
  * Create a new player session object
@@ -88,6 +89,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
+
+        case ComputerItemAlias:
+            return new ComputerItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
