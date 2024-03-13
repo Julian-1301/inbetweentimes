@@ -27,7 +27,7 @@ export class ShadyFigureCharacter extends Character implements Examine {
             case 6:
             return new TextActionResult(["Incorrect"]);
             case 7:
-            return new TextActionResult(["Correct"]);
+            return new TextActionResult(["Correct, I will reward you by giving you a clue", "Solid ground precedes the flames' arrival", "Maybe there are other clues hidden around?"]);
             case 8:
             return new TextActionResult(["I don't even know what that is", "Is that an actual color?", "How is that one of the first colors you think of?"]);
             case 9:
