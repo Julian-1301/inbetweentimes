@@ -4,6 +4,8 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room" ;
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
+import { ToDoListItem } from "../items/ToDoListItem";
+import { StatueCharacter } from "../characters/StatueCharacter";
 
 export const AztecRoomAlias : string = "Aztec" ;
 
@@ -23,7 +25,7 @@ export class AztecRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        return [this];
+        return [this, new ToDoListItem(), new StatueCharacter];
     }
     public actions(): Action[]{
         return[new ExamineAction];

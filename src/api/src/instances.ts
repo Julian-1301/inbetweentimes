@@ -5,10 +5,12 @@ import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCha
 import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./julian/characters/ShadyFigureCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { ScrollItem, ScrollItemAlias } from "./julian/items/ScrollItem";
+import { ToDoListItem, ToDoListItemAlias } from "./nicolai/items/ToDoListItem";
 import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
+import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
 
 /**
  * Create a new player session object
@@ -88,6 +90,13 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
+           
+         case ToDoListItemAlias:
+            return new ToDoListItem();
+
+         case StatueCharacterAlias:
+            return new StatueCharacter();
+        
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
