@@ -7,7 +7,12 @@ import { Room } from "../base/gameObjects/Room";
 import { getPlayerSession } from "../instances";
 import { EgyptianRoom } from "../julian/rooms/EgyptianRoom";
 import { OfficeRoom } from "../julian/rooms/OfficeRoom";
+<<<<<<< HEAD
 import { AztecRoom } from "../nicolai/rooms/AztecRoom";
+=======
+import { AztecRoom } from "./AztecRoom";
+import { ColdWarRoom } from "./ColdWarRoom";
+>>>>>>> ba8603002efbf53af058e49986e4e5282be5b459
 
 export const StartupRoomAlias: string = "startup";
 
@@ -51,7 +56,7 @@ export class StartupRoom extends Room {
 
             return room.examine();
         } else if (alias === "goto-coldwarroom") {
-            const room: ColdwarRoom = new ColdwarRoom();
+            const room: ColdWarRoom = new ColdWarRoom();
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
