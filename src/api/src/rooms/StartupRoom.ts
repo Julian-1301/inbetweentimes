@@ -7,7 +7,7 @@ import { Room } from "../base/gameObjects/Room";
 import { getPlayerSession } from "../instances";
 import { EgyptianRoom } from "../julian/rooms/EgyptianRoom";
 import { OfficeRoom } from "../julian/rooms/OfficeRoom";
-import { AztecRoom } from "./AztecRoom";
+import { AztecRoom } from "../nicolai/rooms/AztecRoom";
 
 export const StartupRoomAlias: string = "startup";
 
