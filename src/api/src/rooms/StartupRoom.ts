@@ -51,7 +51,7 @@ export class StartupRoom extends Room {
 
             return room.examine();
         } else if (alias === "goto-coldwarroom") {
-            const room: ColdwarRoom = new ColdwarRoom();
+            const room: ColdWarRoom = new ColdWarRoom();
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
