@@ -36,8 +36,8 @@ export class OasisPuzzle extends Puzzle implements Examine {
                 [
                 new SolveChoiceAction(9, "Earth"),
                 new SolveChoiceAction(9, "Fire"),
-                new SolveChoiceAction(0, "Air"),
-                new SolveChoiceAction(9, "water")
+                new SolveChoiceAction(9, "Air"),
+                new SolveChoiceAction(3, "water")
             ]);
             case 3:
             return new SolveActionResult(this, ["Which button do you press Fourth?"], 
