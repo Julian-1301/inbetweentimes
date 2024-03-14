@@ -10,6 +10,8 @@ import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
+import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
+import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 
 /**
  * Create a new player session object
@@ -21,6 +23,8 @@ export function createNewPlayerSession(): PlayerSession {
         currentRoom: "startup",
         inventory: [],
         pickedUpScroll: false,
+        oasisPuzzleSolved: false,
+        pickedUpButton: false,
     };
 }
 
@@ -92,6 +96,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ComputerItemAlias:
             return new ComputerItem();
+
+        case OasisPuzzleAlias:
+            return new OasisPuzzle();
+
+        case ButtonItemAlias:
+            return new ButtonItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

@@ -20,6 +20,8 @@ import { PlayerSession } from "./types";
 import { handleRoutes as handleRoutesJulian } from "./julian/routes";
 import { handleRoutes as handleRoutesNicolai } from "./nicolai/routes";
 import { handleRoutes as handleRoutesFabian } from "./fabian/routes";
+import { SolveAction, SolveActionAlias } from "./base/actions/SolveAction";
+import { SolveActionResult } from "./base/actionResults/SolveActionResult";
 
 export const router: Router = Router();
 
@@ -114,6 +116,28 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         return TalkAction.handle(character, choiceId);
     }
 
+    if (alias.startsWith(SolveActionAlias)) {
+        const splitAlias: string[] = alias.split(":");
+
+        if (splitAlias.length < 3) {
+            if (!gameObjects || gameObjects.length < 1) {
+                return undefined;
+            }
+
+            return SolveAction.handle(gameObjects[0]);
+        }
+
+        const puzzle: GameObject | undefined = getGameObjectByAlias(splitAlias[1]);
+
+        if (!puzzle) {
+            return undefined;
+        }
+
+        const choiceId: number = parseInt(splitAlias[2]);
+
+        return SolveAction.handle(puzzle, choiceId);
+    }
+
     if( alias === ExamineActionAlias) {
         return ExamineAction.handle(gameObjects[0]);
     }
@@ -153,6 +177,8 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
 
     if (actionResult instanceof TalkActionResult) {
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
+    } else if (actionResult instanceof SolveActionResult) {
+        actions = actionResult.choices.map((e) => e.toReference(actionResult.puzzle));
     } else {
         actions = room.actions().map((e) => e.toReference());
     }
