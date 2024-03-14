@@ -8,7 +8,7 @@ import { PickupAction } from "../../base/actions/PickupAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { EgyptianRoom } from "./EgyptianRoom";
-import { ColdWarRoom } from "../../rooms/ColdWarRoom";
+import { ColdWarRoom } from "../../fabian/rooms/ColdWarRoom";
 import { ComputerItem } from "../items/ComputerItem";
 
 export const OfficeRoomAlias: string = "Office";

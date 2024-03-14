@@ -11,8 +11,11 @@ import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
-
+import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
 import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
+import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
+import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+
 
 
 /**
@@ -25,6 +28,9 @@ export function createNewPlayerSession(): PlayerSession {
         currentRoom: "startup",
         inventory: [],
         pickedUpScroll: false,
+        pickedUpTablet: false,
+        pickedUpBook: false,
+        pickedUpDecryption: false
     };
 }
 
@@ -100,9 +106,17 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
          case StatueCharacterAlias:
             return new StatueCharacter();
         
-
         case ComputerItemAlias:
             return new ComputerItem();
+
+        case TabletItemAlias:
+            return new TabletItem();
+
+        case BookItemAlias:
+            return new BookItem();
+
+        case DecryptionItemAlias:
+            return new DecryptionItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

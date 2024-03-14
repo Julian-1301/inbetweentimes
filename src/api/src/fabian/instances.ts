@@ -1,5 +1,5 @@
 import { Room } from "../base/gameObjects/Room";
-import { ColdWarRoom, ColdWarRoomAlias } from "../rooms/ColdWarRoom";
+import { ColdWarRoom, ColdWarRoomAlias } from "../fabian/rooms/ColdWarRoom";
 
 export function getRoomByAlias(alias: string): Room | undefined {
     switch (alias) {

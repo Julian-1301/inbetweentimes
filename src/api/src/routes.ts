@@ -21,6 +21,7 @@ import { handleRoutes as handleRoutesJulian } from "./julian/routes";
 import { handleRoutes as handleRoutesNicolai } from "./nicolai/routes";
 import { handleRoutes as handleRoutesFabian } from "./fabian/routes";
 
+
 export const router: Router = Router();
 
 router.get("/", (_, res) => {
