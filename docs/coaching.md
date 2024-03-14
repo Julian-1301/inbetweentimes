@@ -1,10 +1,10 @@
 ## Kernkwadranten
 
-|       |Kernkwaliteit |Valkuil          |Allergie   |Uitdaging     |
-|-------|--------------|-----------------|-----------|--------------|
-|Fabian |Realisme      |Onverschilligheid|Naïviteit  |Openhartigheid|
-|Julian |Nauwkeurigheid|Perfectionisme   |Chaos      |Flexibiliteit |
-|Nicolai|Daadkracht    |Drammerigheid    |Passiviteit|Geduld        |
+|Naam   |Kernkwaliteit                                         |Valkuil                          |Allergie                     |Uitdaging     |
+|-------|------------------------------------------------------|---------------------------------|-----------------------------|--------------|
+|Fabian |Realisme                                              |Onverschilligheid                |Naïviteit                    |Openhartigheid|
+|Julian |Nauwkeurigheid                                        |Perfectionisme                   |Chaos                        |Flexibiliteit |
+|Nicolai|Daadkracht ,leiderschap, aandacht voor eigen ideeën   |Drammerigheid, idee opdringen    |Passiviteit, Zwakke meningen |Geduld        |
 
 **Fabian:**
 Tijdens het gesprek had ik logische redeneren als kwaliteit echter vond ik bij nader inzien dat alhoewel het bij mij past, realistisch nadenken meer van toepassing is. Ik vind mij ook meer in de allergie, uitdaging en valkuil die hierbij horen. Zo merk ik in mijn dagelijks leven dat ik inderdaad onverschillig kan zijn en in eerste instatie niet altijd rekening houd met het gevoel/emotie van de ander. Daarnaast heb ik een hekel aan naïviteit en heb ik inderdaad moeite met openhartig zijn. 
@@ -14,6 +14,9 @@ Na ons gesprek heb ik gekeken naar welke kwaliteit en valkuil het beste bij mij 
 
 **Nicolai:**
 Na het gesprek kwam ik erachter dat mijn kwaliteit daadkracht was iets waar ik al een beetje mee bekend was en had mijn valkuil hier ook geleerd deze valkuil is mijn Drammerigheid hier kan ik mij zeker in vinden want ik heb erg veel moeite met naar mensen hun ideeen te luisteren en hier moet ik dus wel af en toe voor oppassen mijn allergie is passiviteit en dit begrijp ik ook erg goed dat komt omdat ik eigenlijk niet wil stil zitten wil het liefst zo veel mogelijk doen en soms minder te voorbereiden maar meer gewoon doen dit is dus ook mijn uitdaging om geduld te hebben dit heb ik vaak genoeg gehad een voorbeeld hiervan is dat ik vorige sprint te snel verder ging met het project en de code i.p.v. door gaan met het voorbereiden ervan.
+
+Gesprekje 2: Na ons eerste gesprek heb ik eens bekeken welke valkuilen en allergieën ik had en probeerde hieraan te werken hier heeft mijn team ook een rol in gespeeld dit komt doordat we elkaars valkuilen goed hebben leren kennen en dat we hierdoor elkaar soms mee konden helpen een voorbeeld hiervan was mijn drammerigheid, ik was hard aan het werk met documenteerend materiaal maar toen kwam julian naar me toe dat ik moest gaan coderen en toen zag ik pas dat ik al een tijdje weinig had gedaan aan code. Dit was mijn valkuil drammerigheid want ik stond er op dat ik meer moest doen eerst maar toen liet julian me zien dat dit niet meer nodig was dus dat was even een nodige wake up call.
+Iets waar ik achter kwam in ons gesprek zelf is dat ik meer dan een kernkwaliteit en valkuil kan hebben en ook heb dit was nieuw voor mij maar liet ook een heel ander perspectief zien en ik merkte dat ik mezelf erg in meer dan een woord kon vinden dit was ook een erg intressante ontwikkeling voor mijzelf.
 
 ## Belbin-model
 

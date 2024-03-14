@@ -4,10 +4,14 @@ import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
+import { ColdWarRoom } from "../fabian/rooms/ColdWarRoom";
 import { getPlayerSession } from "../instances";
 import { EgyptianRoom } from "../julian/rooms/EgyptianRoom";
 import { OfficeRoom } from "../julian/rooms/OfficeRoom";
 import { AztecRoom } from "../nicolai/rooms/AztecRoom";
+
+
+
 
 export const StartupRoomAlias: string = "startup";
 
