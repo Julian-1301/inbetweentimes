@@ -23,6 +23,7 @@ import { handleRoutes as handleRoutesFabian } from "./fabian/routes";
 import { SolveAction, SolveActionAlias } from "./base/actions/SolveAction";
 import { SolveActionResult } from "./base/actionResults/SolveActionResult";
 
+
 export const router: Router = Router();
 
 router.get("/", (_, res) => {

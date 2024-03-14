@@ -1,19 +1,22 @@
-import { Example, ExampleAction } from "../../actions/ExampleAction";
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { TravelAction } from "../../base/actions/TravelAction";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { ExampleCharacter } from "../../characters/ExampleCharacter";
-import { getGameObjectsFromInventory } from "../../instances";
-import { ExampleItem } from "../../items/ExampleItem";
+import { getGameObjectsFromInventory, getPlayerSession, resetPlayerSession } from "../../instances";
+import { PickupAction } from "../../base/actions/PickupAction";
+import { TabletItem } from "../../fabian/Items/TabletItem";
+import { PlayerSession } from "../../types";
+import { BookItem } from "../Items/BookItem";
+import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { DecryptionItem } from "../Items/DecryptionItem";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
-export class ColdWarRoom extends Room implements Example {
+export class ColdWarRoom extends Room {
     public constructor() {
         super(ColdWarRoomAlias);
     }
@@ -27,24 +30,61 @@ export class ColdWarRoom extends Room implements Example {
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new ExampleAction(), new TravelAction()];
+        return [
+            new ExamineAction(),
+            new TalkAction(),
+            new PickupAction(),
+            new CustomAction("goto-officeroom", "Go to Office", false),
+            new CustomAction("Reset", "Reset Game", false)
+        ];
     }
 
     public objects(): GameObject[] {
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
+        const playerSession: PlayerSession = getPlayerSession();
 
-        return [this, ...inventoryItems, new ExampleItem(), new ExampleCharacter()];
+        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
+        console.log(objects);
+
+        if (!playerSession.pickedUpTablet) {
+            objects.push(new TabletItem());
+        }
+
+        if (!playerSession.pickedUpBook) {
+            objects.push(new BookItem());
+        }
+
+        if (!playerSession.pickedUpDecryption) {
+            objects.push(new DecryptionItem());
+        }
+        return objects;
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["As you enter the room, you are immediately awestruck by the intricate complexity of the metal behemoth surrounding you. It's a tubular control room, bathed in the dull glow of machinery, its walls adorned with a labyrinth of pipes and panels. Peering through a nearby window, you are met with the surreal sight of the deep ocean depths outside—realizing in an instant that you are submerged underwater. Examining the insignias adorning the interior, you discern unmistakable Soviet markings, indicating the vessel's origin. The revelation only deepens the mystery: why has this anomaly occurred within the confines of a Soviet submarine?"]);
+        return new TextActionResult([
+            "As you enter the room, you notice you are surrounded by metal.",
+            "Peering through a nearby window, you are met with the deep ocean depths.",
+            "You realize you are in a submarine.",
+        ]);
     }
 
-    public example(): ActionResult | undefined {
-        return new TextActionResult(["This is an example action executed on a room."]);
+    public pickup(): ActionResult | undefined {
+        return new TextActionResult([""]);
     }
 
-    public travel(): ActionResult | undefined {
-        return new TextActionResult(["You traveled trough time"]);
+    public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
+        if (alias === "goto-officeroom") {
+            const room: OfficeRoom = new OfficeRoom();
+
+            //Set the current room to the example room
+            getPlayerSession().currentRoom = room.alias;
+
+            return room.examine();
+        }
+        if (alias === "Reset") {
+            resetPlayerSession();
+        }
+
+        return undefined;
     }
+
 }

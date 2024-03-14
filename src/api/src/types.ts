@@ -4,4 +4,7 @@ export type PlayerSession = {
     pickedUpScroll: boolean;
     pickedUpButton: boolean;
     oasisPuzzleSolved: boolean;
+    pickedUpTablet: boolean;
+    pickedUpBook: boolean;
+    pickedUpDecryption: boolean;
 };

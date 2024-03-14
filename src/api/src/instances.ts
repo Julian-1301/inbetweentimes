@@ -5,13 +5,20 @@ import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCha
 import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./julian/characters/ShadyFigureCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { ScrollItem, ScrollItemAlias } from "./julian/items/ScrollItem";
+import { ToDoListItem, ToDoListItemAlias } from "./nicolai/items/ToDoListItem";
 import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
+import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
+import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
 import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
 import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
+import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
+import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+
+
 
 /**
  * Create a new player session object
@@ -25,6 +32,9 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
         pickedUpButton: false,
+        pickedUpTablet: false,
+        pickedUpBook: false,
+        pickedUpDecryption: false
     };
 }
 
@@ -93,7 +103,13 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
+           
+         case ToDoListItemAlias:
+            return new ToDoListItem();
 
+         case StatueCharacterAlias:
+            return new StatueCharacter();
+        
         case ComputerItemAlias:
             return new ComputerItem();
 
@@ -102,6 +118,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ButtonItemAlias:
             return new ButtonItem();
+            
+        case TabletItemAlias:
+            return new TabletItem();
+
+        case BookItemAlias:
+            return new BookItem();
+
+        case DecryptionItemAlias:
+            return new DecryptionItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
