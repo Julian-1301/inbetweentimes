@@ -6,6 +6,7 @@ import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
 import { ToDoListItem } from "../items/ToDoListItem";
 import { StatueCharacter } from "../characters/StatueCharacter";
+import { TalkAction } from "../../base/actions/TalkAction";
 
 export const AztecRoomAlias : string = "Aztec" ;
 
@@ -28,7 +29,7 @@ export class AztecRoom extends Room {
         return [this, new ToDoListItem(), new StatueCharacter];
     }
     public actions(): Action[]{
-        return[new ExamineAction];
+        return[new ExamineAction(), new TalkAction];
     }
     
     public examine(): ActionResult | undefined {
