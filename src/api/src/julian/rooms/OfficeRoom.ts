@@ -10,6 +10,7 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { EgyptianRoom } from "./EgyptianRoom";
 import { ColdWarRoom } from "../../fabian/rooms/ColdWarRoom";
 import { ComputerItem } from "../items/ComputerItem";
+import { AztecRoom } from "../../nicolai/rooms/AztecRoom";
 
 export const OfficeRoomAlias: string = "Office";
 
@@ -30,7 +31,8 @@ export class OfficeRoom extends Room {
         return [new ExamineAction(),  
             new PickupAction(), 
             new CustomAction("goto-egyptroom", "Go to Egyptian Room", false),
-            new CustomAction("goto-coldwarroom", "Go to Cold War Room", false)];
+            new CustomAction("goto-coldwarroom", "Go to Cold War Room", false),
+            new CustomAction("goto-aztecroom", "Go to Aztec Room", false)];
     }
 
     public objects(): GameObject[] {        
@@ -57,8 +59,13 @@ export class OfficeRoom extends Room {
             getPlayerSession().currentRoom = room.alias;
 
             return room.examine();
-        }
+        } else if (alias === "goto-aztecroom") {
+            const room: AztecRoom = new AztecRoom();
+            getPlayerSession().currentRoom = room.alias;
+
+            return room.examine();
         
         return undefined;
     }
+}
 }
