@@ -7,6 +7,9 @@ import { ExamineAction } from "../../base/actions/ExamineAction";
 import { ToDoListItem } from "../items/ToDoListItem";
 import { StatueCharacter } from "../characters/StatueCharacter";
 import { TalkAction } from "../../base/actions/TalkAction";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { getPlayerSession } from "../../instances";
+import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
 
 export const AztecRoomAlias : string = "Aztec" ;
 
@@ -29,10 +32,23 @@ export class AztecRoom extends Room {
         return [this, new ToDoListItem(), new StatueCharacter];
     }
     public actions(): Action[]{
-        return[new ExamineAction(), new TalkAction];
+        return[new ExamineAction(), new TalkAction, new CustomAction("goto-officeroom", "Go to Office", false)];
     }
     
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You stand outside an ominous temple", "You have a gut feeling something isnt right...."]);
     } 
+
+    public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
+        if (alias === "goto-officeroom") {
+            const room: OfficeRoom = new OfficeRoom();
+
+            //Set the current room to the example room
+            getPlayerSession().currentRoom = room.alias;
+
+            return room.examine();
+        }
+        
+        return undefined;
+    }
 }
