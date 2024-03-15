@@ -18,7 +18,12 @@ export class ScrollItem extends Item implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+        if (playerSession.pickedUpScroll) {
         return new TextActionResult(["The scroll is covered in sand","You wipe it clean and read:","Before the storm, but not at the calm's start","this seems important for something else in this area"]);
+        } else {
+            return new TextActionResult(["Something is covered in sand", "It's impossible to read it like this", "Maybe you should pick it up first"]);
+        }
     }
 
     public pickup(): ActionResult | undefined {

@@ -4,14 +4,14 @@ import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
 import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Character } from "../../base/gameObjects/Character";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
+import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
 
 export const ShadyFigureCharacterAlias: string = "shadyfigure";
 
-export class ShadyFigureCharacter extends Character implements Examine {
+export class ShadyFigureCharacter extends Character implements Examine, Pickup {
     public constructor() {
-        super(ShadyFigureCharacterAlias, ExamineActionAlias);
+        super(ShadyFigureCharacterAlias, ExamineActionAlias, PickupActionAlias);
     }
-
 
     public name(): string {
         return "Shady Figure";
@@ -50,5 +50,9 @@ export class ShadyFigureCharacter extends Character implements Examine {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult(["A shady looking individual stares at you from a distance","Should you approach him?"]);
+    }
+
+    public pickup(): ActionResult | undefined {
+        return new TextActionResult(["Hey, what are you doing!", "Put me down right now"]);
     }
 }

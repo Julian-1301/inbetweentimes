@@ -12,6 +12,9 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { ScrollItem } from "../items/ScrollItem";
 import { PlayerSession } from "../../types";
 import { OfficeRoom } from "./OfficeRoom";
+import { SolveAction } from "../../base/actions/SolveAction";
+import { OasisPuzzle } from "../puzzles/OasisPuzzle";
+import { ButtonItem } from "../items/buttonItem";
 
 export const EgyptianRoomAlias: string ="egyptian";
 
@@ -32,6 +35,7 @@ export class EgyptianRoom extends Room {
         return [new ExamineAction(), 
             new TalkAction(), 
             new PickupAction(), 
+            new SolveAction(),
             new CustomAction("goto-officeroom", "Go to Office", false)];
     }
 
@@ -46,6 +50,13 @@ export class EgyptianRoom extends Room {
         }
 
         objects.push(new ShadyFigureCharacter());
+
+        if (!playerSession.oasisPuzzleSolved) {
+            objects.push(new OasisPuzzle());
+        } else {
+            objects.push(new ButtonItem());
+        }
+
         return objects;
     }
 
