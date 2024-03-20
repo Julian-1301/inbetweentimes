@@ -1,9 +1,9 @@
 import { ActionReference } from "@shared/types";
-import { ActionResult } from "../actionResults/ActionResult";
-import { Puzzle } from "../gameObjects/Puzzle";
-import { Action } from "./Action";
-import { GameObject } from "../gameObjects/GameObject";
-import { castTo, implementsInterface } from "../helpers";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { Puzzle } from "../../base/gameObjects/Puzzle";
+import { Action } from "../../base/actions/Action";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { castTo, implementsInterface } from "../../base/helpers";
 
 /** Alias used to identity the Solve action and interface */
 export const SolveActionAlias: string = "solve";

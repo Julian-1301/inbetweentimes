@@ -1,5 +1,5 @@
 import { ActionResult } from "../actionResults/ActionResult";
-import { Solve, SolveActionAlias } from "../actions/SolveAction";
+import { Solve, SolveActionAlias } from "../../julian/actions/SolveAction";
 import { GameObject } from "./GameObject";
 
 /**

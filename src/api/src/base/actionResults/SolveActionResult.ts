@@ -1,4 +1,4 @@
-import { SolveChoiceAction } from "../actions/SolveAction";
+import { SolveChoiceAction } from "../../julian/actions/SolveAction";
 import { Puzzle } from "../gameObjects/Puzzle";
 import { TextActionResult } from "./TextActionResult";
 

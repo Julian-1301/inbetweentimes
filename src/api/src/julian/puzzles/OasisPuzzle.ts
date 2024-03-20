@@ -2,7 +2,7 @@ import { ActionResult } from "../../base/actionResults/ActionResult";
 import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
-import { SolveChoiceAction } from "../../base/actions/SolveAction";
+import { SolveChoiceAction } from "../actions/SolveAction";
 import { Puzzle } from "../../base/gameObjects/Puzzle";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";

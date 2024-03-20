@@ -4,7 +4,7 @@ import { Room } from "../../base/gameObjects/Room";
 import { Action } from "../../base/actions/Action";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { PickupAction } from "../../base/actions/PickupAction";
+import { PickupAction } from "../actions/PickupAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { EgyptianRoom } from "./EgyptianRoom";
@@ -63,9 +63,9 @@ export class OfficeRoom extends Room {
             const room: AztecRoom = new AztecRoom();
             getPlayerSession().currentRoom = room.alias;
 
-            return room.examine();
-        
-        return undefined;
+            return room.examine();        
+        } else {
+            return undefined;
+        }
     }
-}
 }

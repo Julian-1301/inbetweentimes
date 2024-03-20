@@ -4,7 +4,7 @@ import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
 import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Character } from "../../base/gameObjects/Character";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
-import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
+import { Pickup, PickupActionAlias } from "../actions/PickupAction";
 
 export const ShadyFigureCharacterAlias: string = "shadyfigure";
 

@@ -3,7 +3,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { PickupAction } from "../../base/actions/PickupAction";
+import { PickupAction } from "../actions/PickupAction";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
@@ -12,13 +12,14 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { ScrollItem } from "../items/ScrollItem";
 import { PlayerSession } from "../../types";
 import { OfficeRoom } from "./OfficeRoom";
-import { SolveAction } from "../../base/actions/SolveAction";
+import { SolveAction } from "../actions/SolveAction";
 import { OasisPuzzle } from "../puzzles/OasisPuzzle";
 import { ButtonItem } from "../items/buttonItem";
 
+
 export const EgyptianRoomAlias: string ="egyptian";
 
-export class EgyptianRoom extends Room {
+export class EgyptianRoom extends Room   {
     public constructor() {
         super(EgyptianRoomAlias);
     }
@@ -28,7 +29,16 @@ export class EgyptianRoom extends Room {
     }
     
     public images(): string[] {
-        return ["egyptimage"];
+        const playerSession: PlayerSession = getPlayerSession();
+        const images: any = [];
+        
+        images.push("EgyptBackground");
+
+        if (!playerSession.pickedUpScroll) {
+            images.push("ScrollImage");
+        }
+        return images;
+        
     }
 
     public actions(): Action[] {
@@ -36,7 +46,8 @@ export class EgyptianRoom extends Room {
             new TalkAction(), 
             new PickupAction(), 
             new SolveAction(),
-            new CustomAction("goto-officeroom", "Go to Office", false)];
+            new CustomAction("goto-officeroom", "Go to Office", false),
+        ];
     }
 
     public objects(): GameObject[] {
@@ -76,4 +87,10 @@ export class EgyptianRoom extends Room {
         
         return undefined;
     }
+
+    public goto(_choiceId?: number | undefined): ActionResult | undefined {
+        throw new Error("Method not implemented.");
+    }
+
+    
 }
