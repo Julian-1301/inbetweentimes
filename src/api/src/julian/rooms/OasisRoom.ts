@@ -2,44 +2,47 @@ import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { PickupAction } from "../actions/PickupAction";
-import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { ShadyFigureCharacter } from "../characters/ShadyFigureCharacter";
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
-import { ScrollItem } from "../items/ScrollItem";
+import { getPlayerSession, getGameObjectsFromInventory } from "../../instances";
 import { PlayerSession } from "../../types";
+import { PickupAction } from "../actions/PickupAction";
 import { SolveAction } from "../actions/SolveAction";
+import { ButtonItem } from "../items/buttonItem";
+import { OasisPuzzle } from "../interactables/OasisPuzzle";
 
 
-export const EgyptianRoomAlias: string ="egyptian";
 
-export class EgyptianRoom extends Room   {
+export const OasisRoomAlias: string ="oasis";
+
+export class OasisRoom extends Room   {
     public constructor() {
-        super(EgyptianRoomAlias);
+        super(OasisRoomAlias);
     }
 
     public name(): string {
-        return "Ancient Egypt";
+        return "Oasis";
     }
     
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
         const images: any = [];
         
-        images.push("EgyptBackground");
-
-        if (!playerSession.pickedUpScroll) {
-            images.push("ScrollImage");
+        if (playerSession.oasisPuzzleSolved) {
+            images.push("OasisBackgroundSolved");
+        } else {
+        images.push("OasisBackgroundUnsolved");
         }
+
+        if (playerSession.oasisPuzzleSolved && !playerSession.pickedUpButton) {
+            images.push("ButtonImage");
+        }
+
         return images;
-        
     }
 
     public actions(): Action[] {
         return [new ExamineAction(), 
-            new TalkAction(), 
             new PickupAction(), 
             new SolveAction(),
         ];
@@ -50,11 +53,11 @@ export class EgyptianRoom extends Room   {
 
         const objects: GameObject[] = [...getGameObjectsFromInventory()];
 
-        if (!playerSession.pickedUpScroll) {
-            objects.push(new ScrollItem());
+        if (!playerSession.oasisPuzzleSolved) {
+            objects.push(new OasisPuzzle());
+        } else if (!playerSession.pickedUpButton) {
+            objects.push(new ButtonItem());
         }
-
-        objects.push(new ShadyFigureCharacter());
 
         return objects;
     }

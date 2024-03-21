@@ -143,8 +143,6 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         gameObjects[0] = room;
     }
 
-
-
     if( alias === ExamineActionAlias) {
         return ExamineAction.handle(gameObjects[0]);
     }

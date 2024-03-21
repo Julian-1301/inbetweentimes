@@ -21,7 +21,7 @@ export class TabletItem extends Item implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.pickedUpTablet && playerSession.currentRoom === "egyptian"){
-            return new TextActionResult(["sadas"]);
+            return new TextActionResult(["-Breathe life into darkness, let the left torch blaze alone, while shadows shroud the others in mystery", "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir", "-Unlock the whispers of the earth's secrets, as your touch ignites the ancient dance of shifting tiles, thrice upon the cracked surface"]);
         } else if (playerSession.pickedUpTablet) {
             return new TextActionResult(["The tablet looks out of place","You try to look closer but it is too hard to make out","Maybe it makes more sense in a different place"]);
         } else {

@@ -3,13 +3,14 @@ import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { SolveChoiceAction } from "../actions/SolveAction";
-import { Puzzle } from "../../base/gameObjects/Puzzle";
+import { Interactable } from "../../base/gameObjects/Interactable";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
+import { GameOverRoom } from "../rooms/GameOverRoom";
 
 export const OasisPuzzleAlias: string = "oasis";
 
-export class OasisPuzzle extends Puzzle implements Examine {
+export class OasisPuzzle extends Interactable implements Examine {
     public constructor() {
         super(OasisPuzzleAlias, ExamineActionAlias);
     }
@@ -75,7 +76,9 @@ export class OasisPuzzle extends Puzzle implements Examine {
                     new SolveChoiceAction(10, "water")
                     ]); 
             case 10:  
-                return new TextActionResult(["Incorrect"]);      
+                playerSession.currentRoom = new GameOverRoom().alias;
+                return new TextActionResult(["You pressed the buttons in the incorrect order", "The floor starts sinking beneath you and you fall down on spikes", "Try again"]);
+                
         }
 
         return new SolveActionResult(this, ["Which button do you press first?"], 
@@ -88,6 +91,6 @@ export class OasisPuzzle extends Puzzle implements Examine {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Test"]);
+        return new TextActionResult(["This seems like a complicated puzzle", "maybe i should gather some clues before i attempt this"]);
     }
 }

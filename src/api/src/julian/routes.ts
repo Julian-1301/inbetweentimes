@@ -13,6 +13,6 @@ export function handleRoutes(_Room: Room, alias: string, gameObjects: GameObject
     
             case PickupActionAlias:
                 return PickupAction.handle(gameObjects[0]);
-
-        }
+        } 
+        return undefined;
     }

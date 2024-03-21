@@ -1,6 +1,6 @@
 import { ActionReference } from "@shared/types";
 import { ActionResult } from "../../base/actionResults/ActionResult";
-import { Puzzle } from "../../base/gameObjects/Puzzle";
+import { Puzzle } from "../../base/gameObjects/Interactable";
 import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { castTo, implementsInterface } from "../../base/helpers";
@@ -30,7 +30,7 @@ export class SolveAction extends Action {
      * Create a new instance of the Solve action
      */
     public constructor() {
-        super(SolveActionAlias, "Solve", true);
+        super(SolveActionAlias, "Use", true);
     }
 
     /**
