@@ -19,6 +19,10 @@ import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
+import { PlantItem, PlantItemAlias } from "./julian/items/PlantItem";
+import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
+import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
+
 
 
 
@@ -39,6 +43,8 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpDecryption: false,
         pickedUpWatch: false,
         pickedUpPlant: false,
+        pickedUpCup: false,
+        pickedUpFilledCup: false,
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
@@ -141,6 +147,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
     
         case PhoneItemAlias:
             return new PhoneItem();
+
+        case PlantItemAlias:
+            return new PlantItem();
+        
+        case CupItemAlias:
+            return new CupItem();
+
+        case FilledCupItemAlias:
+            return new FilledCupItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

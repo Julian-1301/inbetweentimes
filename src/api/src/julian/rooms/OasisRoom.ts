@@ -10,6 +10,8 @@ import { PickupAction } from "../actions/PickupAction";
 import { SolveAction } from "../actions/SolveAction";
 import { ButtonItem } from "../items/buttonItem";
 import { OasisPuzzle } from "../interactables/OasisPuzzle";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { EgyptianRoomAlias } from "./EgyptianRoom";
 
 
 
@@ -45,6 +47,7 @@ export class OasisRoom extends Room   {
         return [new ExamineAction(), 
             new PickupAction(), 
             new SolveAction(),
+            new CustomAction("goback", "Go Back", false),
         ];
     }
 
@@ -65,5 +68,12 @@ export class OasisRoom extends Room   {
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
     }
-    
+
+    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
+        if (alias === "goback") {
+            getPlayerSession().currentRoom = EgyptianRoomAlias;
+        } else {
+            return undefined;
+        } return;
+    } 
 }

@@ -44,6 +44,7 @@ export class OfficeRoom extends Room {
         if (!playerSession.pickedUpWatch) {
             objects.push(new WatchItem());
         }
+        
         if (!playerSession.pickedUpPlant) {
             objects.push(new PlantItem());
         }

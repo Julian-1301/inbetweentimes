@@ -9,6 +9,8 @@ export type PlayerSession = {
     pickedUpDecryption: boolean;
     pickedUpWatch: boolean;
     pickedUpPlant: boolean;
+    pickedUpCup: boolean;
+    pickedUpFilledCup: boolean
     deletedBrowser: boolean;
     deletedPictures: boolean;
     deletedScript: boolean;

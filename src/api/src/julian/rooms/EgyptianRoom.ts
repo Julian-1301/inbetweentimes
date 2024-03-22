@@ -11,6 +11,9 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { ScrollItem } from "../items/ScrollItem";
 import { PlayerSession } from "../../types";
 import { SolveAction } from "../actions/SolveAction";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { PyramidRoomAlias } from "./PyramidRoom";
+import { OasisRoomAlias } from "./OasisRoom";
 
 
 export const EgyptianRoomAlias: string ="egyptian";
@@ -42,6 +45,8 @@ export class EgyptianRoom extends Room   {
             new TalkAction(), 
             new PickupAction(), 
             new SolveAction(),
+            new CustomAction("goleft", "Go To Pyramid", false),
+            new CustomAction("goright", "Go To Oasis", false),
         ];
     }
 
@@ -63,4 +68,12 @@ export class EgyptianRoom extends Room   {
         return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
     }
     
+    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
+        if (alias === "goleft") {
+            getPlayerSession().currentRoom = PyramidRoomAlias;
+
+        } else if (alias === "goright") { 
+            getPlayerSession().currentRoom = OasisRoomAlias;
+        } return undefined;
+    }
 }

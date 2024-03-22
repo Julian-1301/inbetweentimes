@@ -4,9 +4,9 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { SolveChoiceAction } from "../actions/SolveAction";
 import { Interactable } from "../../base/gameObjects/Interactable";
-import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 import { GameOverRoom } from "../rooms/GameOverRoom";
+import { getPlayerSession } from "../../instances";
 
 export const OasisPuzzleAlias: string = "oasis";
 
@@ -16,7 +16,7 @@ export class OasisPuzzle extends Interactable implements Examine {
     }
 
     public name(): string {
-        return "Oasis Puzzle";
+        return "Puzzle Box";
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {

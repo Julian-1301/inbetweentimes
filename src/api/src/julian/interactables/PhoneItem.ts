@@ -5,14 +5,16 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Interactable } from "../../base/gameObjects/Interactable";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
+import { Pickup, PickupActionAlias } from "../actions/PickupAction";
 import { SolveChoiceAction } from "../actions/SolveAction";
+
 
 export const PhoneItemAlias: string = "phone";
 
-export class PhoneItem extends Interactable implements Examine {
+export class PhoneItem extends Interactable implements Examine, Pickup {
 
     public constructor() {
-        super(PhoneItemAlias, ExamineActionAlias);
+        super(PhoneItemAlias, ExamineActionAlias, PickupActionAlias);
     }
 
     public name(): string {
@@ -20,7 +22,11 @@ export class PhoneItem extends Interactable implements Examine {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Your trusty old phone is powered on", "You haven't caught up with your e-mails yet", "Maybe you can use it for some detective work"]);
+        return new TextActionResult(["Your phone is really old and looks just like a brick", "It's too heavy to pick up so maybe you can just use it without grabbing it"]);
+    }
+
+    public pickup(): ActionResult | undefined {
+        return new TextActionResult(["I don't think this is what i meant with picking up the phone", "Maybe i should just use the phone without picking it up"]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
