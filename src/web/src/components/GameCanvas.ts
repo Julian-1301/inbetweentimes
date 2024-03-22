@@ -109,7 +109,6 @@ export class GameCanvas extends LitElement {
 
     private async refreshState(): Promise<void> {
         const state: GameState = await getState();
-
         this.updateState(state);
     }
 
@@ -188,22 +187,18 @@ export class GameCanvas extends LitElement {
     }
 
     private renderSound(): TemplateResult {
-        if (this.roomSounds) {
+        if (this.roomSounds && this.roomSounds.length > 0) {
             return html`
                 <div class="sound">
-                    ${this.roomSounds?.map(
-                        (url) =>
-                            html`<audio autoplay loop>
-                                <source src="/assets/Sound/ambient/${url}.mp3" />
-                            </audio>`
+                    ${this.roomSounds.map(
+                        (url) => html`<audio autoplay loop src="/assets/Sound/ambient/${url}.mp3"></audio>`
                     )}
                 </div>
             `;
         }
-
+    
         return html`${nothing}`;
     }
-
     private renderHeader(): TemplateResult {
         if (this.roomImages && this.roomImages.length > 0) {
             return html`
