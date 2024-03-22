@@ -28,6 +28,10 @@ export class OfficeRoom extends Room {
         return ["OfficeRoom"];
     }
 
+    public sounds(): string[] {
+        return["Officeambient"];
+    }
+
     public actions(): Action[] {
         return [new ExamineAction(),  
             new PickupAction(), 
