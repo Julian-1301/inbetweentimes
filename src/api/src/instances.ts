@@ -17,6 +17,10 @@ import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzl
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+import { Table, TableAlias } from "./fabian/interactables/Table";
+import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
+import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
+import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
 import { PlantItem, PlantItemAlias } from "./julian/items/PlantItem";
@@ -34,13 +38,22 @@ import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/Filled
 export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "Office",
+
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
         pickedUpButton: false,
         pickedUpTablet: false,
         pickedUpBook: false,
+        openedBook: false,
         pickedUpDecryption: false,
+        hydraulicsPuzzleSolved: false,
+        LogbookPuzzleSolved: false,
+        examinedTable: false,
+        examinedDecryption: false,
+        tablePickup: false,
+        pickedUpManual: false,
+        examinedHydraulics: false,
         pickedUpWatch: false,
         pickedUpPlant: false,
         pickedUpCup: false,
@@ -117,13 +130,13 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
-           
-         case ToDoListItemAlias:
+
+        case ToDoListItemAlias:
             return new ToDoListItem();
 
-         case StatueCharacterAlias:
+        case StatueCharacterAlias:
             return new StatueCharacter();
-        
+
         case ComputerItemAlias:
             return new ComputerItem();
 
@@ -132,7 +145,7 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ButtonItemAlias:
             return new ButtonItem();
-            
+
         case TabletItemAlias:
             return new TabletItem();
 
@@ -142,15 +155,27 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case DecryptionItemAlias:
             return new DecryptionItem();
 
+        case TableAlias:
+            return new Table();
+
+        case StarmapAlias:
+            return new Starmap();
+
+        case HydraulicControlPanelAlias:
+            return new HydraulicControlPanel();
+
+        case MuanualItemAlias:
+            return new MuanualItem();
+
         case WatchItemAlias:
             return new WatchItem();
-    
+
         case PhoneItemAlias:
             return new PhoneItem();
 
         case PlantItemAlias:
             return new PlantItem();
-        
+
         case CupItemAlias:
             return new CupItem();
 
@@ -181,6 +206,4 @@ export function getGameObjectsByAliases(objectAliases?: string[]): GameObject[] 
  */
 export function getGameObjectsFromInventory(): GameObject[] {
     return getGameObjectsByAliases(getPlayerSession().inventory);
-
-    
 }

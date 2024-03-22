@@ -1,6 +1,6 @@
 import { ActionReference } from "@shared/types";
 import { ActionResult } from "../../base/actionResults/ActionResult";
-import { Puzzle } from "../../base/gameObjects/Interactable";
+import { Interactable } from "../../base/gameObjects/Interactable";
 import { Action } from "../../base/actions/Action";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { castTo, implementsInterface } from "../../base/helpers";
@@ -77,7 +77,7 @@ export class SolveChoiceAction {
      *
      * @returns UI-specific object representing this dialogue choice
      */
-    public toReference(puzzle: Puzzle): ActionReference {
+    public toReference(puzzle: Interactable): ActionReference {
         return {
             alias: `${SolveActionAlias}:${puzzle.alias}:${this._id}`,
             label: this._text,
