@@ -12,17 +12,23 @@ import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
 import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
-import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
-import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
+import { ComputerItem, ComputerItemAlias } from "./julian/interactables/ComputerItem";
+import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
-import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/puzzles/HydraulicsPuzzle";
-import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/puzzles/LogbookPuzzle";
 import { Table, TableAlias } from "./fabian/Items/Table";
 import { Starmap, StarmapAlias } from "./fabian/Items/Starmaps";
 import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/Items/Hydraulic control panel";
 import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
+import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
+import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
+import { PlantItem, PlantItemAlias } from "./julian/items/PlantItem";
+import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
+import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
+
+
+
 
 /**
  * Create a new player session object
@@ -148,12 +154,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DecryptionItemAlias:
             return new DecryptionItem();
-
-        case HydraulicsPuzzleAlias:
-            return new HydraulicsPuzzle();
-
-        case LogbookPuzzleAlias:
-            return new LogbookPuzzle();
 
         case TableAlias:
             return new Table();

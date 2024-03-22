@@ -60,7 +60,7 @@ export class GameCanvas extends LitElement {
             border: 1px solid #332c57;
             margin-top: 10px;
             display: flex;
-            height: 105px;
+            height: 150px;
         }
 
         .footer .buttons {

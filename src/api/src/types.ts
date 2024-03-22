@@ -23,5 +23,4 @@ export type PlayerSession = {
     deletedPictures: boolean;
     deletedScript: boolean;
     callNumber: number;
-
 };
