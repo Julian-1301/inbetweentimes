@@ -6,7 +6,6 @@ import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 import { Interactable } from "../../base/gameObjects/Interactable";
 import { OasisRoomAlias } from "../rooms/OasisRoom";
-import { PlantItemAlias } from "../items/PlantItem";
 
 export const FilledCupItemAlias: string = "filledcup";
 
@@ -28,9 +27,7 @@ export class FilledCupItem extends Interactable implements Examine {
         const playerSession: PlayerSession = getPlayerSession();
     
         if (playerSession.currentRoom === OasisRoomAlias) {
-            playerSession.inventory.push(PlantItemAlias);
-            playerSession.inventory = playerSession.inventory.filter(item => item !== FilledCupItemAlias);
-            return new TextActionResult(["You fill the filledcup with water from the oasis"]);
+            return new TextActionResult(["You already filled the cup to the brim"]);
         } else {
             return undefined;
         }

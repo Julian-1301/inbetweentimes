@@ -19,9 +19,10 @@ import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
-import { PlantItem, PlantItemAlias } from "./julian/items/PlantItem";
+import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
+import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
 
 
 
@@ -49,6 +50,7 @@ export function createNewPlayerSession(): PlayerSession {
         deletedPictures: false,
         deletedScript: false,
         callNumber: 1,
+        drygroundValue: 0,
     };
 }
 
@@ -156,6 +158,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case FilledCupItemAlias:
             return new FilledCupItem();
+
+        case DrygroundItemAlias:
+            return new DrygroundItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

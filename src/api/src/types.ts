@@ -10,9 +10,10 @@ export type PlayerSession = {
     pickedUpWatch: boolean;
     pickedUpPlant: boolean;
     pickedUpCup: boolean;
-    pickedUpFilledCup: boolean
+    pickedUpFilledCup: boolean;
     deletedBrowser: boolean;
     deletedPictures: boolean;
     deletedScript: boolean;
     callNumber: number;
+    drygroundValue: number;
 };

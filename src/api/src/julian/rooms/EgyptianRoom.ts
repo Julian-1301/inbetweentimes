@@ -14,6 +14,7 @@ import { SolveAction } from "../actions/SolveAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { PyramidRoomAlias } from "./PyramidRoom";
 import { OasisRoomAlias } from "./OasisRoom";
+import { DrygroundItem } from "../items/DryGroundItem";
 
 
 export const EgyptianRoomAlias: string ="egyptian";
@@ -60,6 +61,7 @@ export class EgyptianRoom extends Room   {
         }
 
         objects.push(new ShadyFigureCharacter());
+        objects.push(new DrygroundItem());
 
         return objects;
     }
@@ -71,9 +73,11 @@ export class EgyptianRoom extends Room   {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goleft") {
             getPlayerSession().currentRoom = PyramidRoomAlias;
+            return new TextActionResult(["You walk towards the Pyramid"]);
 
         } else if (alias === "goright") { 
             getPlayerSession().currentRoom = OasisRoomAlias;
+            return new TextActionResult(["You walk towards the oasis"]);
         } return undefined;
     }
 }

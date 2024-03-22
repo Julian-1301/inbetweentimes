@@ -12,6 +12,8 @@ import { ColdWarRoom, ColdWarRoomAlias } from "../../fabian/rooms/ColdWarRoom";
 import { Room } from "../../base/gameObjects/Room";
 import { AztecRoom, AztecRoomAlias } from "../../nicolai/rooms/AztecRoom";
 import { OfficeRoom, OfficeRoomAlias } from "../rooms/OfficeRoom";
+import { OasisRoomAlias } from "../rooms/OasisRoom";
+import { PyramidRoomAlias } from "../rooms/PyramidRoom";
 
 export const WatchItemAlias: string = "watch";
 
@@ -51,7 +53,8 @@ export class WatchItem extends Interactable implements Examine, Pickup {
     public solve(choiceId?: number | undefined): ActionResult | undefined {
         let room: Room;
         const playerSession: PlayerSession = getPlayerSession();
-        const locations: any[] = [];
+        const locations: any[] = [new SolveChoiceAction(5, "Cancel")];
+        const Egyptaliases: any[] = [OasisRoomAlias, PyramidRoomAlias, EgyptianRoomAlias];
 
         if (playerSession.callNumber === 0) {
         if (playerSession.pickedUpWatch) { 
@@ -59,7 +62,7 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 locations.push(new SolveChoiceAction(2, "Egypt"));
                 locations.push(new SolveChoiceAction(3, "Cold War"));
                 locations.push(new SolveChoiceAction(4, "Aztec"));
-            } else if (playerSession.currentRoom === EgyptianRoomAlias){
+            } else if (Egyptaliases.includes(playerSession.currentRoom)){
                 locations.push(new SolveChoiceAction(1, "Office"));
                 locations.push(new SolveChoiceAction(3, "Cold War")); 
             } else if (playerSession.currentRoom === ColdWarRoomAlias){
@@ -88,6 +91,8 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                     room = new AztecRoom();
                     playerSession.currentRoom = room.alias;
                     return new TextActionResult(["You enter the mysterious Aztec room", "You hear the sound of ancient rituals"]);
+                case 5:
+                    return new TextActionResult(["You decide to stay"]);
                 }   
                 return new SolveActionResult(this, ["Where do you want to go to?"], locations);
             } else {

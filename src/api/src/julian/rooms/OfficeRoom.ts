@@ -11,7 +11,7 @@ import { PlayerSession } from "../../types";
 import { SolveAction } from "../actions/SolveAction";
 import { WatchItem } from "../interactables/WatchItem";
 import { PhoneItem } from "../interactables/PhoneItem";
-import { PlantItem } from "../items/PlantItem";
+import { PlantItem } from "../interactables/PlantItem";
 
 export const OfficeRoomAlias: string = "Office";
 
