@@ -6,7 +6,7 @@ import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession, resetPlayerSession } from "../../instances";
-import { PickupAction } from "../../base/actions/PickupAction";
+import { PickupAction } from "../../julian/actions/PickupAction";
 import { TabletItem } from "../../fabian/Items/TabletItem";
 import { PlayerSession } from "../../types";
 import { BookItem } from "../Items/BookItem";

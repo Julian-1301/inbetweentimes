@@ -20,7 +20,7 @@ import { PlayerSession } from "./types";
 import { handleRoutes as handleRoutesJulian } from "./julian/routes";
 import { handleRoutes as handleRoutesNicolai } from "./nicolai/routes";
 import { handleRoutes as handleRoutesFabian } from "./fabian/routes";
-import { SolveAction, SolveActionAlias } from "./base/actions/SolveAction";
+import { SolveAction, SolveActionAlias } from "./julian/actions/SolveAction";
 import { SolveActionResult } from "./base/actionResults/SolveActionResult";
 
 
@@ -137,6 +137,10 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         const choiceId: number = parseInt(splitAlias[2]);
 
         return SolveAction.handle(puzzle, choiceId);
+    }
+
+    if (gameObjects.length < 1) {
+        gameObjects[0] = room;
     }
 
     if( alias === ExamineActionAlias) {

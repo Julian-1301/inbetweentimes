@@ -1,5 +1,5 @@
-import { SolveChoiceAction } from "../actions/SolveAction";
-import { Puzzle } from "../gameObjects/Puzzle";
+import { SolveChoiceAction } from "../../julian/actions/SolveAction";
+import { Puzzle } from "../gameObjects/Interactable";
 import { TextActionResult } from "./TextActionResult";
 
 /**

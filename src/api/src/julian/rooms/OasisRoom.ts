@@ -2,51 +2,52 @@ import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { PickupAction } from "../actions/PickupAction";
-import { TalkAction } from "../../base/actions/TalkAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { ShadyFigureCharacter } from "../characters/ShadyFigureCharacter";
-import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
-import { ScrollItem } from "../items/ScrollItem";
+import { getPlayerSession, getGameObjectsFromInventory } from "../../instances";
 import { PlayerSession } from "../../types";
+import { PickupAction } from "../actions/PickupAction";
 import { SolveAction } from "../actions/SolveAction";
+import { ButtonItem } from "../items/buttonItem";
+import { OasisPuzzle } from "../interactables/OasisPuzzle";
 import { CustomAction } from "../../base/actions/CustomAction";
-import { PyramidRoomAlias } from "./PyramidRoom";
-import { OasisRoomAlias } from "./OasisRoom";
+import { EgyptianRoomAlias } from "./EgyptianRoom";
 
 
-export const EgyptianRoomAlias: string ="egyptian";
 
-export class EgyptianRoom extends Room   {
+export const OasisRoomAlias: string ="oasis";
+
+export class OasisRoom extends Room   {
     public constructor() {
-        super(EgyptianRoomAlias);
+        super(OasisRoomAlias);
     }
 
     public name(): string {
-        return "Ancient Egypt";
+        return "Oasis";
     }
     
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
         const images: any = [];
         
-        images.push("EgyptBackground");
-
-        if (!playerSession.pickedUpScroll) {
-            images.push("ScrollImage");
+        if (playerSession.oasisPuzzleSolved) {
+            images.push("OasisBackgroundSolved");
+        } else {
+        images.push("OasisBackgroundUnsolved");
         }
+
+        if (playerSession.oasisPuzzleSolved && !playerSession.pickedUpButton) {
+            images.push("ButtonImage");
+        }
+
         return images;
-        
     }
 
     public actions(): Action[] {
         return [new ExamineAction(), 
-            new TalkAction(), 
             new PickupAction(), 
             new SolveAction(),
-            new CustomAction("goleft", "Go To Pyramid", false),
-            new CustomAction("goright", "Go To Oasis", false),
+            new CustomAction("goback", "Go Back", false),
         ];
     }
 
@@ -55,11 +56,11 @@ export class EgyptianRoom extends Room   {
 
         const objects: GameObject[] = [...getGameObjectsFromInventory()];
 
-        if (!playerSession.pickedUpScroll) {
-            objects.push(new ScrollItem());
+        if (!playerSession.oasisPuzzleSolved) {
+            objects.push(new OasisPuzzle());
+        } else if (!playerSession.pickedUpButton) {
+            objects.push(new ButtonItem());
         }
-
-        objects.push(new ShadyFigureCharacter());
 
         return objects;
     }
@@ -67,13 +68,12 @@ export class EgyptianRoom extends Room   {
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
     }
-    
-    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
-        if (alias === "goleft") {
-            getPlayerSession().currentRoom = PyramidRoomAlias;
 
-        } else if (alias === "goright") { 
-            getPlayerSession().currentRoom = OasisRoomAlias;
-        } return undefined;
-    }
+    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
+        if (alias === "goback") {
+            getPlayerSession().currentRoom = EgyptianRoomAlias;
+        } else {
+            return undefined;
+        } return;
+    } 
 }

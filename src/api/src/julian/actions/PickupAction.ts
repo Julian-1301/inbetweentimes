@@ -1,7 +1,7 @@
-import { ActionResult } from "../actionResults/ActionResult";
-import { GameObject } from "../gameObjects/GameObject";
-import { castTo, implementsInterface } from "../helpers";
-import { Action } from "./Action";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { castTo, implementsInterface } from "../../base/helpers";
+import { Action } from "../../base/actions/Action";
 
 export const PickupActionAlias: string = "pickup";
 

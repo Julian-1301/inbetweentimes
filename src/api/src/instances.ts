@@ -12,11 +12,17 @@ import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
 import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
-import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
-import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
+import { ComputerItem, ComputerItemAlias } from "./julian/interactables/ComputerItem";
+import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
+import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
+import { PlantItem, PlantItemAlias } from "./julian/items/PlantItem";
+import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
+import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
+
 
 
 
@@ -27,14 +33,22 @@ import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionIt
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "startup",
+        currentRoom: "Office",
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
         pickedUpButton: false,
         pickedUpTablet: false,
         pickedUpBook: false,
-        pickedUpDecryption: false
+        pickedUpDecryption: false,
+        pickedUpWatch: false,
+        pickedUpPlant: false,
+        pickedUpCup: false,
+        pickedUpFilledCup: false,
+        deletedBrowser: false,
+        deletedPictures: false,
+        deletedScript: false,
+        callNumber: 1,
     };
 }
 
@@ -127,6 +141,21 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DecryptionItemAlias:
             return new DecryptionItem();
+
+        case WatchItemAlias:
+            return new WatchItem();
+    
+        case PhoneItemAlias:
+            return new PhoneItem();
+
+        case PlantItemAlias:
+            return new PlantItem();
+        
+        case CupItemAlias:
+            return new CupItem();
+
+        case FilledCupItemAlias:
+            return new FilledCupItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

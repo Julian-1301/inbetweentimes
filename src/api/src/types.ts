@@ -7,4 +7,12 @@ export type PlayerSession = {
     pickedUpTablet: boolean;
     pickedUpBook: boolean;
     pickedUpDecryption: boolean;
+    pickedUpWatch: boolean;
+    pickedUpPlant: boolean;
+    pickedUpCup: boolean;
+    pickedUpFilledCup: boolean
+    deletedBrowser: boolean;
+    deletedPictures: boolean;
+    deletedScript: boolean;
+    callNumber: number;
 };
