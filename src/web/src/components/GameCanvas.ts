@@ -35,6 +35,10 @@ export class GameCanvas extends LitElement {
             image-rendering: pixelated;
         }
 
+        .sound {
+            display: none;
+        }
+
         .header img:nth-child(n + 2) {
             position: absolute;
         }
@@ -89,6 +93,7 @@ export class GameCanvas extends LitElement {
 
     private roomTitle?: string;
     private roomImages?: string[];
+    private roomSounds?: string[];
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
@@ -112,6 +117,7 @@ export class GameCanvas extends LitElement {
         //Reset the component
         this.roomTitle = state.roomTitle;
         this.roomImages = state.roomImages;
+        this.roomSounds = state.roomSounds;
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
@@ -168,7 +174,7 @@ export class GameCanvas extends LitElement {
     protected render(): TemplateResult {
         return html`
             <div class="game">
-                ${this.renderTitle()} ${this.renderHeader()} ${this.renderContent()} ${this.renderFooter()}
+                ${this.renderTitle()} ${this.renderHeader()} ${this.renderSound()} ${this.renderContent()} ${this.renderFooter()}
             </div>
         `;
     }
@@ -176,6 +182,23 @@ export class GameCanvas extends LitElement {
     private renderTitle(): TemplateResult {
         if (this.roomTitle) {
             return html`<div class="title">${this.roomTitle}</div>`;
+        }
+
+        return html`${nothing}`;
+    }
+
+    private renderSound(): TemplateResult {
+        if (this.roomSounds) {
+            return html`
+                <div class="sound">
+                    ${this.roomSounds?.map(
+                        (url) =>
+                            html`<audio autoplay loop>
+                                <source src="/assets/Sound/ambient/${url}.mp3" />
+                            </audio>`
+                    )}
+                </div>
+            `;
         }
 
         return html`${nothing}`;

@@ -33,7 +33,7 @@ export class ColdWarRoom extends Room {
         return ["ColdWarControlRoom"];
     }
 
-    public sound(): string[] {
+    public sounds(): string[] {
         return ["Submarineambient"];
     }
 

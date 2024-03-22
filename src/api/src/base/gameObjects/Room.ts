@@ -29,7 +29,7 @@ export abstract class Room extends GameObject implements Examine, Custom {
         return [];
     }
 
-    public sound(): string[] {
+    public sounds(): string[] {
         return [];
     }
 
