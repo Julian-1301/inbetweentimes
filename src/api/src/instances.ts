@@ -17,8 +17,12 @@ import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
-
-
+import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/puzzles/HydraulicsPuzzle";
+import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/puzzles/LogbookPuzzle";
+import { Table, TableAlias } from "./fabian/Items/Table";
+import { Starmap, StarmapAlias } from "./fabian/Items/Starmaps";
+import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/Items/Hydraulic control panel";
+import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 
 /**
  * Create a new player session object
@@ -27,14 +31,31 @@ import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionIt
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "startup",
+        currentRoom: "Office",
+
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
         pickedUpButton: false,
         pickedUpTablet: false,
         pickedUpBook: false,
-        pickedUpDecryption: false
+        openedBook: false,
+        pickedUpDecryption: false,
+        hydraulicsPuzzleSolved: false,
+        LogbookPuzzleSolved: false,
+        examinedTable: false,
+        examinedDecryption: false,
+        tablePickup: false,
+        pickedUpManual: false,
+        examinedHydraulics: false,
+        pickedUpWatch: false,
+        pickedUpPlant: false,
+        pickedUpCup: false,
+        pickedUpFilledCup: false,
+        deletedBrowser: false,
+        deletedPictures: false,
+        deletedScript: false,
+        callNumber: 1,
     };
 }
 
@@ -103,13 +124,13 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
-           
-         case ToDoListItemAlias:
+
+        case ToDoListItemAlias:
             return new ToDoListItem();
 
-         case StatueCharacterAlias:
+        case StatueCharacterAlias:
             return new StatueCharacter();
-        
+
         case ComputerItemAlias:
             return new ComputerItem();
 
@@ -118,7 +139,7 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ButtonItemAlias:
             return new ButtonItem();
-            
+
         case TabletItemAlias:
             return new TabletItem();
 
@@ -127,6 +148,39 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DecryptionItemAlias:
             return new DecryptionItem();
+
+        case HydraulicsPuzzleAlias:
+            return new HydraulicsPuzzle();
+
+        case LogbookPuzzleAlias:
+            return new LogbookPuzzle();
+
+        case TableAlias:
+            return new Table();
+
+        case StarmapAlias:
+            return new Starmap();
+
+        case HydraulicControlPanelAlias:
+            return new HydraulicControlPanel();
+
+        case MuanualItemAlias:
+            return new MuanualItem();
+
+        case WatchItemAlias:
+            return new WatchItem();
+
+        case PhoneItemAlias:
+            return new PhoneItem();
+
+        case PlantItemAlias:
+            return new PlantItem();
+
+        case CupItemAlias:
+            return new CupItem();
+
+        case FilledCupItemAlias:
+            return new FilledCupItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
@@ -152,6 +206,4 @@ export function getGameObjectsByAliases(objectAliases?: string[]): GameObject[] 
  */
 export function getGameObjectsFromInventory(): GameObject[] {
     return getGameObjectsByAliases(getPlayerSession().inventory);
-
-    
 }
