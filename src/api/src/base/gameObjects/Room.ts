@@ -29,6 +29,10 @@ export abstract class Room extends GameObject implements Examine, Custom {
         return [];
     }
 
+    public sound(): string[] {
+        return [];
+    }
+
     /**
      * Actions that can be used in this room
      *

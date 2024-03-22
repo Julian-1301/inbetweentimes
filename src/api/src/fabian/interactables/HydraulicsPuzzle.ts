@@ -2,14 +2,14 @@ import { ActionResult } from "../../base/actionResults/ActionResult";
 import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 
-import { SolveChoiceAction } from "../../base/actions/SolveAction";
-import { Puzzle } from "../../base/gameObjects/Puzzle";
+import { SolveChoiceAction } from "../../julian/actions/SolveAction";
+import { Interactable } from "../../base/gameObjects/Interactable";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 
 export const HydraulicsPuzzleAlias: string = "Hydraulics";
 
-export class HydraulicsPuzzle extends Puzzle {
+export class HydraulicsPuzzle extends Interactable {
     public constructor() {
         super(HydraulicsPuzzleAlias);
     }

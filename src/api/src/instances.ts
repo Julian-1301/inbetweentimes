@@ -17,9 +17,9 @@ import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzl
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
-import { Table, TableAlias } from "./fabian/Items/Table";
-import { Starmap, StarmapAlias } from "./fabian/Items/Starmaps";
-import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/Items/Hydraulic control panel";
+import { Table, TableAlias } from "./fabian/interactables/Table";
+import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
+import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
 import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";

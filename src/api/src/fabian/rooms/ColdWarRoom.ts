@@ -4,20 +4,18 @@ import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession, resetPlayerSession } from "../../instances";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { PickupAction } from "../../julian/actions/PickupAction";
 import { TabletItem } from "../../fabian/Items/TabletItem";
 import { PlayerSession } from "../../types";
 import { BookItem } from "../Items/BookItem";
-import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
-import { CustomAction } from "../../base/actions/CustomAction";
 import { DecryptionItem } from "../Items/DecryptionItem";
-import { SolveAction } from "../../base/actions/SolveAction";
-import { HydraulicsPuzzle } from "../puzzles/HydraulicsPuzzle";
-import { LogbookPuzzle } from "../puzzles/LogbookPuzzle";
-import { Table } from "../Items/Table";
-import { Starmap } from "../Items/Starmaps";
-import { HydraulicControlPanel } from "../Items/Hydraulic control panel";
+import { SolveAction } from "../../julian/actions/SolveAction";
+import { HydraulicsPuzzle } from "../interactables/HydraulicsPuzzle";
+import { LogbookPuzzle } from "../interactables/LogbookPuzzle";
+import { Table } from "../interactables/Table";
+import { Starmap } from "../interactables/Starmaps";
+import { HydraulicControlPanel } from "../interactables/Hydraulic control panel";
 import { MuanualItem } from "../Items/ManualItem";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
@@ -35,13 +33,15 @@ export class ColdWarRoom extends Room {
         return ["ColdWarControlRoom"];
     }
 
+    public sound(): string[] {
+        return ["Submarineambient"];
+    }
+
     public actions(): Action[] {
         return [
             new ExamineAction(),
             new PickupAction(),
-            new SolveAction(),
-            new CustomAction("goto-officeroom", "Go to Office", false),
-            new CustomAction("Reset", "Reset Game", false),
+            new SolveAction()
         ];
     }
 
@@ -100,22 +100,6 @@ export class ColdWarRoom extends Room {
 
     public solve(): ActionResult | undefined {
         return new TextActionResult([""]);
-    }
-
-    public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "goto-officeroom") {
-            const room: OfficeRoom = new OfficeRoom();
-
-            //Set the current room to the example room
-            getPlayerSession().currentRoom = room.alias;
-
-            return room.examine();
-        }
-        if (alias === "Reset") {
-            resetPlayerSession();
-        }
-
-        return undefined;
     }
 }
 
