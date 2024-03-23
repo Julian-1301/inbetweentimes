@@ -57,6 +57,6 @@ export class OfficeRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You are in your office.","Your computer is on and your travelwatch is on your desk", "Your day has been quiet but now your phone starts ringing", "You should pick up the phone, It might be your boss"]);
+        return new TextActionResult(["You are in your <blue>Office</blue>.","Your <blue>Computer</blue> is on and your <blue>Travel-Watch</blue> is on your desk", "Your day has been quiet but now your <blue>Phone</blue> starts ringing", "You should pick up the <blue>Phone</blue>, It might be your <blue>Boss</blue>"]);
     }
 }

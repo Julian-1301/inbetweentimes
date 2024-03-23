@@ -24,15 +24,15 @@ export class WatchItem extends Interactable implements Examine, Pickup {
     }
 
     public name(): string {
-        return "TravelWatch";
+        return "Travel-Watch";
     }
 
     public examine(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.pickedUpWatch) {
-            return new TextActionResult(["You look at your watch", "It has the power to move you through time and space"]);
+            return new TextActionResult(["You look at your <blue>Watch</blue>", "It has the power to move you through time and space"]);
         } else {
-            return new TextActionResult(["You should grab your watch before you leave", "You can't go anywhere without it"]);
+            return new TextActionResult(["You should grab your <blue>Watch</blue> before you leave", "You can't go anywhere without it"]);
         }
     }
 
@@ -43,11 +43,11 @@ export class WatchItem extends Interactable implements Examine, Pickup {
             playerSession.pickedUpWatch = true;
             playerSession.inventory.push(WatchItemAlias);
 
-            return new TextActionResult(["You pick up the watch"]);
+            return new TextActionResult(["You pick up the <blue>Watch</blue>"]);
         }
         else
         
-        return new TextActionResult(["You already picked up the watch"]);
+        return new TextActionResult(["You already picked up the <blue>Watch</blue>"]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
@@ -78,19 +78,19 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 case 1:
                     room = new OfficeRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You enter the office"]);
+                    return new TextActionResult(["You enter <blue>The Office</blue>"]);
                 case 2:
                     room = new EgyptianRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You walk through the door and enter Ancient Egypt", "You see a strange figure in the distance"]);
+                    return new TextActionResult(["You walk through the door and enter <blueAncient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
                 case 3:
                     room = new ColdWarRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You step into the Cold War era room", "You feel a chill in the air"]);
+                    return new TextActionResult(["You step into the <blue>Cold War Submarine</blue>", "You feel a chill in the air"]);
                 case 4:
                     room = new AztecRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You enter the mysterious Aztec room", "You hear the sound of ancient rituals"]);
+                    return new TextActionResult(["You enter the mysterious <blue> Aztec Temple</blue>", "You hear the sound of ancient rituals"]);
                 case 5:
                     return new TextActionResult(["You decide to stay"]);
                 }   
@@ -98,7 +98,7 @@ export class WatchItem extends Interactable implements Examine, Pickup {
             } else {
                 return new TextActionResult(["You can't use it without picking it up first"]);
             }
-        } else {return new TextActionResult(["You should answer the phone first"]);
+        } else {return new TextActionResult(["You should answer the <blue>Phone</blue> first"]);
     }
     }    
 }

@@ -64,6 +64,7 @@ export function createNewPlayerSession(): PlayerSession {
         deletedScript: false,
         callNumber: 1,
         drygroundValue: 0,
+        HyrogliphPuzzleValue: 0,
     };
 }
 

@@ -21,11 +21,11 @@ export class ButtonItem extends Item implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (!playerSession.pickedUpButton) {
-            return new TextActionResult(["You see a bright red button inside a chest after you solved the puzzle", "It looks too advanced to belong in this era", "Maybe you should take it with you"]); 
+            return new TextActionResult(["You see a bright red <blue>Button</blue> inside a chest after you solved the <blue>Puzzle</blue>", "It looks too advanced to belong in this era", "Maybe you should take it with you"]); 
         } else if (playerSession.currentRoom === "ColdWarRoom") {
-            return new TextActionResult(["This seems like the right place to use this button"]);
+            return new TextActionResult(["This seems like the right place to use this <blue>Button</blue>"]);
         } else {
-        return new TextActionResult(["A bright red button", "Maybe this could be of use at a different time"]);
+        return new TextActionResult(["A bright red <blue>Button</blue>", "Maybe this could be of use at a different time"]);
         }
     }
 
@@ -36,11 +36,11 @@ export class ButtonItem extends Item implements Examine, Pickup {
             playerSession.pickedUpButton = true;
             playerSession.inventory.push(ButtonItemAlias);
 
-            return new TextActionResult(["You pick up the button"]);
+            return new TextActionResult(["You pick up the <blue>Button</blue>"]);
         }
         else
         
-        return new TextActionResult(["You already picked up the button"]);
+        return new TextActionResult(["You already picked up the <blue>Button</blue>"]);
     }
 
 }

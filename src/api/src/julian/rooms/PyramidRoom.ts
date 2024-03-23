@@ -57,7 +57,7 @@ export class PyramidRoom extends Room   {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = EgyptianRoomAlias;
-            return new TextActionResult(["You walk back to the desert"]);
+            return new TextActionResult(["You walk back to <blue>The Desert</blue>"]);
         } else {
             return undefined;
         } return;

@@ -24,4 +24,5 @@ export type PlayerSession = {
     deletedScript: boolean;
     callNumber: number;
     drygroundValue: number;
+    HyrogliphPuzzleValue: number;
 };

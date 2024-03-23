@@ -25,9 +25,9 @@ export class PlantItem extends Interactable implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.pickedUpPlant) {
-            return new TextActionResult(["The plant is slowly dying","You should find a nice place to plant it and give it some water so it won't die"]);
+            return new TextActionResult(["The <blue>Plant</blue> is slowly dying","You should find a nice place to plant it and give it some water so it won't die"]);
         } else {
-            return new TextActionResult(["You look at the random plant in the corner", "This never seemed like the right place for plants"]);
+            return new TextActionResult(["You look at the random <blue>Plant</blue> in the corner", "This never seemed like the right place for plants"]);
         }
     }
 
@@ -38,34 +38,38 @@ export class PlantItem extends Interactable implements Examine, Pickup {
             playerSession.pickedUpPlant = true;
             playerSession.inventory.push(PlantItemAlias);
 
-            return new TextActionResult(["You pick up the plant"]);
+            return new TextActionResult(["You pick up the <blue>Plant</blue>"]);
         }
         else {
-            return new TextActionResult(["You already picked up the Plant"]);
+            return new TextActionResult(["You already picked up the <blue>Plant</blue>"]);
         } 
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
 
-        if (playerSession.currentRoom === EgyptianRoomAlias){
-            new SolveActionResult(this, ["Do you want to plant your sapling in the dry ground?"], [
-                new SolveChoiceAction(1, "Yes"),
-                new SolveChoiceAction(2, "No"),
-            ]);
+        switch (choiceId) {
+            case 1:
+                playerSession.drygroundValue++;
+                playerSession.inventory = playerSession.inventory.filter(item => item !== PlantItemAlias);
+                return new TextActionResult(["You decide to place your <blue>Plant</blue> into the ground", "It looks like it could use some water in this dryness"]);
+            case 2:
+                return new TextActionResult(["Uhhh, thank you but I don't really want that"]);
+            case 3:
+                return new TextActionResult(["You decide to keep your <blue>Plant</blue> for now"]);
         }
 
-        if (choiceId === 1) {
-            playerSession.drygroundValue++;
-            playerSession.inventory = playerSession.inventory.filter(item => item !== PlantItemAlias);
-            return new TextActionResult(["You decide to plant your sapling into the ground", "It looks like it could use some water in this dryness"]);
-        } else if (choiceId === 2) {
-            return new TextActionResult(["You decide not to plant your sapling in the ground"]);
+        if (playerSession.currentRoom === EgyptianRoomAlias){
+            return new SolveActionResult(this, ["What do you want to use your <blue>Plant</blue> on?"], [
+                new SolveChoiceAction(1, "Dry Ground"),
+                new SolveChoiceAction(2, "Shady Figure"),
+                new SolveChoiceAction(3, "Cancel")
+            ]);
         } else {
             return undefined;
         }
     }
 }
 
-
+          
 
