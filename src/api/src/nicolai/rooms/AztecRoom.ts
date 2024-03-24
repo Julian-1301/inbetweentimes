@@ -4,12 +4,16 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room" ;
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { ToDoListItem } from "../items/ToDoListItem";
+import { ToDoListItem, ToDoListItemAlias } from "../items/ToDoListItem";
 import { StatueCharacter } from "../characters/StatueCharacter";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { getPlayerSession } from "../../instances";
 import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
+import { PickupAction } from "../../base/actions/PickupAction";
+import { BrotherCharacter } from "../characters/BrotherCharacter";
+
+
 
 export const AztecRoomAlias : string = "Aztec" ;
 
@@ -29,11 +33,24 @@ export class AztecRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        return [this, new ToDoListItem(), new StatueCharacter];
+        type playerSession = any
+        const playerSession: playerSession = getPlayerSession();
+
+        const objects: GameObject[] = [this];
+
+        if( playerSession.inventory.includes(ToDoListItemAlias)){
+        objects.push(new ToDoListItem());
+        }
+
+        return [this, new ToDoListItem(), new StatueCharacter(), new BrotherCharacter()];
     }
     public actions(): Action[]{
-        return[new ExamineAction(), new TalkAction, new CustomAction("goto-officeroom", "Go to Office", false)];
-    }
+        return[new ExamineAction(), 
+            new TalkAction,
+            new PickupAction(),
+            new CustomAction("goto-officeroom", "Go to Office", false)];
+           
+    }   
     
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You stand outside an ominous temple", "You have a gut feeling something isnt right...."]);

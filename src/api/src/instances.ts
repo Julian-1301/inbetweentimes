@@ -17,6 +17,9 @@ import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
+// import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
+
 
 
 
@@ -104,11 +107,14 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
            
-         case ToDoListItemAlias:
+        case ToDoListItemAlias:
             return new ToDoListItem();
 
-         case StatueCharacterAlias:
+        case StatueCharacterAlias:
             return new StatueCharacter();
+            
+        case BrotherCharacterAlias:
+            return new BrotherCharacter();
         
         case ComputerItemAlias:
             return new ComputerItem();
@@ -127,6 +133,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DecryptionItemAlias:
             return new DecryptionItem();
+            
+        // case BrotherCharacterAlias:
+        //     return new BrotherCharacter();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
