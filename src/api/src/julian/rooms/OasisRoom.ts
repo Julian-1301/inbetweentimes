@@ -66,12 +66,13 @@ export class OasisRoom extends Room   {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
+        return undefined;
     }
 
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = EgyptianRoomAlias;
+            return new TextActionResult(["You walk back to <blue>The Desert</blue>"]);
         } else {
             return undefined;
         } return;

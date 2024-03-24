@@ -27,7 +27,7 @@ export class ShadyFigureCharacter extends Character implements Examine, Pickup {
             case 6:
             return new TextActionResult(["Incorrect"]);
             case 7:
-            return new TextActionResult(["Correct, I will reward you by giving you a clue", "Solid ground precedes the flames' arrival", "Maybe there are other clues hidden around?"]);
+            return new TextActionResult(["Correct, I will reward you by giving you a clue", "<blue>'Solid ground precedes the flames' arrival'</blue>", "Maybe there are other clues hidden around?"]);
             case 8:
             return new TextActionResult(["I don't even know what that is", "Is that an actual color?", "How is that one of the first colors you think of?"]);
             case 9:
@@ -49,7 +49,7 @@ export class ShadyFigureCharacter extends Character implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["A shady looking individual stares at you from a distance","Should you approach him?"]);
+        return new TextActionResult(["The <blue>Shady Figure</blue> stares at you from a distance", "You do not know if he is friendly yet","Should you approach him?"]);
     }
 
     public pickup(): ActionResult | undefined {

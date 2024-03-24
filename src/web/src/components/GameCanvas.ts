@@ -89,6 +89,11 @@ export class GameCanvas extends LitElement {
         .footer .button:hover {
             background-color: #332c57;
         }
+        
+        .blue {
+            color: aquamarine;
+        }
+        
     `;
 
     private roomTitle?: string;
@@ -212,9 +217,22 @@ export class GameCanvas extends LitElement {
     }
 
     private renderContent(): TemplateResult {
-        return html`<div class="content">${this.contentText?.map((text) => html`<p>${text}</p>`)}</div>`;
+        return html`
+            <div class="content">
+                ${this.contentText?.map(text => {
+                    const parts: Array<string | TemplateResult> = text.split(/(<blue>.*?<\/blue>)/g).map(part => {
+                        if (typeof part === "string" && part.startsWith("<blue>") && part.endsWith("</blue>")) {
+                            return html`<span class="blue">${part.slice(6, -7)}</span>`;
+                        } else {
+                            return part;
+                        }
+                    });
+                    return html`<p>${parts}</p>`;
+                })}
+            </div>`;
     }
-
+    
+    
     private renderFooter(): TemplateResult {
         return html`
             <div class="footer">

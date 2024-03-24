@@ -14,6 +14,7 @@ import { SolveAction } from "../actions/SolveAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { PyramidRoomAlias } from "./PyramidRoom";
 import { OasisRoomAlias } from "./OasisRoom";
+import { DrygroundItem } from "../items/DryGroundItem";
 
 
 export const EgyptianRoomAlias: string ="egyptian";
@@ -60,20 +61,23 @@ export class EgyptianRoom extends Room   {
         }
 
         objects.push(new ShadyFigureCharacter());
+        objects.push(new DrygroundItem());
 
         return objects;
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You walk through the door and enter Ancient Egypt","You see a strange figure in the distance"]);
+        return new TextActionResult(["You walk through the door and enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
     }
     
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goleft") {
             getPlayerSession().currentRoom = PyramidRoomAlias;
+            return new TextActionResult(["You walk towards <blue>The Pyramid</blue>"]);
 
         } else if (alias === "goright") { 
             getPlayerSession().currentRoom = OasisRoomAlias;
+            return new TextActionResult(["You walk towards <blue>The Oasis</blue>"]);
         } return undefined;
     }
 }
