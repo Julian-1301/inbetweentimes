@@ -10,6 +10,8 @@ import { PlayerSession } from "../../types";
 import { PickupAction } from "../actions/PickupAction";
 import { SolveAction } from "../actions/SolveAction";
 import { CupItem } from "../interactables/CupItem";
+import { LighterItem } from "../interactables/LighterItem";
+import { TorchesItem } from "../interactables/TorchesItem";
 import { EgyptianRoomAlias } from "./EgyptianRoom";
 
 
@@ -27,6 +29,7 @@ export class PyramidRoom extends Room   {
     
     public images(): string[] {
         const images: any = [];
+        images.push("EgyptBackground");
 
         return images;
     }
@@ -47,6 +50,9 @@ export class PyramidRoom extends Room   {
             objects.push(new CupItem());
         }
 
+        objects.push(new TorchesItem());
+        objects.push(new LighterItem());
+
         return objects;
     }
 
@@ -60,7 +66,7 @@ export class PyramidRoom extends Room   {
             return new TextActionResult(["You walk back to <blue>The Desert</blue>"]);
         } else {
             return undefined;
-        } return;
+        }
     } 
 }
     

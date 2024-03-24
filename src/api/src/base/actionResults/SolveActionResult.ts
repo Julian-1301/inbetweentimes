@@ -1,12 +1,12 @@
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
-import { Puzzle } from "../gameObjects/Interactable";
+import { Interactable } from "../gameObjects/Interactable";
 import { TextActionResult } from "./TextActionResult";
 
 /**
  * Class used the represent the result of a Solve action
  */
 export class SolveActionResult extends TextActionResult {
-    private _puzzle: Puzzle;
+    private _puzzle: Interactable;
     private _choices: SolveChoiceAction[];
 
     /**
@@ -16,7 +16,7 @@ export class SolveActionResult extends TextActionResult {
      * @param text Text to show alongside the choices
      * @param choices Choices available to the player
      */
-    public constructor(puzzle: Puzzle, text: string[], choices: SolveChoiceAction[]) {
+    public constructor(puzzle: Interactable, text: string[], choices: SolveChoiceAction[]) {
         super(text);
 
         this._puzzle = puzzle;
@@ -26,7 +26,7 @@ export class SolveActionResult extends TextActionResult {
     /**
      * Puzzle who is offering the choices
      */
-    public get puzzle(): Puzzle {
+    public get puzzle(): Interactable {
         return this._puzzle;
     }
 
