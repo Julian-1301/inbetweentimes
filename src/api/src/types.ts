@@ -19,10 +19,13 @@ export type PlayerSession = {
     pickedUpPlant: boolean;
     pickedUpCup: boolean;
     pickedUpFilledCup: boolean;
+    pickedUpLighter: boolean;
     deletedBrowser: boolean;
     deletedPictures: boolean;
     deletedScript: boolean;
     callNumber: number;
     drygroundValue: number;
-    HyrogliphPuzzleValue: number;
+    hydrogliphPuzzleValue: number;
+    torchesLit: any[];
+    crackedTileCount: number;
 };

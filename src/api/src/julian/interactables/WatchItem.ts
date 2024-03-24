@@ -82,7 +82,7 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 case 2:
                     room = new EgyptianRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You walk through the door and enter <blueAncient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
+                    return new TextActionResult(["You walk through the door and enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
                 case 3:
                     room = new ColdWarRoom();
                     playerSession.currentRoom = room.alias;

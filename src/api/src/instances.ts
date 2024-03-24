@@ -27,8 +27,14 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
+<<<<<<< HEAD
 import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
 
+=======
+import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
+import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
+import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
+>>>>>>> 9433d9a5d98039b08ebd4ede51138ab5ab2d66ff
 
 
 
@@ -61,12 +67,15 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpPlant: false,
         pickedUpCup: false,
         pickedUpFilledCup: false,
+        pickedUpLighter: false,
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
         callNumber: 1,
         drygroundValue: 0,
-        HyrogliphPuzzleValue: 0,
+        hydrogliphPuzzleValue: 0,
+        torchesLit: [0, 0, 0, 0, 0],
+        crackedTileCount: 0,
     };
 }
 
@@ -197,6 +206,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
             case BrotherCharacterAlias:
                 return new BrotherCharacter();
             
+
+        case TorchesItemAlias:
+            return new TorchesItem();
+
+        case LighterItemAlias:
+            return new LighterItem();
+
+        case CrackedTileItemAlias:
+            return new CrackedTileItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
