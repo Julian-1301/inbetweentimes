@@ -35,6 +35,10 @@ export class GameCanvas extends LitElement {
             image-rendering: pixelated;
         }
 
+        .sound {
+            display: none;
+        }
+
         .header img:nth-child(n + 2) {
             position: absolute;
         }
@@ -60,7 +64,7 @@ export class GameCanvas extends LitElement {
             border: 1px solid #332c57;
             margin-top: 10px;
             display: flex;
-            height: 105px;
+            height: 150px;
         }
 
         .footer .buttons {
@@ -85,10 +89,16 @@ export class GameCanvas extends LitElement {
         .footer .button:hover {
             background-color: #332c57;
         }
+        
+        .blue {
+            color: aquamarine;
+        }
+        
     `;
 
     private roomTitle?: string;
     private roomImages?: string[];
+    private roomSounds?: string[];
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
@@ -104,7 +114,6 @@ export class GameCanvas extends LitElement {
 
     private async refreshState(): Promise<void> {
         const state: GameState = await getState();
-
         this.updateState(state);
     }
 
@@ -112,6 +121,7 @@ export class GameCanvas extends LitElement {
         //Reset the component
         this.roomTitle = state.roomTitle;
         this.roomImages = state.roomImages;
+        this.roomSounds = state.roomSounds;
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
@@ -168,7 +178,7 @@ export class GameCanvas extends LitElement {
     protected render(): TemplateResult {
         return html`
             <div class="game">
-                ${this.renderTitle()} ${this.renderHeader()} ${this.renderContent()} ${this.renderFooter()}
+                ${this.renderTitle()} ${this.renderHeader()} ${this.renderSound()} ${this.renderContent()} ${this.renderFooter()}
             </div>
         `;
     }
@@ -181,6 +191,19 @@ export class GameCanvas extends LitElement {
         return html`${nothing}`;
     }
 
+    private renderSound(): TemplateResult {
+        if (this.roomSounds && this.roomSounds.length > 0) {
+            return html`
+                <div class="sound">
+                    ${this.roomSounds.map(
+                        (url) => html`<audio autoplay loop src="/assets/Sound/ambient/${url}.mp3"></audio>`
+                    )}
+                </div>
+            `;
+        }
+    
+        return html`${nothing}`;
+    }
     private renderHeader(): TemplateResult {
         if (this.roomImages && this.roomImages.length > 0) {
             return html`
@@ -194,9 +217,22 @@ export class GameCanvas extends LitElement {
     }
 
     private renderContent(): TemplateResult {
-        return html`<div class="content">${this.contentText?.map((text) => html`<p>${text}</p>`)}</div>`;
+        return html`
+            <div class="content">
+                ${this.contentText?.map(text => {
+                    const parts: Array<string | TemplateResult> = text.split(/(<blue>.*?<\/blue>)/g).map(part => {
+                        if (typeof part === "string" && part.startsWith("<blue>") && part.endsWith("</blue>")) {
+                            return html`<span class="blue">${part.slice(6, -7)}</span>`;
+                        } else {
+                            return part;
+                        }
+                    });
+                    return html`<p>${parts}</p>`;
+                })}
+            </div>`;
     }
-
+    
+    
     private renderFooter(): TemplateResult {
         return html`
             <div class="footer">

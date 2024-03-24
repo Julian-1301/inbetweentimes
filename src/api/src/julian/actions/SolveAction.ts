@@ -1,9 +1,9 @@
 import { ActionReference } from "@shared/types";
-import { ActionResult } from "../actionResults/ActionResult";
-import { Puzzle } from "../gameObjects/Puzzle";
-import { Action } from "./Action";
-import { GameObject } from "../gameObjects/GameObject";
-import { castTo, implementsInterface } from "../helpers";
+import { ActionResult } from "../../base/actionResults/ActionResult";
+import { Interactable } from "../../base/gameObjects/Interactable";
+import { Action } from "../../base/actions/Action";
+import { GameObject } from "../../base/gameObjects/GameObject";
+import { castTo, implementsInterface } from "../../base/helpers";
 
 /** Alias used to identity the Solve action and interface */
 export const SolveActionAlias: string = "solve";
@@ -30,7 +30,7 @@ export class SolveAction extends Action {
      * Create a new instance of the Solve action
      */
     public constructor() {
-        super(SolveActionAlias, "Solve", true);
+        super(SolveActionAlias, "Use", true);
     }
 
     /**
@@ -77,7 +77,7 @@ export class SolveChoiceAction {
      *
      * @returns UI-specific object representing this dialogue choice
      */
-    public toReference(puzzle: Puzzle): ActionReference {
+    public toReference(puzzle: Interactable): ActionReference {
         return {
             alias: `${SolveActionAlias}:${puzzle.alias}:${this._id}`,
             label: this._text,

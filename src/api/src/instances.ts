@@ -12,13 +12,26 @@ import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
 import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
-import { ComputerItem, ComputerItemAlias } from "./julian/items/ComputerItem";
-import { OasisPuzzle, OasisPuzzleAlias } from "./julian/puzzles/OasisPuzzle";
+import { ComputerItem, ComputerItemAlias } from "./julian/interactables/ComputerItem";
+import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzle";
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
+<<<<<<< HEAD
 import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
 // import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
+=======
+import { Table, TableAlias } from "./fabian/interactables/Table";
+import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
+import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
+import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
+import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
+import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
+import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
+import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
+import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
+import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
+>>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
 
 
 
@@ -30,14 +43,33 @@ import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/Br
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "startup",
+        currentRoom: "Office",
+
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
         pickedUpButton: false,
         pickedUpTablet: false,
         pickedUpBook: false,
-        pickedUpDecryption: false
+        openedBook: false,
+        pickedUpDecryption: false,
+        hydraulicsPuzzleSolved: false,
+        LogbookPuzzleSolved: false,
+        examinedTable: false,
+        examinedDecryption: false,
+        tablePickup: false,
+        pickedUpManual: false,
+        examinedHydraulics: false,
+        pickedUpWatch: false,
+        pickedUpPlant: false,
+        pickedUpCup: false,
+        pickedUpFilledCup: false,
+        deletedBrowser: false,
+        deletedPictures: false,
+        deletedScript: false,
+        callNumber: 1,
+        drygroundValue: 0,
+        HyrogliphPuzzleValue: 0,
     };
 }
 
@@ -106,16 +138,24 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
         case ToDoListItemAlias:
             return new ToDoListItem();
 
         case StatueCharacterAlias:
             return new StatueCharacter();
+<<<<<<< HEAD
             
         case BrotherCharacterAlias:
             return new BrotherCharacter();
         
+=======
+
+>>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
         case ComputerItemAlias:
             return new ComputerItem();
 
@@ -124,7 +164,7 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ButtonItemAlias:
             return new ButtonItem();
-            
+
         case TabletItemAlias:
             return new TabletItem();
 
@@ -136,6 +176,36 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
             
         // case BrotherCharacterAlias:
         //     return new BrotherCharacter();
+
+        case TableAlias:
+            return new Table();
+
+        case StarmapAlias:
+            return new Starmap();
+
+        case HydraulicControlPanelAlias:
+            return new HydraulicControlPanel();
+
+        case MuanualItemAlias:
+            return new MuanualItem();
+
+        case WatchItemAlias:
+            return new WatchItem();
+
+        case PhoneItemAlias:
+            return new PhoneItem();
+
+        case PlantItemAlias:
+            return new PlantItem();
+
+        case CupItemAlias:
+            return new CupItem();
+
+        case FilledCupItemAlias:
+            return new FilledCupItem();
+
+        case DrygroundItemAlias:
+            return new DrygroundItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
@@ -161,6 +231,4 @@ export function getGameObjectsByAliases(objectAliases?: string[]): GameObject[] 
  */
 export function getGameObjectsFromInventory(): GameObject[] {
     return getGameObjectsByAliases(getPlayerSession().inventory);
-
-    
 }
