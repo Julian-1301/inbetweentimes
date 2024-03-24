@@ -1,14 +1,16 @@
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { Examine } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
+import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 
 export const BrotherCharacterAlias:string = "Statue's Brother";
 
-export class BrotherCharacter extends Character{
+export class BrotherCharacter extends Character implements Examine, Pickup{
     public constructor(){
-        super(BrotherCharacterAlias);
+        super(BrotherCharacterAlias, PickupActionAlias);
     }
     public name(): string {
         return "Statue's Brother";

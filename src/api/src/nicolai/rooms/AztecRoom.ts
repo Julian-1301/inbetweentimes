@@ -10,8 +10,9 @@ import { TalkAction } from "../../base/actions/TalkAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { getPlayerSession } from "../../instances";
 import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
-import { PickupAction } from "../../base/actions/PickupAction";
+
 import { BrotherCharacter } from "../characters/BrotherCharacter";
+import { PickupAction } from "../../julian/actions/PickupAction";
 
 
 

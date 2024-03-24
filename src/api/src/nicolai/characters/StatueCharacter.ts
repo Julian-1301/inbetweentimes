@@ -4,7 +4,8 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
-import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
+import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
+
 
 export const StatueCharacterAlias: string = "Statue";
 export class StatueCharacter extends Character implements Examine, Pickup{

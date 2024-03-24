@@ -1,9 +1,10 @@
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
-import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
+
 import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
+import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
 
 

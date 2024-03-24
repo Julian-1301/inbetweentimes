@@ -17,10 +17,6 @@ import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzl
 import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
 import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
-<<<<<<< HEAD
-import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
-// import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
-=======
 import { Table, TableAlias } from "./fabian/interactables/Table";
 import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
 import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
@@ -31,7 +27,8 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
->>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
+import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
+
 
 
 
@@ -138,24 +135,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ShadyFigureCharacterAlias:
             return new ShadyFigureCharacter();
-<<<<<<< HEAD
-           
-=======
 
->>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
+
+
         case ToDoListItemAlias:
             return new ToDoListItem();
 
         case StatueCharacterAlias:
             return new StatueCharacter();
-<<<<<<< HEAD
-            
-        case BrotherCharacterAlias:
-            return new BrotherCharacter();
-        
-=======
 
->>>>>>> 0aae51c5f45ececa13109de4c0375e6deedfcc67
         case ComputerItemAlias:
             return new ComputerItem();
 
@@ -206,6 +194,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DrygroundItemAlias:
             return new DrygroundItem();
+            case BrotherCharacterAlias:
+                return new BrotherCharacter();
+            
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
