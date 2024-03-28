@@ -6,17 +6,15 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { PickupAction } from "../../julian/actions/PickupAction";
-import { TabletItem } from "../../fabian/Items/TabletItem";
 import { PlayerSession } from "../../types";
 import { BookItem } from "../Items/BookItem";
 import { DecryptionItem } from "../Items/DecryptionItem";
 import { SolveAction } from "../../julian/actions/SolveAction";
-import { HydraulicsPuzzle } from "../interactables/HydraulicsPuzzle";
 import { LogbookPuzzle } from "../interactables/LogbookPuzzle";
 import { Table } from "../interactables/Table";
-import { Starmap } from "../interactables/Starmaps";
-import { HydraulicControlPanel } from "../interactables/Hydraulic control panel";
-import { MuanualItem } from "../Items/ManualItem";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { HydraulicRoomAlias } from "./HydraulicsRoom";
+import { StarmapRoomAlias } from "./StarmapRoom";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
@@ -41,7 +39,9 @@ export class ColdWarRoom extends Room {
         return [
             new ExamineAction(),
             new PickupAction(),
-            new SolveAction()
+            new SolveAction(),
+            new CustomAction("goleft", "Go Left", false),
+            new CustomAction("goright", "Go Right", false),
         ];
     }
 
@@ -57,29 +57,14 @@ export class ColdWarRoom extends Room {
             objects.push(new BookItem());
         }
 
-        if (!playerSession.hydraulicsPuzzleSolved && playerSession.pickedUpButton) {
-            objects.push(new HydraulicsPuzzle());
-        } else if (!playerSession.pickedUpTablet && playerSession.hydraulicsPuzzleSolved) {
-            objects.push(new TabletItem());
-        } else {
-            objects.push(new HydraulicControlPanel());
-        }
-
         if (!playerSession.LogbookPuzzleSolved && playerSession.pickedUpDecryption) {
             objects.push(new LogbookPuzzle());
-        } else {
-            ("");
         }
 
         if (playerSession.openedBook) {
             objects.push(new DecryptionItem());
         }
 
-        if (playerSession.examinedHydraulics) {
-            objects.push(new MuanualItem());
-        }
-
-        objects.push(new Starmap());
         return objects;
     }
 
@@ -101,8 +86,24 @@ export class ColdWarRoom extends Room {
     public solve(): ActionResult | undefined {
         return new TextActionResult([""]);
     }
-}
 
+    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (alias === "goleft" && !playerSession.hydraulicsPuzzleSolved) {
+            getPlayerSession().currentRoom = HydraulicRoomAlias;
+            return new TextActionResult(["You walk towards the <blue>hydraulics</blue> control panel"]);
+        } else if (alias === "goleft" && playerSession.hydraulicsPuzzleSolved) {
+            return new TextActionResult(["I don't need to be here anymore"]);
+        } else if (alias === "goright" && !playerSession.LogbookPuzzleSolved) {
+            getPlayerSession().currentRoom = StarmapRoomAlias;
+            return new TextActionResult(["You walk towards the <blue>starmap</blue>"]);
+        } else if (alias === "goright" && playerSession.LogbookPuzzleSolved) {
+            return new TextActionResult(["I don't need to be here anymore"]);
+        }
+        return undefined;
+    }
+}
 
 // For Pick up action on room.
 // If I get it working

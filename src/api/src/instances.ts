@@ -19,7 +19,10 @@ import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
 import { Table, TableAlias } from "./fabian/interactables/Table";
 import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
-import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
+import {
+    HydraulicControlPanel,
+    HydraulicControlPanelAlias,
+} from "./fabian/interactables/Hydraulic control panel";
 import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
@@ -30,9 +33,8 @@ import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem"
 import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
 import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
-
-
-
+import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
+import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
 
 /**
  * Create a new player session object
@@ -42,7 +44,6 @@ import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/Cr
 export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "Office",
-
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
@@ -71,6 +72,7 @@ export function createNewPlayerSession(): PlayerSession {
         hydrogliphPuzzleValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+        usedButton: false,
     };
 }
 
@@ -202,6 +204,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case CrackedTileItemAlias:
             return new CrackedTileItem();
+
+        case HydraulicsPuzzleAlias:
+            return new HydraulicsPuzzle();
+
+        case LogbookPuzzleAlias:
+            return new LogbookPuzzle();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
