@@ -49,7 +49,7 @@ export class StarmapRoom extends Room {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "This is the submarine's starmap"
+            "This is the submarine's <blue>starmap</blue>"
         ]);
     }
 

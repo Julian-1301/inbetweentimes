@@ -38,7 +38,7 @@ export class StartupRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example."]);
+        return new TextActionResult([""]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {

@@ -24,7 +24,7 @@ export class BookItem extends Item implements Examine, Pickup {
             playerSession.openedBook = true;
 
             return new TextActionResult([
-                "When you examine the book you read: 'Logbook'",
+                "When you examine the book you read: <blue>Logbook</blue>",
                 "As you open the book you notice a piece of paper falling out",
                 "Perhaps I should pick it up",
             ]);
@@ -61,7 +61,7 @@ export class BookItem extends Item implements Examine, Pickup {
             playerSession.LogbookPuzzleSolved
         ) {
             return new TextActionResult([
-                "Within the logbook you see three encrypted messages:",
+                "You quickly decipher the messages:",
                 "",
                 "July 1986",
                 "Atlantic ocean",
@@ -83,7 +83,7 @@ export class BookItem extends Item implements Examine, Pickup {
             ]);
         } else {
             return new TextActionResult([
-                "It's a brown soft cover book with the title: 'Logbook'",
+                "It's a brown soft cover book with the title: <blue>Logbook</blue>",
                 "Perhaps I should pick it up to investigate further",
             ]);
         }

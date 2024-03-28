@@ -5,7 +5,7 @@ import { ExamineAction } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
-import { PickupAction } from "../../julian/actions/PickupAction";
+import { Pickup, PickupAction, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
 import { BookItem } from "../Items/BookItem";
 import { DecryptionItem } from "../Items/DecryptionItem";
@@ -15,12 +15,13 @@ import { Table } from "../interactables/Table";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { HydraulicRoomAlias } from "./HydraulicsRoom";
 import { StarmapRoomAlias } from "./StarmapRoom";
+import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
-export class ColdWarRoom extends Room {
+export class ColdWarRoom extends Room implements Pickup {
     public constructor() {
-        super(ColdWarRoomAlias);
+        super(ColdWarRoomAlias, PickupActionAlias);
     }
 
     public name(): string {
@@ -73,14 +74,22 @@ export class ColdWarRoom extends Room {
             "As you enter the room, you notice you are surrounded by metal.",
             "Peering through a nearby window, you are met with the deep ocean depths.",
             "You realize you are in a submarine.",
-            "You see a table with a book",
-            "You see a hydraulics control panel",
-            "You see starmaps pinned to the wall",
+            "You see a <blue>table</blue> with a book",
+            "You see a <blue>hydraulics</blue> control panel",
+            "You see <blue>starmaps</blue> pinned to the wall",
         ]);
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult([""]);
+        const playerSession: PlayerSession = getPlayerSession();
+        
+        playerSession.currentRoom = new GameOverRoom().alias;
+    
+        return new TextActionResult([
+            "You lift up the room and hold it over your head",
+            "You think to yourself: 'How is this even possible?'",
+            "At that exact moment your arms give in and your are squashed by the room",
+        ]);
     }
 
     public solve(): ActionResult | undefined {
@@ -107,8 +116,3 @@ export class ColdWarRoom extends Room {
 
 // For Pick up action on room.
 // If I get it working
-
-// "You lift up the room and hold it over your head",
-// "You think to yourself: 'How is this even possible?'",
-// "At that exact moment your arms give in and your are squashed by the room",
-// "GAME OVER"

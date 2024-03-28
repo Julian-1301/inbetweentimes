@@ -29,10 +29,18 @@ export class HydraulicRoom extends Room {
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
         const images: any = [];
-        
+
         images.push("HydraulicsNoButton");
 
-        if (playerSession.pickedUpButton && playerSession.usedButton) {
+        if (playerSession.pickedUpManual && playerSession.usedButton) {
+            images.push("HydraulicsNobook");
+        }
+
+        if (playerSession.pickedUpManual && !playerSession.usedButton) {
+            images.push("HydraulicsNoButtonNobook");
+        }
+
+        if (!playerSession.pickedUpButton && playerSession.usedButton) {
             images.push("Hydraulics");
         }
         return images;
@@ -47,7 +55,7 @@ export class HydraulicRoom extends Room {
             new ExamineAction(),
             new PickupAction(),
             new SolveAction(),
-            new CustomAction("goback", "Go Back", false)
+            new CustomAction("goback", "Go Back", false),
         ];
     }
 
@@ -57,7 +65,12 @@ export class HydraulicRoom extends Room {
         const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
         console.log(objects);
 
-        if (!playerSession.hydraulicsPuzzleSolved && playerSession.pickedUpButton) {
+        if (
+            !playerSession.hydraulicsPuzzleSolved &&
+            playerSession.pickedUpButton &&
+            playerSession.currentRoom === "HydraulicsRoom" &&
+            playerSession.usedButton
+        ) {
             objects.push(new HydraulicsPuzzle());
         } else if (!playerSession.pickedUpTablet && playerSession.hydraulicsPuzzleSolved) {
             objects.push(new TabletItem());
@@ -72,9 +85,7 @@ export class HydraulicRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult([
-            "This the submarines hydraulics control panel."
-        ]);
+        return new TextActionResult(["This the submarines <blue>hydraulics</blue> control panel."]);
     }
 
     public pickup(): ActionResult | undefined {
@@ -90,9 +101,8 @@ export class HydraulicRoom extends Room {
             getPlayerSession().currentRoom = ColdWarRoomAlias;
             return new TextActionResult(["You walk back"]);
         } else return undefined;
-    } 
+    }
 }
-
 
 // For Pick up action on room.
 // If I get it working
