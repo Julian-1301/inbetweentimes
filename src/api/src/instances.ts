@@ -43,7 +43,7 @@ import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/Logboo
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "Office",
+        currentRoom: "startup",
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
