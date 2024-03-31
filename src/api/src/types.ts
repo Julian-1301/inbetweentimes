@@ -15,7 +15,6 @@ export type PlayerSession = {
     tablePickup: boolean;
     pickedUpManual: boolean;
     examinedHydraulics: boolean;
-    pickedUpWatch: boolean;
     pickedUpPlant: boolean;
     pickedUpCup: boolean;
     pickedUpFilledCup: boolean;
@@ -25,7 +24,10 @@ export type PlayerSession = {
     deletedScript: boolean;
     callNumber: number;
     drygroundValue: number;
-    hydrogliphPuzzleValue: number;
-    torchesLit: any[];
+    torchesLit: any[]; 
     crackedTileCount: number;
+    hierogliphPuzzleSolved: boolean;
+    currentWord: string;
+    riddleValue: number;
+    oasisPuzzleHints: any[];
 };

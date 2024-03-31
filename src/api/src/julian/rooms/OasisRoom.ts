@@ -12,6 +12,8 @@ import { ButtonItem } from "../items/buttonItem";
 import { OasisPuzzle } from "../interactables/OasisPuzzle";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { EgyptianRoomAlias } from "./EgyptianRoom";
+import { AnubisStatueCharacter } from "../characters/AnubisStatueCharacter";
+import { TalkAction } from "../../base/actions/TalkAction";
 
 
 
@@ -40,15 +42,26 @@ export class OasisRoom extends Room   {
             images.push("ButtonImage");
         }
 
+        if (playerSession.riddleValue === 2) {
+            images.push("StatueOasis");
+        }
+
         return images;
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), 
+        const playerSession: PlayerSession = getPlayerSession();
+        const oasisActions: any[] = [
+            new ExamineAction(), 
+            new TalkAction(),
             new PickupAction(), 
             new SolveAction(),
-            new CustomAction("goback", "Go Back", false),
-        ];
+            new CustomAction("goback", "Go Back", false),];
+
+            if (playerSession.riddleValue !== 2) {
+                oasisActions.splice(1, 1);
+            }
+        return oasisActions;
     }
 
     public objects(): GameObject[] {
@@ -61,6 +74,10 @@ export class OasisRoom extends Room   {
         } else if (!playerSession.pickedUpButton) {
             objects.push(new ButtonItem());
         }
+
+        if (playerSession.riddleValue === 2) {
+            objects.push(new AnubisStatueCharacter());
+            }
 
         return objects;
     }

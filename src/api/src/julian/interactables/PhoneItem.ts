@@ -7,6 +7,8 @@ import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 import { Pickup, PickupActionAlias } from "../actions/PickupAction";
 import { SolveChoiceAction } from "../actions/SolveAction";
+import { NotebookItemAlias } from "../items/NotebookItem";
+import { WatchItemAlias } from "./WatchItem";
 
 
 export const PhoneItemAlias: string = "phone";
@@ -43,20 +45,22 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
                 return new TextActionResult(["You decide not to answer the <blue>Phone</blue>"]);
             case 3:
                 return new SolveActionResult(this, ["A <blue>golden scarab</blue> has been stolen from a <blue>Pyramid</blue> and your task is to figure out what happened", "You must solve puzzles and explore the area"], [
-                    new SolveChoiceAction(4,"Tell me about the <blue>Cold War</blue> case"),
+                    new SolveChoiceAction(4,"Tell me about the Cold War case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 4:
                 return new SolveActionResult(this, ["test", "test"], [
-                    new SolveChoiceAction(3,"Tell me about the <blue>Ancient Egypt</blue> case"),
+                    new SolveChoiceAction(3,"Tell me about the Ancient Egypt case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 5:
-                playerSession.callNumber = 0;
-                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases"]);
+                playerSession.callNumber++;
+                playerSession.inventory.push(WatchItemAlias);
+                playerSession.inventory.push(NotebookItemAlias);
+                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can <blue>Use</blue> to time travel and your <blue>Notebook</blue>"]);
         }
 
-        if (playerSession.callNumber === 1) {
+        if (playerSession.callNumber === 0) {
         return new SolveActionResult(this, ["You grab your <blue>Phone</blue>", "Will you pick up?"], [
             new SolveChoiceAction(1, "Yes"),
             new SolveChoiceAction(2, "No"),

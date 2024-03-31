@@ -27,9 +27,11 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
-import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
+import { TorchesItem, TorchesItemAlias } from "./julian/items/TorchesItem";
 import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
+import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/characters/AnubisStatueCharacter";
+import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
 
 
 
@@ -58,7 +60,6 @@ export function createNewPlayerSession(): PlayerSession {
         tablePickup: false,
         pickedUpManual: false,
         examinedHydraulics: false,
-        pickedUpWatch: false,
         pickedUpPlant: false,
         pickedUpCup: false,
         pickedUpFilledCup: false,
@@ -66,11 +67,14 @@ export function createNewPlayerSession(): PlayerSession {
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
-        callNumber: 1,
+        callNumber: 0,
         drygroundValue: 0,
-        hydrogliphPuzzleValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+        hierogliphPuzzleSolved: true,
+        currentWord: "",
+        riddleValue: 1,
+        oasisPuzzleHints: [0, 0, 0, 0]
     };
 }
 
@@ -202,6 +206,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case CrackedTileItemAlias:
             return new CrackedTileItem();
+
+        case AnubisStatueCharacterAlias:
+            return new AnubisStatueCharacter();
+
+        case NotebookItemAlias:
+            return new NotebookItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

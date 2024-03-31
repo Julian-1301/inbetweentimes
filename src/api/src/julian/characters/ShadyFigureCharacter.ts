@@ -5,6 +5,7 @@ import { Examine,  ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Character } from "../../base/gameObjects/Character";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Pickup, PickupActionAlias } from "../actions/PickupAction";
+import { getPlayerSession } from "../../instances";
 
 export const ShadyFigureCharacterAlias: string = "shadyfigure";
 
@@ -25,12 +26,13 @@ export class ShadyFigureCharacter extends Character implements Examine, Pickup {
             case 4:
             case 5:
             case 6:
-            return new TextActionResult(["Incorrect"]);
+                return new TextActionResult(["Incorrect"]);
             case 7:
-            return new TextActionResult(["Correct, I will reward you by giving you a clue", "<blue>'Solid ground precedes the flames' arrival'</blue>", "Maybe there are other clues hidden around?"]);
-            case 8:
+                getPlayerSession().oasisPuzzleHints[2] = 1;
+            return new TextActionResult(["Correct, I will reward you by giving you a clue", "<blue>'Immerse yourself in the fluid embrace, where rivers carve paths and oceans hold mysteries in their depths.'</blue>", "Maybe there are other clues hidden around?"]);
+                case 8:
             return new TextActionResult(["I don't even know what that is", "Is that an actual color?", "How is that one of the first colors you think of?"]);
-            case 9:
+                case 9:
             return new TextActionResult(["Wowww, how do you not know pink is my favorite color"]);
         }
 
