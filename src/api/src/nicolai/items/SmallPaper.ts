@@ -7,28 +7,28 @@ import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
 
 
-export const ToDoListItemAlias: string = "To-do list";
-export class ToDoListItem extends Item implements Examine, Pickup{
+export const SmallPaperAlias: string = "Small paper";
+export class SmallPaper extends Item implements Examine, Pickup{
     public constructor(){
-        super(ToDoListItemAlias, ExamineActionAlias, PickupActionAlias);
+        super(SmallPaperAlias, ExamineActionAlias, PickupActionAlias);
     }
 
     public examine(): ActionResult | undefined {
-            return new TextActionResult(["Its a To-do list from one of the cult followers..", "On the To-do list are a few check offs","* Finish the puzzles", "* Grab the last artifact", "* Finish the ritual"]);
+            return new TextActionResult(["Its a small paper with a number on it", "it looks like its the second number to the combination","9"]);
     }
 
     public name(): string {
-        return "To-do list";
+        return "Small paper";
     }
  
     public pickup(): ActionResult | undefined {
         const PlayerSession: PlayerSession = getPlayerSession();
         
-        if (!PlayerSession.inventory.includes(ToDoListItemAlias)){
-            PlayerSession.inventory.push(ToDoListItemAlias);
+        if (!PlayerSession.inventory.includes(SmallPaperAlias)){
+            PlayerSession.inventory.push(SmallPaperAlias);
         }
         else return new TextActionResult(["You already picked it up"]);
-        return new TextActionResult(["You pick up the To do list from the floor"]) ;
+        return new TextActionResult(["You pick up the Small paper from the Rock"]) ;
       }
 
 }

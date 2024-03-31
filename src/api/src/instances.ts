@@ -27,15 +27,15 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
-<<<<<<< HEAD
-import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
-
-=======
 import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
 import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
->>>>>>> 9433d9a5d98039b08ebd4ede51138ab5ab2d66ff
-
+import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
+import { BrotherHeart, BrotherHeartAlias } from "./nicolai/items/BrotherHeart";
+import { Rock, RockItemAlias } from "./nicolai/items/RockItem";
+import { Pickaxe, PickaxeAlias } from "./nicolai/interactables/PickAxeItem";
+import { JunglePuzzel, JunglePuzzelalias } from "./nicolai/interactables/JunglePuzzel";
+import { SmallPaper, SmallPaperAlias } from "./nicolai/items/SmallPaper";
 
 
 
@@ -76,6 +76,12 @@ export function createNewPlayerSession(): PlayerSession {
         hydrogliphPuzzleValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+        aztecTalkValue: 0,
+        pickedUpPickaxe:false,
+        rockBroken:false,
+        pickedUpBrotherHeart:false,
+        junglePuzzleSolved: false,
+        pickedUpSmallPaper: false,
     };
 }
 
@@ -203,10 +209,19 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DrygroundItemAlias:
             return new DrygroundItem();
-            case BrotherCharacterAlias:
-                return new BrotherCharacter();
-            
 
+        case BrotherCharacterAlias:
+            return new BrotherCharacter();
+
+        case BrotherHeartAlias:
+            return new BrotherHeart();
+
+        case PickaxeAlias:
+            return new Pickaxe();
+
+        case RockItemAlias:
+            return new Rock();
+        
         case TorchesItemAlias:
             return new TorchesItem();
 
@@ -215,6 +230,14 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case CrackedTileItemAlias:
             return new CrackedTileItem();
+        
+        case JunglePuzzelalias:
+            return new JunglePuzzel();
+        
+        case SmallPaperAlias:
+            return new SmallPaper();
+
+        
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

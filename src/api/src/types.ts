@@ -28,4 +28,10 @@ export type PlayerSession = {
     hydrogliphPuzzleValue: number;
     torchesLit: any[];
     crackedTileCount: number;
+    aztecTalkValue: number;
+    pickedUpPickaxe: boolean;
+    rockBroken:boolean;
+    pickedUpBrotherHeart:boolean;
+    junglePuzzleSolved:boolean;
+    pickedUpSmallPaper: boolean;
 };
