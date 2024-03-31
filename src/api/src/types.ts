@@ -30,4 +30,5 @@ export type PlayerSession = {
     currentWord: string;
     riddleValue: number;
     oasisPuzzleHints: any[];
+    usedButton: boolean;
 };

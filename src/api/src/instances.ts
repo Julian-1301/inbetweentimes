@@ -19,7 +19,10 @@ import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
 import { Table, TableAlias } from "./fabian/interactables/Table";
 import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
-import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
+import {
+    HydraulicControlPanel,
+    HydraulicControlPanelAlias,
+} from "./fabian/interactables/Hydraulic control panel";
 import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
@@ -32,9 +35,8 @@ import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterIte
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
 import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/characters/AnubisStatueCharacter";
 import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
-
-
-
+import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
+import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
 
 /**
  * Create a new player session object
@@ -43,8 +45,7 @@ import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "Office",
-
+        currentRoom: "startup",
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
@@ -71,6 +72,7 @@ export function createNewPlayerSession(): PlayerSession {
         drygroundValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+        usedButton: false,
         hierogliphPuzzleSolved: true,
         currentWord: "",
         riddleValue: 1,
@@ -206,6 +208,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case CrackedTileItemAlias:
             return new CrackedTileItem();
+
+        case HydraulicsPuzzleAlias:
+            return new HydraulicsPuzzle();
+
+        case LogbookPuzzleAlias:
+            return new LogbookPuzzle();
 
         case AnubisStatueCharacterAlias:
             return new AnubisStatueCharacter();

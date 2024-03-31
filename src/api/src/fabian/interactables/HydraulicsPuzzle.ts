@@ -1,7 +1,6 @@
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
-
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
 import { Interactable } from "../../base/gameObjects/Interactable";
 import { getPlayerSession } from "../../instances";
