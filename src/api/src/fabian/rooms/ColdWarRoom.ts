@@ -5,24 +5,23 @@ import { ExamineAction } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
-import { PickupAction } from "../../julian/actions/PickupAction";
-import { TabletItem } from "../../fabian/Items/TabletItem";
+import { Pickup, PickupAction, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
 import { BookItem } from "../Items/BookItem";
 import { DecryptionItem } from "../Items/DecryptionItem";
 import { SolveAction } from "../../julian/actions/SolveAction";
-import { HydraulicsPuzzle } from "../interactables/HydraulicsPuzzle";
 import { LogbookPuzzle } from "../interactables/LogbookPuzzle";
 import { Table } from "../interactables/Table";
-import { Starmap } from "../interactables/Starmaps";
-import { HydraulicControlPanel } from "../interactables/Hydraulic control panel";
-import { MuanualItem } from "../Items/ManualItem";
+import { CustomAction } from "../../base/actions/CustomAction";
+import { HydraulicRoomAlias } from "./HydraulicsRoom";
+import { StarmapRoomAlias } from "./StarmapRoom";
+import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
-export class ColdWarRoom extends Room {
+export class ColdWarRoom extends Room implements Pickup {
     public constructor() {
-        super(ColdWarRoomAlias);
+        super(ColdWarRoomAlias, PickupActionAlias);
     }
 
     public name(): string {
@@ -41,7 +40,9 @@ export class ColdWarRoom extends Room {
         return [
             new ExamineAction(),
             new PickupAction(),
-            new SolveAction()
+            new SolveAction(),
+            new CustomAction("goleft", "Go Left", false),
+            new CustomAction("goright", "Go Right", false),
         ];
     }
 
@@ -57,29 +58,14 @@ export class ColdWarRoom extends Room {
             objects.push(new BookItem());
         }
 
-        if (!playerSession.hydraulicsPuzzleSolved && playerSession.pickedUpButton) {
-            objects.push(new HydraulicsPuzzle());
-        } else if (!playerSession.pickedUpTablet && playerSession.hydraulicsPuzzleSolved) {
-            objects.push(new TabletItem());
-        } else {
-            objects.push(new HydraulicControlPanel());
-        }
-
         if (!playerSession.LogbookPuzzleSolved && playerSession.pickedUpDecryption) {
             objects.push(new LogbookPuzzle());
-        } else {
-            ("");
         }
 
         if (playerSession.openedBook) {
             objects.push(new DecryptionItem());
         }
 
-        if (playerSession.examinedHydraulics) {
-            objects.push(new MuanualItem());
-        }
-
-        objects.push(new Starmap());
         return objects;
     }
 
@@ -88,26 +74,45 @@ export class ColdWarRoom extends Room {
             "As you enter the room, you notice you are surrounded by metal.",
             "Peering through a nearby window, you are met with the deep ocean depths.",
             "You realize you are in a submarine.",
-            "You see a table with a book",
-            "You see a hydraulics control panel",
-            "You see starmaps pinned to the wall",
+            "You see a <blue>table</blue> with a book",
+            "You see a <blue>hydraulics</blue> control panel",
+            "You see <blue>starmaps</blue> pinned to the wall",
         ]);
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult([""]);
+        const playerSession: PlayerSession = getPlayerSession();
+        
+        playerSession.currentRoom = new GameOverRoom().alias;
+    
+        return new TextActionResult([
+            "You lift up the room and hold it over your head",
+            "You think to yourself: 'How is this even possible?'",
+            "At that exact moment your arms give in and your are squashed by the room",
+        ]);
     }
 
     public solve(): ActionResult | undefined {
         return new TextActionResult([""]);
     }
-}
 
+    public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (alias === "goleft" && !playerSession.hydraulicsPuzzleSolved) {
+            getPlayerSession().currentRoom = HydraulicRoomAlias;
+            return new TextActionResult(["You walk towards the <blue>hydraulics</blue> control panel"]);
+        } else if (alias === "goleft" && playerSession.hydraulicsPuzzleSolved) {
+            return new TextActionResult(["I don't need to be here anymore"]);
+        } else if (alias === "goright" && !playerSession.LogbookPuzzleSolved) {
+            getPlayerSession().currentRoom = StarmapRoomAlias;
+            return new TextActionResult(["You walk towards the <blue>starmap</blue>"]);
+        } else if (alias === "goright" && playerSession.LogbookPuzzleSolved) {
+            return new TextActionResult(["I don't need to be here anymore"]);
+        }
+        return undefined;
+    }
+}
 
 // For Pick up action on room.
 // If I get it working
-
-// "You lift up the room and hold it over your head",
-// "You think to yourself: 'How is this even possible?'",
-// "At that exact moment your arms give in and your are squashed by the room",
-// "GAME OVER"

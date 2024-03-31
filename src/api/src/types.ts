@@ -28,4 +28,5 @@ export type PlayerSession = {
     hydrogliphPuzzleValue: number;
     torchesLit: any[];
     crackedTileCount: number;
+    usedButton: boolean;
 };
