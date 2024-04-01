@@ -8,8 +8,7 @@ import { ToDoListItem, ToDoListItemAlias } from "../items/ToDoListItem";
 import { StatueCharacter } from "../characters/StatueCharacter";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { CustomAction } from "../../base/actions/CustomAction";
-import { getPlayerSession } from "../../instances";
-import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
+import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { BrotherCharacter } from "../characters/BrotherCharacter";
 import { PickupAction } from "../../julian/actions/PickupAction";
 import { Pickaxe } from "../interactables/PickAxeItem";
@@ -36,22 +35,24 @@ export class AztecRoom extends Room {
         type playerSession = any
         const playerSession: playerSession = getPlayerSession();
 
-        const objects: GameObject[] = [this];
+        const objects: GameObject[] = [...getGameObjectsFromInventory()];
     
         if( playerSession.inventory.includes(ToDoListItemAlias)){
         objects.push(new ToDoListItem());
         }
+
+        objects.push(new StatueCharacter()),
+        objects.push(new BrotherCharacter()),
+        objects.push(new Pickaxe());
       
-        
-        return [this, new ToDoListItem(), new StatueCharacter(), new BrotherCharacter(), new Pickaxe(), ];
+        return objects ;
     }
     public actions(): Action[]{
         return[new ExamineAction(), 
             new TalkAction,
             new PickupAction(),
-            new CustomAction("goto-officeroom", "Go to Office", false),
-            new CustomAction("goto-JungleRoom", "Go To Jungle puzzel", false),
-            new SolveAction()];
+            new SolveAction(),
+            new CustomAction("goto-JungleRoom", "Go To Jungle puzzel", false),];
     }   
     
     public examine(): ActionResult | undefined {
@@ -59,10 +60,6 @@ export class AztecRoom extends Room {
     } 
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "goto-officeroom") {
-            const room: OfficeRoom = new OfficeRoom();
-            return room.examine();
-        } 
         if (alias === "goto-JungleRoom") { 
             getPlayerSession().currentRoom = AztecRoomAlias;
             return new TextActionResult(["You walk towards <blue>The Jungle Puzzel</blue>"]);

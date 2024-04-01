@@ -7,7 +7,6 @@ import { PlayerSession } from "../../types";
 import { Interactable } from "../../base/gameObjects/Interactable";
 import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
-
 import { BrotherHeartAlias } from "../items/BrotherHeart";
 import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
 import { AztecRoomAlias } from "../rooms/AztecRoom";
@@ -28,6 +27,7 @@ export class Pickaxe extends Interactable implements Examine, Pickup{
                     if (playerSession.inventory.includes(PickaxeAlias) && playerSession.currentRoom === AztecRoomAlias) {
                         // Add BrotherHeart to inventory and remove Pickaxe
                         playerSession.inventory.push(BrotherHeartAlias);
+                        playerSession.pickedUpBrotherHeart = true;
                         playerSession.inventory = playerSession.inventory.filter(item => item !== PickaxeAlias);
                         return new TextActionResult (["You broke the stone and got a glowing red orb"]);
                     } else {
@@ -48,7 +48,7 @@ export class Pickaxe extends Interactable implements Examine, Pickup{
                 ]);
             } else {
                 // If the player doesn't have the Pickaxe or is not in the Aztec Room, return undefined
-                return undefined;
+                return new TextActionResult(["You need to pick the <blue>Pickaxe</blue> up first"]);
             }
         }
             
