@@ -4,15 +4,19 @@ import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room" ;
 import { Action } from "../../base/actions/Action";
 import { ExamineAction } from "../../base/actions/ExamineAction";
-import { ToDoListItem } from "../items/ToDoListItem";
+import { ToDoListItem, ToDoListItemAlias } from "../items/ToDoListItem";
 import { StatueCharacter } from "../characters/StatueCharacter";
 import { TalkAction } from "../../base/actions/TalkAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { getPlayerSession } from "../../instances";
 import { OfficeRoom } from "../../julian/rooms/OfficeRoom";
+import { BrotherCharacter } from "../characters/BrotherCharacter";
+import { PickupAction } from "../../julian/actions/PickupAction";
+import { Pickaxe } from "../interactables/PickAxeItem";
+import { SolveAction } from "../../julian/actions/SolveAction";
+
 
 export const AztecRoomAlias : string = "Aztec" ;
-
 export class AztecRoom extends Room {
 
     public constructor() {
@@ -29,11 +33,26 @@ export class AztecRoom extends Room {
     }
 
     public objects(): GameObject[] {
-        return [this, new ToDoListItem(), new StatueCharacter];
+        type playerSession = any
+        const playerSession: playerSession = getPlayerSession();
+
+        const objects: GameObject[] = [this];
+    
+        if( playerSession.inventory.includes(ToDoListItemAlias)){
+        objects.push(new ToDoListItem());
+        }
+      
+        
+        return [this, new ToDoListItem(), new StatueCharacter(), new BrotherCharacter(), new Pickaxe(), ];
     }
     public actions(): Action[]{
-        return[new ExamineAction(), new TalkAction, new CustomAction("goto-officeroom", "Go to Office", false)];
-    }
+        return[new ExamineAction(), 
+            new TalkAction,
+            new PickupAction(),
+            new CustomAction("goto-officeroom", "Go to Office", false),
+            new CustomAction("goto-JungleRoom", "Go To Jungle puzzel", false),
+            new SolveAction()];
+    }   
     
     public examine(): ActionResult | undefined {
         return new TextActionResult(["You stand outside an ominous temple", "You have a gut feeling something isnt right...."]);
@@ -42,13 +61,13 @@ export class AztecRoom extends Room {
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "goto-officeroom") {
             const room: OfficeRoom = new OfficeRoom();
-
-            //Set the current room to the example room
-            getPlayerSession().currentRoom = room.alias;
-
             return room.examine();
-        }
+        } 
+        if (alias === "goto-JungleRoom") { 
+            getPlayerSession().currentRoom = AztecRoomAlias;
+            return new TextActionResult(["You walk towards <blue>The Jungle Puzzel</blue>"]);
+        } return undefined;
         
-        return undefined;
+        
     }
 }

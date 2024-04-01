@@ -1,43 +1,47 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
 import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
-import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
-import { ShadyFigureCharacter, ShadyFigureCharacterAlias } from "./julian/characters/ShadyFigureCharacter";
-import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
-import { ScrollItem, ScrollItemAlias } from "./julian/items/ScrollItem";
-import { ToDoListItem, ToDoListItemAlias } from "./nicolai/items/ToDoListItem";
+import { ExampleCharacterAlias, ExampleCharacter } from "./characters/ExampleCharacter";
+import { BookItemAlias, BookItem } from "./fabian/Items/BookItem";
+import { DecryptionItemAlias, DecryptionItem } from "./fabian/Items/DecryptionItem";
+import { MuanualItemAlias, MuanualItem } from "./fabian/Items/ManualItem";
+import { TabletItemAlias, TabletItem } from "./fabian/Items/TabletItem";
+import { HydraulicControlPanelAlias, HydraulicControlPanel } from "./fabian/interactables/Hydraulic control panel";
+import { HydraulicsPuzzleAlias, HydraulicsPuzzle } from "./fabian/interactables/HydraulicsPuzzle";
+import { LogbookPuzzleAlias, LogbookPuzzle } from "./fabian/interactables/LogbookPuzzle";
+import { StarmapAlias, Starmap } from "./fabian/interactables/Starmaps";
+import { TableAlias, Table } from "./fabian/interactables/Table";
+import { ExampleItemAlias, ExampleItem } from "./items/ExampleItem";
+import { AnubisStatueCharacterAlias, AnubisStatueCharacter } from "./julian/characters/AnubisStatueCharacter";
+import { ShadyFigureCharacterAlias, ShadyFigureCharacter } from "./julian/characters/ShadyFigureCharacter";
+import { ComputerItemAlias, ComputerItem } from "./julian/interactables/ComputerItem";
+import { CrackedTileItemAlias, CrackedTileItem } from "./julian/interactables/CrackedTileItem";
+import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
+import { FilledCupItemAlias, FilledCupItem } from "./julian/interactables/FilledCupItem";
+import { LighterItemAlias, LighterItem } from "./julian/interactables/LighterItem";
+import { OasisPuzzleAlias, OasisPuzzle } from "./julian/interactables/OasisPuzzle";
+import { PhoneItemAlias, PhoneItem } from "./julian/interactables/PhoneItem";
+import { PlantItemAlias, PlantItem } from "./julian/interactables/PlantItem";
+import { WatchItemAlias, WatchItem } from "./julian/interactables/WatchItem";
+import { DrygroundItemAlias, DrygroundItem } from "./julian/items/DryGroundItem";
+import { GoldenScarabItemAlias, GoldenScarabItem } from "./julian/items/GoldenScarabItem";
+import { NotebookItemAlias, NotebookItem } from "./julian/items/NotebookItem";
+import { ScrollItemAlias, ScrollItem } from "./julian/items/ScrollItem";
+import { TorchesItemAlias, TorchesItem } from "./julian/items/TorchesItem";
+import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
+import { BrotherCharacterAlias, BrotherCharacter } from "./nicolai/characters/BrotherCharacter";
+import { StatueCharacterAlias, StatueCharacter } from "./nicolai/characters/StatueCharacter";
+import { JunglePuzzelalias, JunglePuzzel } from "./nicolai/interactables/JunglePuzzel";
+import { PickaxeAlias, Pickaxe } from "./nicolai/interactables/PickAxeItem";
+import { BrotherHeartAlias, BrotherHeart } from "./nicolai/items/BrotherHeart";
+import { RockItemAlias, Rock } from "./nicolai/items/RockItem";
+import { SmallPaperAlias, SmallPaper } from "./nicolai/items/SmallPaper";
+import { ToDoListItemAlias, ToDoListItem } from "./nicolai/items/ToDoListItem";
 import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
-import { StatueCharacter, StatueCharacterAlias } from "./nicolai/characters/StatueCharacter";
-import { TabletItem, TabletItemAlias } from "./fabian/Items/TabletItem";
-import { ComputerItem, ComputerItemAlias } from "./julian/interactables/ComputerItem";
-import { OasisPuzzle, OasisPuzzleAlias } from "./julian/interactables/OasisPuzzle";
-import { ButtonItemAlias, ButtonItem } from "./julian/items/buttonItem";
-import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
-import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
-import { Table, TableAlias } from "./fabian/interactables/Table";
-import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
-import {
-    HydraulicControlPanel,
-    HydraulicControlPanelAlias,
-} from "./fabian/interactables/Hydraulic control panel";
-import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
-import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
-import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
-import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
-import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
-import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
-import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
-import { TorchesItem, TorchesItemAlias } from "./julian/items/TorchesItem";
-import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
-import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
-import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/characters/AnubisStatueCharacter";
-import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
-import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
-import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
-import { GoldenScarabItem, GoldenScarabItemAlias } from "./julian/items/GoldenScarabItem";
+
 
 /**
  * Create a new player session object
@@ -74,12 +78,19 @@ export function createNewPlayerSession(): PlayerSession {
         drygroundValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+        aztecTalkValue: 0,
+        pickedUpPickaxe:false,
+        rockBroken:false,
+        pickedUpBrotherHeart:false,
+        junglePuzzleSolved: false,
+        pickedUpSmallPaper: false,
         usedButton: false,
         hierogliphPuzzleSolved: false,
         currentWord: "",
         riddleValue: 1,
         oasisPuzzleHints: [0, 0, 0, 0],
         coldWarSolved: false,
+
     };
 }
 
@@ -172,6 +183,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case DecryptionItemAlias:
             return new DecryptionItem();
+            
+        case BrotherCharacterAlias:
+            return new BrotherCharacter();
 
         case TableAlias:
             return new Table();
@@ -203,6 +217,18 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case DrygroundItemAlias:
             return new DrygroundItem();
 
+        case BrotherCharacterAlias:
+            return new BrotherCharacter();
+
+        case BrotherHeartAlias:
+            return new BrotherHeart();
+
+        case PickaxeAlias:
+            return new Pickaxe();
+
+        case RockItemAlias:
+            return new Rock();
+        
         case TorchesItemAlias:
             return new TorchesItem();
 
@@ -211,6 +237,12 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case CrackedTileItemAlias:
             return new CrackedTileItem();
+        
+        case JunglePuzzelalias:
+            return new JunglePuzzel();
+        
+        case SmallPaperAlias:
+            return new SmallPaper();
 
         case HydraulicsPuzzleAlias:
             return new HydraulicsPuzzle();
