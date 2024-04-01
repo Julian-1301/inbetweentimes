@@ -27,11 +27,12 @@ export class MuanualItem extends Item implements Examine, Pickup {
                 "Perhaps I should pick it up"
             ]);
         } else if (
-            playerSession.pickedUpManual
+            playerSession.pickedUpManual && !playerSession.LogbookPuzzleSolved
         ) {
             return new TextActionResult([
                 "When opening the manual you see that alot of pages are torn out",
-                "Luckely some pages are still there"
+                "Luckely some pages are still there",
+                "The manual seems to be <blue>encrypted</blue>"
             ]);
         } else if (
             playerSession.pickedUpManual &&
@@ -40,7 +41,7 @@ export class MuanualItem extends Item implements Examine, Pickup {
             return new TextActionResult([
                 "You quickly skim through the remaining pages untill you find a page called 'reset'",
                 "The page states:",
-                "LLRLRRLR"
+                "<blue>LLRLRRLR</blue>"
             ]);
         } else {
             return new TextActionResult([

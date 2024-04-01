@@ -15,6 +15,7 @@ import { CustomAction } from "../../base/actions/CustomAction";
 import { PyramidRoomAlias } from "./PyramidRoom";
 import { OasisRoomAlias } from "./OasisRoom";
 import { DrygroundItem } from "../items/DryGroundItem";
+import { AnubisStatueCharacter } from "../characters/AnubisStatueCharacter";
 
 
 export const EgyptianRoomAlias: string ="egyptian";
@@ -37,6 +38,19 @@ export class EgyptianRoom extends Room   {
         if (!playerSession.pickedUpScroll) {
             images.push("ScrollImage");
         }
+
+        if (playerSession.drygroundValue === 1) {
+            images.push("DryPlantImage");
+        }
+
+        if (playerSession.drygroundValue === 2) {
+            images.push("WetPlantImage");
+        }
+
+        if (playerSession.riddleValue >= 4) {
+            images.push("StatueEgypt");
+        }
+
         return images;
         
     }
@@ -63,11 +77,15 @@ export class EgyptianRoom extends Room   {
         objects.push(new ShadyFigureCharacter());
         objects.push(new DrygroundItem());
 
+        if (playerSession.riddleValue === 4) {
+            objects.push(new AnubisStatueCharacter());
+        }
+
         return objects;
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You walk through the door and enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
+        return new TextActionResult(["You enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>", "You also spot a small <blue>Oasis</blue> in the distance"]);
     }
     
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {

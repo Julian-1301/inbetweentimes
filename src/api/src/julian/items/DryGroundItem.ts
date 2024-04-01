@@ -28,7 +28,7 @@ export class DrygroundItem extends Item implements Examine, Pickup {
     public examine(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.drygroundValue === 0) {
-        return new TextActionResult(["This <blue>Ground</blue> looks like it could use some life", "It currently looks too <blue>Dry<blue> for anything to survive though"]);
+        return new TextActionResult(["This <blue>Ground</blue> looks like it could use some life", "It currently looks too <blue>Dry</blue> for anything to survive though"]);
         } else if (playerSession.drygroundValue === 1) {
             return new TextActionResult(["The <blue>Plant</blue> looks really <blue>dry</blue>", "Maybe you can find a way to give it some life"]);
         } else {

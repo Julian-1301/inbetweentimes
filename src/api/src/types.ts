@@ -15,23 +15,31 @@ export type PlayerSession = {
     tablePickup: boolean;
     pickedUpManual: boolean;
     examinedHydraulics: boolean;
-    pickedUpWatch: boolean;
     pickedUpPlant: boolean;
     pickedUpCup: boolean;
     pickedUpFilledCup: boolean;
     pickedUpLighter: boolean;
+    pickedupGoldenScarab: boolean;
     deletedBrowser: boolean;
     deletedPictures: boolean;
     deletedScript: boolean;
     callNumber: number;
     drygroundValue: number;
-    hydrogliphPuzzleValue: number;
-    torchesLit: any[];
+    torchesLit: any[]; 
     crackedTileCount: number;
+<<<<<<< HEAD
     aztecTalkValue: number;
     pickedUpPickaxe: boolean;
     rockBroken:boolean;
     pickedUpBrotherHeart:boolean;
     junglePuzzleSolved:boolean;
     pickedUpSmallPaper: boolean;
+=======
+    hierogliphPuzzleSolved: boolean;
+    currentWord: string;
+    riddleValue: number;
+    oasisPuzzleHints: any[];
+    usedButton: boolean;
+    coldWarSolved: boolean
+>>>>>>> bf2b5faa55ab3e9c81e6bbd0a608a98b184cefef
 };

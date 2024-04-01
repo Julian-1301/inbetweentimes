@@ -19,7 +19,10 @@ import { BookItem, BookItemAlias } from "./fabian/Items/BookItem";
 import { DecryptionItem, DecryptionItemAlias } from "./fabian/Items/DecryptionItem";
 import { Table, TableAlias } from "./fabian/interactables/Table";
 import { Starmap, StarmapAlias } from "./fabian/interactables/Starmaps";
-import { HydraulicControlPanel, HydraulicControlPanelAlias } from "./fabian/interactables/Hydraulic control panel";
+import {
+    HydraulicControlPanel,
+    HydraulicControlPanelAlias,
+} from "./fabian/interactables/Hydraulic control panel";
 import { MuanualItem, MuanualItemAlias } from "./fabian/Items/ManualItem";
 import { WatchItem, WatchItemAlias } from "./julian/interactables/WatchItem";
 import { PhoneItem, PhoneItemAlias } from "./julian/interactables/PhoneItem";
@@ -27,9 +30,10 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
-import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
+import { TorchesItem, TorchesItemAlias } from "./julian/items/TorchesItem";
 import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
+<<<<<<< HEAD
 import { BrotherCharacter, BrotherCharacterAlias } from "./nicolai/characters/BrotherCharacter";
 import { BrotherHeart, BrotherHeartAlias } from "./nicolai/items/BrotherHeart";
 import { Rock, RockItemAlias } from "./nicolai/items/RockItem";
@@ -38,6 +42,13 @@ import { JunglePuzzel, JunglePuzzelalias } from "./nicolai/interactables/JungleP
 import { SmallPaper, SmallPaperAlias } from "./nicolai/items/SmallPaper";
 
 
+=======
+import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/characters/AnubisStatueCharacter";
+import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
+import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
+import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
+import { GoldenScarabItem, GoldenScarabItemAlias } from "./julian/items/GoldenScarabItem";
+>>>>>>> bf2b5faa55ab3e9c81e6bbd0a608a98b184cefef
 
 /**
  * Create a new player session object
@@ -46,8 +57,7 @@ import { SmallPaper, SmallPaperAlias } from "./nicolai/items/SmallPaper";
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
-        currentRoom: "Office",
-
+        currentRoom: "startup",
         inventory: [],
         pickedUpScroll: false,
         oasisPuzzleSolved: false,
@@ -63,25 +73,33 @@ export function createNewPlayerSession(): PlayerSession {
         tablePickup: false,
         pickedUpManual: false,
         examinedHydraulics: false,
-        pickedUpWatch: false,
         pickedUpPlant: false,
         pickedUpCup: false,
         pickedUpFilledCup: false,
         pickedUpLighter: false,
+        pickedupGoldenScarab: false,
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
-        callNumber: 1,
+        callNumber: 0,
         drygroundValue: 0,
-        hydrogliphPuzzleValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
+<<<<<<< HEAD
         aztecTalkValue: 0,
         pickedUpPickaxe:false,
         rockBroken:false,
         pickedUpBrotherHeart:false,
         junglePuzzleSolved: false,
         pickedUpSmallPaper: false,
+=======
+        usedButton: false,
+        hierogliphPuzzleSolved: false,
+        currentWord: "",
+        riddleValue: 1,
+        oasisPuzzleHints: [0, 0, 0, 0],
+        coldWarSolved: false,
+>>>>>>> bf2b5faa55ab3e9c81e6bbd0a608a98b184cefef
     };
 }
 
@@ -238,6 +256,21 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
             return new SmallPaper();
 
         
+
+        case HydraulicsPuzzleAlias:
+            return new HydraulicsPuzzle();
+
+        case LogbookPuzzleAlias:
+            return new LogbookPuzzle();
+
+        case AnubisStatueCharacterAlias:
+            return new AnubisStatueCharacter();
+
+        case NotebookItemAlias:
+            return new NotebookItem();
+
+        case GoldenScarabItemAlias:
+            return new GoldenScarabItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

@@ -28,7 +28,7 @@ export class DecryptionItem extends Item implements Examine, Pickup {
         if (playerSession.pickedUpDecryption) {
             playerSession.examinedDecryption = true;
             return new TextActionResult([
-                "When You examine the piece of paper you notice that the contents are decryption keys",
+                "When You examine the piece of paper you notice that the contents are <blue>decryption keys</blue>",
                 "You can distinguish the following keys:",
                 "Lev Kamenev - January",
                 "Joseph Stalin - February",
@@ -45,9 +45,9 @@ export class DecryptionItem extends Item implements Examine, Pickup {
             ]);
         } else
             return new TextActionResult([
-                "The piece of paper is laying on the floor",
+                "The <blue>piece of paper</blue> is laying on the floor",
                 "It's white and has writings on it",
-                "Perhaps I should pick it up so I can read it",
+                "Perhaps I should <blue>pick it up</blue> so I can read it",
             ]);
     }
 
