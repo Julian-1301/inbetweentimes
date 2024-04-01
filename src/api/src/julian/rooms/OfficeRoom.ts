@@ -27,7 +27,16 @@ export class OfficeRoom extends Room {
     }
 
     public images(): string[] {
-        return ["OfficeRoom"];
+        const playerSession: PlayerSession = getPlayerSession();
+        const images: any = [];
+
+        images.push("OfficeRoom");
+
+        if (playerSession.riddleValue === 3) {
+            images.push("StatueEgypt");
+        }
+
+        return images;
     }
 
     public sounds(): string[] {
@@ -45,6 +54,10 @@ export class OfficeRoom extends Room {
 
         if (playerSession.riddleValue !== 3) {
             officeActions.splice(1, 1);
+        }
+
+        if (playerSession.callNumber === 0) {
+            officeActions.splice(0, 2);
         }
         
         return officeActions;
@@ -72,6 +85,6 @@ export class OfficeRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You are in your <blue>Office</blue>.","Your <blue>Computer</blue> is on and your <blue>Travel-Watch</blue> is on your desk", "Your day has been quiet but now your <blue>Phone</blue> starts ringing", "You should pick up the <blue>Phone</blue>, It might be your <blue>Boss</blue>"]);
+        return new TextActionResult(["You enter <blue>The Office</blue>"]);
     }
 }

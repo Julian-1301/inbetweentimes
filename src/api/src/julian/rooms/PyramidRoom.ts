@@ -13,6 +13,7 @@ import { SolveAction } from "../actions/SolveAction";
 import { AnubisStatueCharacter } from "../characters/AnubisStatueCharacter";
 import { CrackedTileItem } from "../interactables/CrackedTileItem";
 import { CupItem } from "../interactables/CupItem";
+import { GoldenScarabItem } from "../items/GoldenScarabItem";
 import { TorchesItem } from "../items/TorchesItem";
 import { EgyptianRoomAlias } from "./EgyptianRoom";
 
@@ -62,16 +63,31 @@ export class PyramidRoom extends Room   {
             images.push("Torch5");
         }
 
+        if (playerSession.riddleValue === 5) {
+            images.push("PyramidOpen");
+        }
+
+        if (!playerSession.pickedupGoldenScarab) {
+            images.push("GoldenScarabImage");
+        }
+
         return images;
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), 
+        const playerSession: PlayerSession = getPlayerSession();
+        const pyramidActions: any[] = [
+            new ExamineAction(), 
             new TalkAction(),
             new PickupAction(), 
             new SolveAction(),
-            new CustomAction("goback", "Go Back", false),
-        ];
+            new CustomAction("goback", "Go Back", false),];
+
+            if (playerSession.riddleValue !== 1) {
+                pyramidActions.splice(1, 1);
+            }
+            
+        return pyramidActions;
     }
 
     public objects(): GameObject[] {
@@ -87,6 +103,8 @@ export class PyramidRoom extends Room   {
 
         if (playerSession.riddleValue === 1) {
         objects.push(new AnubisStatueCharacter());
+        } else if (playerSession.riddleValue === 5 && !playerSession.pickedupGoldenScarab) {
+            objects.push(new GoldenScarabItem);
         }
 
         return objects;

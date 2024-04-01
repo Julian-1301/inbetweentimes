@@ -15,6 +15,7 @@ import { CustomAction } from "../../base/actions/CustomAction";
 import { PyramidRoomAlias } from "./PyramidRoom";
 import { OasisRoomAlias } from "./OasisRoom";
 import { DrygroundItem } from "../items/DryGroundItem";
+import { AnubisStatueCharacter } from "../characters/AnubisStatueCharacter";
 
 
 export const EgyptianRoomAlias: string ="egyptian";
@@ -45,6 +46,11 @@ export class EgyptianRoom extends Room   {
         if (playerSession.drygroundValue === 2) {
             images.push("WetPlantImage");
         }
+
+        if (playerSession.riddleValue >= 4) {
+            images.push("StatueEgypt");
+        }
+
         return images;
         
     }
@@ -70,6 +76,10 @@ export class EgyptianRoom extends Room   {
 
         objects.push(new ShadyFigureCharacter());
         objects.push(new DrygroundItem());
+
+        if (playerSession.riddleValue === 4) {
+            objects.push(new AnubisStatueCharacter());
+        }
 
         return objects;
     }

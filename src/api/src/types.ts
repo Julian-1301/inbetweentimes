@@ -19,6 +19,7 @@ export type PlayerSession = {
     pickedUpCup: boolean;
     pickedUpFilledCup: boolean;
     pickedUpLighter: boolean;
+    pickedupGoldenScarab: boolean;
     deletedBrowser: boolean;
     deletedPictures: boolean;
     deletedScript: boolean;
@@ -31,4 +32,5 @@ export type PlayerSession = {
     riddleValue: number;
     oasisPuzzleHints: any[];
     usedButton: boolean;
+    coldWarSolved: boolean
 };

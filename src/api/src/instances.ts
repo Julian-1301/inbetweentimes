@@ -37,6 +37,7 @@ import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/char
 import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
 import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
 import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
+import { GoldenScarabItem, GoldenScarabItemAlias } from "./julian/items/GoldenScarabItem";
 
 /**
  * Create a new player session object
@@ -65,6 +66,7 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpCup: false,
         pickedUpFilledCup: false,
         pickedUpLighter: false,
+        pickedupGoldenScarab: false,
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
@@ -73,10 +75,11 @@ export function createNewPlayerSession(): PlayerSession {
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
         usedButton: false,
-        hierogliphPuzzleSolved: true,
+        hierogliphPuzzleSolved: false,
         currentWord: "",
         riddleValue: 1,
-        oasisPuzzleHints: [0, 0, 0, 0]
+        oasisPuzzleHints: [0, 0, 0, 0],
+        coldWarSolved: false,
     };
 }
 
@@ -220,6 +223,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case NotebookItemAlias:
             return new NotebookItem();
+
+        case GoldenScarabItemAlias:
+            return new GoldenScarabItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

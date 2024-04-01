@@ -47,19 +47,19 @@ export class AnubisStatueCharacter extends Character implements Examine {
             if (playerSession.currentWord === "mummy" && playerSession.riddleValue === 1) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct...", "The <blue>Statue</blue> starts sinking into the ground but nothing else seems to happen", "You are wondering where it went"]);
+                return new TextActionResult(["Correct... come and find me", "The <blue>Statue</blue> starts sinking into the ground but nothing else seems to happen", "You are wondering where it went, Maybe somewhere nearby?"]);
             } else if (playerSession.currentWord === "pharaoh" && playerSession.riddleValue === 2) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct"]);
+                return new TextActionResult(["Correct... come and find me again", "The <blue>Statue</blue> starts sinking into the ground again", "You should look around to see where it went, This time you didn't hear a sound nearby"]);
             } else if (playerSession.currentWord === "sphinx" && playerSession.riddleValue === 3) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct"]);
+                return new TextActionResult(["Correct... come and find me again", "The <blue>Statue</blue> starts sinking into the ground for the third time", "You know the drill by now, Go chase it down again"]);
             } else if (playerSession.currentWord === "pyramid" && playerSession.riddleValue === 4) {
                 playerSession.currentWord = "";
-                playerSession.riddleValue = 1;
-                return new TextActionResult(["Correct"]);
+                playerSession.riddleValue++;
+                return new TextActionResult(["Correct... for answering my riddles I reward you with entrance to my tomb located inside <blue>The Pyramid</blue>"]);
             } else {
                 playerSession.currentWord = "";
                 return new TextActionResult(["Incorrect"]);

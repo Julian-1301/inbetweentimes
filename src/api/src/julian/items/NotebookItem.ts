@@ -39,7 +39,7 @@ export class NotebookItem extends Item implements Examine, Pickup{
         } 
 
         if (!playerSession.oasisPuzzleHints.includes(1)) {
-            return new TextActionResult(["You haven't written anything down in your notebook yet"]);
+            return new TextActionResult(["You haven't written anything down in your notebook yet", "Gather clues and <blue>Examine your <blue>Notebook</blue> to see your hints"]);
         } else {
             return new TextActionResult(hints);
         }

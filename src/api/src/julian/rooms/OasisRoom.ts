@@ -61,6 +61,7 @@ export class OasisRoom extends Room   {
             if (playerSession.riddleValue !== 2) {
                 oasisActions.splice(1, 1);
             }
+            
         return oasisActions;
     }
 

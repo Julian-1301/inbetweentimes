@@ -40,7 +40,6 @@ export class WatchItem extends Interactable implements Examine, Pickup {
             if (playerSession.currentRoom === OfficeRoomAlias){
                 locations.push(new SolveChoiceAction(2, "Egypt"));
                 locations.push(new SolveChoiceAction(3, "Cold War"));
-                locations.push(new SolveChoiceAction(4, "Aztec"));
             } else if (Egyptaliases.includes(playerSession.currentRoom)){
                 locations.push(new SolveChoiceAction(1, "Office"));
                 locations.push(new SolveChoiceAction(3, "Cold War")); 
@@ -52,6 +51,10 @@ export class WatchItem extends Interactable implements Examine, Pickup {
             } else {
                 return undefined;
             }     
+
+            if (playerSession.callNumber === 3 && playerSession.currentRoom !== AztecRoomAlias) {
+                locations.push(new SolveChoiceAction(4, "Aztec"));
+            }
     
             switch(choiceId) {
                 case 1:
@@ -61,7 +64,7 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 case 2:
                     room = new EgyptianRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You walk through the door and enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close", "You spot the <blue>Pyramid</blue> and a small <blue>Oasis</blue> in the distance"]);
+                    return new TextActionResult(["You enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>", "You also spot a small <blue>Oasis</blue> in the distance"]);
                 case 3:
                     room = new ColdWarRoom();
                     playerSession.currentRoom = room.alias;

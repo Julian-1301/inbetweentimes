@@ -25,9 +25,9 @@ export class LighterItem extends Interactable implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.pickedUpLighter) {
-            return new TextActionResult([""]);
+            return new TextActionResult(["This is your old <blue>Lighter</blue>", "You used to smoke but gave it up years ago"]);
         } else {
-            return new TextActionResult([""]);
+            return new TextActionResult(["You see something metalic on your desk", "It is your old <blue>Lighter</blue>"]);
         }
     }
 
@@ -61,18 +61,18 @@ export class LighterItem extends Interactable implements Examine, Pickup {
         switch(choiceId) {
             case undefined:
                 if (playerSession.currentRoom === PyramidRoomAlias) {
-                    return new SolveActionResult(this, ["Will you interact with any of the <blue>Torches</blue>?"], options);
+                    return new SolveActionResult(this, ["Do you want to interact with any of these <blue>Torches</blue>?"], options);
                 } else {
                     return undefined;
                 }
             case 11:
                 return new TextActionResult(["You decide to leave the <blue>Torches alone</blue>"]);
             case 12:
-                return new SolveActionResult(this, ["Will you interact with any of the <blue>Torches</blue>?"], options);
+                return new SolveActionResult(this, ["Do you want to interact with any of these <blue>Torches</blue>?"], options);
             default:
                 const torchIndex: number = Math.floor((choiceId - 1) / 2);
                 playerSession.torchesLit[torchIndex] = choiceId % 2 === 1 ? 1 : 0;
-                return new SolveActionResult(this, ["Will you light another torch?"], [
+                return new SolveActionResult(this, ["Do you want to light another torch?"], [
                     new SolveChoiceAction(12, "Yes"),
                     new SolveChoiceAction(11, "No")
                 ]);

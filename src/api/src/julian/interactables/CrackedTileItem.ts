@@ -6,6 +6,7 @@ import { Interactable } from "../../base/gameObjects/Interactable";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 import { SolveChoiceAction } from "../actions/SolveAction";
+import { NotebookItemAlias } from "../items/NotebookItem";
 import { LighterItemAlias } from "./LighterItem";
 
 
@@ -55,10 +56,11 @@ export class CrackedTileItem extends Interactable implements Examine {
                     new SolveChoiceAction(2, "No"),
                 ]);
             case 2:
-                if (playerSession.crackedTileCount === 38 && playerSession.drygroundValue === 2 && arraysEqual(playerSession.torchesLit, [0,1,1,0,1])) {
+                if (playerSession.crackedTileCount === 13 && playerSession.drygroundValue === 2 && arraysEqual(playerSession.torchesLit, [0,1,1,0,1])) {
                     playerSession.inventory = playerSession.inventory.filter(item => item !== LighterItemAlias);
+                    playerSession.inventory = playerSession.inventory.filter(item => item !== NotebookItemAlias);
                     playerSession.hierogliphPuzzleSolved = true;
-                    return new TextActionResult(["It seems like you correctly solved this puzzle", "Your fingers hurt from pressing the <blue>Cracked Tile</blue> that many times and you drop your <blue>Lighter</blue>","You can hear a strange voice talking to you now", "Greetings mortal, answer my riddles if you seek to find the truth"]);
+                    return new TextActionResult(["It seems like you correctly solved this puzzle", "Your fingers hurt from pressing the <blue>Cracked Tile</blue> that many times and you drop your <blue>Lighter</blue> and your <blue>Notebook</blue>","You can hear a strange voice talking to you now", "Greetings mortal, answer my riddles if you seek to find the truth"]);
                 } else {
                     playerSession.crackedTileCount = 0; 
                     return new TextActionResult(["You decide to leave the tile alone"]);
