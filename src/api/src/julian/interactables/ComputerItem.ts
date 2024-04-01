@@ -51,7 +51,8 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
             case 2:
                 return new TextActionResult(["Congratulations! You've won a luxury vacation to an exotic island!","Claim your prize now by clicking the link below.", "Act fast before this exclusive offer expires.", "Don't miss out on this incredible opportunity!"]);
             case 3:
-                return new TextActionResult(["Dear Seeker,", "Within the whispers of nature lies a clue: <blue>'Where breezes end, liquid beginnings follow.'</blue>", "Seek this juncture, where elements intertwine.", "Answers emerge where transitions blur.", "Unravel the enigma that awaits."],);
+                playerSession.oasisPuzzleHints[0] = 1;
+                return new TextActionResult(["Dear Seeker, Within the whispers of nature lies a clue: <blue>'Begin your journey amidst the solidity of the earth, where mountains stand tall and valleys stretch wide.'</blue>", "Seek this juncture, where elements intertwine. Answers emerge where transitions blur. Unravel the enigma that awaits.", "You should write this down in your notebook"],);
             case 4:
                 return new TextActionResult(["Hey buddy,", "I hate to say it, but your recent performance is a bit disappointing", "I know you've got the skills", "so let's figure out what's up and get you back on track", "We're all counting on you to bring your A-game"]);
             case 5:

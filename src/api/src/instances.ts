@@ -30,11 +30,14 @@ import { PlantItem, PlantItemAlias } from "./julian/interactables/PlantItem";
 import { CupItemAlias, CupItem } from "./julian/interactables/CupItem";
 import { FilledCupItem, FilledCupItemAlias } from "./julian/interactables/FilledCupItem";
 import { DrygroundItem, DrygroundItemAlias } from "./julian/items/DryGroundItem";
-import { TorchesItem, TorchesItemAlias } from "./julian/interactables/TorchesItem";
+import { TorchesItem, TorchesItemAlias } from "./julian/items/TorchesItem";
 import { LighterItem, LighterItemAlias } from "./julian/interactables/LighterItem";
 import { CrackedTileItem, CrackedTileItemAlias } from "./julian/interactables/CrackedTileItem";
+import { AnubisStatueCharacter, AnubisStatueCharacterAlias } from "./julian/characters/AnubisStatueCharacter";
+import { NotebookItem, NotebookItemAlias } from "./julian/items/NotebookItem";
 import { HydraulicsPuzzle, HydraulicsPuzzleAlias } from "./fabian/interactables/HydraulicsPuzzle";
 import { LogbookPuzzle, LogbookPuzzleAlias } from "./fabian/interactables/LogbookPuzzle";
+import { GoldenScarabItem, GoldenScarabItemAlias } from "./julian/items/GoldenScarabItem";
 
 /**
  * Create a new player session object
@@ -59,20 +62,24 @@ export function createNewPlayerSession(): PlayerSession {
         tablePickup: false,
         pickedUpManual: false,
         examinedHydraulics: false,
-        pickedUpWatch: false,
         pickedUpPlant: false,
         pickedUpCup: false,
         pickedUpFilledCup: false,
         pickedUpLighter: false,
+        pickedupGoldenScarab: false,
         deletedBrowser: false,
         deletedPictures: false,
         deletedScript: false,
-        callNumber: 1,
+        callNumber: 0,
         drygroundValue: 0,
-        hydrogliphPuzzleValue: 0,
         torchesLit: [0, 0, 0, 0, 0],
         crackedTileCount: 0,
         usedButton: false,
+        hierogliphPuzzleSolved: false,
+        currentWord: "",
+        riddleValue: 1,
+        oasisPuzzleHints: [0, 0, 0, 0],
+        coldWarSolved: false,
     };
 }
 
@@ -210,6 +217,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case LogbookPuzzleAlias:
             return new LogbookPuzzle();
+
+        case AnubisStatueCharacterAlias:
+            return new AnubisStatueCharacter();
+
+        case NotebookItemAlias:
+            return new NotebookItem();
+
+        case GoldenScarabItemAlias:
+            return new GoldenScarabItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

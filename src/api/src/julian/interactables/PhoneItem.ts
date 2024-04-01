@@ -7,6 +7,8 @@ import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 import { Pickup, PickupActionAlias } from "../actions/PickupAction";
 import { SolveChoiceAction } from "../actions/SolveAction";
+import { NotebookItemAlias } from "../items/NotebookItem";
+import { WatchItemAlias } from "./WatchItem";
 
 
 export const PhoneItemAlias: string = "phone";
@@ -26,13 +28,13 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult(["I don't think this is what i meant with picking up the <blue>Phone</blue>", "Maybe i should just use the <blue>Phone</blue> without picking it up"]);
+        return new TextActionResult(["I don't think this is what i meant with picking up the <blue>Phone</blue>", "Maybe i should just use the <blue>Phone</blue> without lifting it up"]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
 
-        switch(choiceId) {
+        switch(choiceId) {           
             case 1:
                 return new SolveActionResult(this, ["Good afternoon <blue>Detective</blue>", "I have two new cases for you so get your lazy ass up", "One of them is in <blue>Ancient Egypt</blue> and the other in a <blue>Cold War Submarine</blue>"], [
                     new SolveChoiceAction(3, "Ask about the first case"),
@@ -40,25 +42,51 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 2:
-                return new TextActionResult(["You decide not to answer the <blue>Phone</blue>"]);
+                return new TextActionResult(["You decide to leave the <blue>Phone</blue> alone for now"]);
             case 3:
-                return new SolveActionResult(this, ["A <blue>golden scarab</blue> has been stolen from a <blue>Pyramid</blue> and your task is to figure out what happened", "You must solve puzzles and explore the area"], [
-                    new SolveChoiceAction(4,"Tell me about the <blue>Cold War</blue> case"),
+                return new SolveActionResult(this, ["A <blue>golden scarab</blue> has been stolen from a <blue>Pyramid</blue> and your task is to figure out what happened", "You must solve puzzles and explore the area", "Don't forget that the world around you will look more primitive too"], [
+                    new SolveChoiceAction(4,"Tell me about the Cold War case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 4:
                 return new SolveActionResult(this, ["test", "test"], [
-                    new SolveChoiceAction(3,"Tell me about the <blue>Ancient Egypt</blue> case"),
+                    new SolveChoiceAction(3,"Tell me about the Ancient Egypt case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 5:
-                playerSession.callNumber = 0;
-                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases"]);
+                playerSession.callNumber++;
+                playerSession.inventory.push(WatchItemAlias);
+                playerSession.inventory.push(NotebookItemAlias);
+                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can <blue>Use</blue> to time travel and your <blue>Notebook</blue>"]);
+            case 6:
+                playerSession.callNumber++;
+                return new TextActionResult(["Hmmm... that sounds very interesting, I will take note of this", "Great work Detective", "I think i see some similarities with a new case I have but I need you to make sure you have solved your other case to be sure", "Call me back when you have done so" ]);
+            case 7:
+                playerSession.callNumber++;
+                return new TextActionResult(["test"]);
+            case 8:
+                playerSession.callNumber++;
+                return new TextActionResult(["Thank you for this information detective", "I am putting you on a new case based on your gathered evidence", "You are tasked to track down the cult that is responsible for all this chaos", "There have been sightings at an <blue>Aztec Temple</blue>, Please use your <blue>Travel-watch</blue> to go there and catch these criminals"]);
         }
 
-        if (playerSession.callNumber === 1) {
+        if (playerSession.callNumber === 0) {
         return new SolveActionResult(this, ["You grab your <blue>Phone</blue>", "Will you pick up?"], [
             new SolveChoiceAction(1, "Yes"),
+            new SolveChoiceAction(2, "No"),
+        ]);
+    } else if (playerSession.pickedupGoldenScarab && playerSession.callNumber === 1) {
+        return new SolveActionResult(this, ["You grab your <blue>Phone</blue>", "You should call your <blue>Boss</blue> to tell him about the <blue>Egypt</blue> case?", "Do you want to call him now?"], [
+            new SolveChoiceAction(6, "Yes"),
+            new SolveChoiceAction(2, "No"),
+        ]);
+    } else if (playerSession.coldWarSolved && playerSession.callNumber === 1) {
+        return new SolveActionResult(this, ["test"], [
+            new SolveChoiceAction(7, "Yes"),
+            new SolveChoiceAction(2, "No"),
+        ]);
+    } else if (playerSession.callNumber === 2 && playerSession.pickedupGoldenScarab && playerSession.coldWarSolved) {
+        return new SolveActionResult(this, ["You grab your <blue>Phone</blue>", "You should call your <blue>Boss</blue> to tell him you completed both cases?", "Do you want to call him now?"], [
+            new SolveChoiceAction(8, "Yes"),
             new SolveChoiceAction(2, "No"),
         ]);
     } else return new TextActionResult(["I have no reason to call anyone right now"]);

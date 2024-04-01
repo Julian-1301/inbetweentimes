@@ -18,7 +18,7 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "";
+        return " ";
     }
 
     public images(): string[] {
@@ -32,8 +32,6 @@ export class StartupRoom extends Room {
     public actions(): Action[] {
         return [
             new CustomAction("Start Game", "Start Game", false),
-            new CustomAction("Load Game", "Load Game", false),
-            new CustomAction("Settings", "Settings", false),
         ];
     }
 
@@ -42,16 +40,11 @@ export class StartupRoom extends Room {
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "Load Game") {
-            return new TextActionResult(["Not implemented yet"]);
-        } else if (alias === "Start Game") {
+        if (alias === "Start Game") {
             const room: OfficeRoom = new OfficeRoom();
 
             getPlayerSession().currentRoom = room.alias;
-
-            return room.examine();
-        } else if (alias === "Settings") {
-            return new TextActionResult(["Not implemented yet"]);
+            return new TextActionResult(["You are in your <blue>Office</blue>.","Your <blue>Computer</blue> is on and your <blue>Travel-Watch</blue> is on your desk", "Your day has been quiet but now your <blue>Phone</blue> starts ringing", "You should pick up the <blue>Phone</blue>, It might be your <blue>Boss</blue>"]);
         }
 
         return undefined;

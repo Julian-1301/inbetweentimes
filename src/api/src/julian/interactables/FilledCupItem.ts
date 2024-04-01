@@ -34,8 +34,7 @@ export class FilledCupItem extends Interactable implements Examine, Pickup {
             case 1:
                 playerSession.drygroundValue++;
                 playerSession.inventory = playerSession.inventory.filter(item => item !== FilledCupItemAlias);
-                playerSession.HyrogliphPuzzleValue++;
-                return new TextActionResult(["You water your <blue>Plant</blue>", "It looks way better here than it ever did in your <blue>Office</blue>", "A small leaf starts growing from it", "You won't need this <blue>Cup</blue> anymore so you decide to throw it away"]);
+                return new TextActionResult(["You water your <blue>Plant</blue>", "It looks way better here than it ever did in your <blue>Office</blue>", "A few flowers starts growing from it", "You won't need this <blue>Cup</blue> anymore so you decide to throw it away"]);
             case 2:
                 playerSession.inventory = playerSession.inventory.filter(item => item !== FilledCupItemAlias);
                 playerSession.inventory.push(CupItemAlias);
