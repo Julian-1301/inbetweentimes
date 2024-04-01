@@ -65,7 +65,7 @@ export class AztecRoom extends Room {
         } 
         if (alias === "goto-JungleRoom") { 
             getPlayerSession().currentRoom = AztecRoomAlias;
-            return new TextActionResult(["You walk towards <blue>The Oasis</blue>"]);
+            return new TextActionResult(["You walk towards <blue>The Jungle Puzzel</blue>"]);
         } return undefined;
         
         
