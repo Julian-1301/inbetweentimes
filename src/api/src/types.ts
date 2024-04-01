@@ -27,19 +27,18 @@ export type PlayerSession = {
     drygroundValue: number;
     torchesLit: any[]; 
     crackedTileCount: number;
-<<<<<<< HEAD
+
     aztecTalkValue: number;
     pickedUpPickaxe: boolean;
     rockBroken:boolean;
     pickedUpBrotherHeart:boolean;
     junglePuzzleSolved:boolean;
     pickedUpSmallPaper: boolean;
-=======
     hierogliphPuzzleSolved: boolean;
     currentWord: string;
     riddleValue: number;
     oasisPuzzleHints: any[];
     usedButton: boolean;
     coldWarSolved: boolean
->>>>>>> bf2b5faa55ab3e9c81e6bbd0a608a98b184cefef
+
 };

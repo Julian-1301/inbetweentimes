@@ -1,19 +1,18 @@
 import { ActionResult } from "../../base/actionResults/ActionResult";
-
+import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Action } from "../../base/actions/Action";
+import { CustomAction } from "../../base/actions/CustomAction";
 import { ExamineAction } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
 import { Room } from "../../base/gameObjects/Room";
 import { getPlayerSession, getGameObjectsFromInventory } from "../../instances";
-import { PlayerSession } from "../../types";
-import { CustomAction } from "../../base/actions/CustomAction";
-
-import { SolveAction } from "../../julian/actions/SolveAction";
 import { PickupAction } from "../../julian/actions/PickupAction";
+import { SolveAction } from "../../julian/actions/SolveAction";
+import { PlayerSession } from "../../types";
 import { JunglePuzzel } from "../interactables/JunglePuzzel";
 import { SmallPaper } from "../items/SmallPaper";
-import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { AztecRoomAlias } from "./AztecRoom";
+
 
 
 

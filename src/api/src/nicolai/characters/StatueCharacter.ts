@@ -30,7 +30,12 @@ export class StatueCharacter extends Character implements Examine, Pickup{
 
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
-      
+        const options: any[] = [     new TalkChoiceAction(2, "What do i need to do here?"),
+        new TalkChoiceAction(3, "Is there someone else here?"),
+        new TalkChoiceAction(4, "How old are you?"),
+        new TalkChoiceAction(5, "Why are you here?"), 
+        new TalkChoiceAction(6, "Who is that other statue?"),];
+
         if(choiceId === 1){
             return new TextActionResult(["That is harrasment"]);
         }
@@ -47,7 +52,7 @@ export class StatueCharacter extends Character implements Examine, Pickup{
             return new TextActionResult(["I wish i could leave but i am a statue i cant move"]);
         }
         if (choiceId === 6){
-
+            playerSession.aztecTalkValue ++;
             return new TextActionResult(["That is my little brother you can talk to him if you want but he is really annoying"]);
         }
         if (choiceId === 9){
@@ -71,18 +76,12 @@ export class StatueCharacter extends Character implements Examine, Pickup{
             
         }
         if(choiceId === 8){
-            const options: any[] = [];
             if (playerSession.aztecTalkValue > 0) {
                 options.push(new TalkChoiceAction(9, "Did you talk to my brother?"));
             }
             return new TalkActionResult(this, ["Ahh you seek answers of this place", "Tell me human", "What do you want to know?"], 
-            [
-            new TalkChoiceAction(2, "What do i need to do here?"),
-            new TalkChoiceAction(3, "Is there someone else here?"),
-            new TalkChoiceAction(4, "How old are you?"),
-            new TalkChoiceAction(5, "Why are you here?"), 
-            new TalkChoiceAction(6, "Who is that other statue?"),
-        ]);
+            options
+            );
         
         }
         return new TalkActionResult(this,["Welcome to my home. I am a statue."], 
