@@ -21,6 +21,7 @@ export class NuclearControl extends Item implements Examine {
 
         if (!playerSession.examinedNuclear) {
             playerSession.examinedNuclear = true;
+            playerSession.coldWarSolved = true;
             return new TextActionResult([
                 "When you examin the control panel you see that one of the launch keys is missing",
                 "A shiver runs down you spine",
