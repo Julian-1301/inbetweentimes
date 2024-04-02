@@ -4,7 +4,7 @@ import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base
 import { ExampleCharacterAlias, ExampleCharacter } from "./characters/ExampleCharacter";
 import { BookItemAlias, BookItem } from "./fabian/Items/BookItem";
 import { DecryptionItemAlias, DecryptionItem } from "./fabian/Items/DecryptionItem";
-import { MuanualItemAlias, MuanualItem } from "./fabian/Items/ManualItem";
+import { ManualItemAlias, ManualItem } from "./fabian/Items/ManualItem";
 import { TabletItemAlias, TabletItem } from "./fabian/Items/TabletItem";
 import { HydraulicControlPanelAlias, HydraulicControlPanel } from "./fabian/interactables/Hydraulic control panel";
 import { HydraulicsPuzzleAlias, HydraulicsPuzzle } from "./fabian/interactables/HydraulicsPuzzle";
@@ -198,8 +198,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case HydraulicControlPanelAlias:
             return new HydraulicControlPanel();
 
-        case MuanualItemAlias:
-            return new MuanualItem();
+        case ManualItemAlias:
+            return new ManualItem();
 
         case WatchItemAlias:
             return new WatchItem();

@@ -6,15 +6,15 @@ import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 
-export const MuanualItemAlias: string = "Manual";
+export const ManualItemAlias: string = "Manual";
 
-export class MuanualItem extends Item implements Examine, Pickup {
+export class ManualItem extends Item implements Examine, Pickup {
     public constructor() {
-        super(MuanualItemAlias, ExamineActionAlias, PickupActionAlias);
+        super(ManualItemAlias, ExamineActionAlias, PickupActionAlias);
     }
 
     public name(): string {
-        return "Muanual";
+        return "Manual";
     }
 
     public examine(): ActionResult | undefined {
