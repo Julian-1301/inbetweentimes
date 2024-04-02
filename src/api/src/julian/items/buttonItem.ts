@@ -53,6 +53,7 @@ export class ButtonItem extends Interactable implements Examine, Pickup {
 
         if (playerSession.currentRoom === "HydraulicRoom" && !playerSession.usedButton) {
             playerSession.usedButton = true;
+            playerSession.inventory = playerSession.inventory.filter(item => item !== ButtonItemAlias);
 
             return new TextActionResult(["You placed the button back into the panel"]);
         } else if (playerSession.usedButton) {
