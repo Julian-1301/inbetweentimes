@@ -68,7 +68,7 @@ export class HydraulicRoom extends Room {
         if (
             !playerSession.hydraulicsPuzzleSolved &&
             playerSession.pickedUpButton &&
-            playerSession.currentRoom === "HydraulicsRoom" &&
+            playerSession.currentRoom === "HydraulicRoom" &&
             playerSession.usedButton
         ) {
             objects.push(new HydraulicsPuzzle());

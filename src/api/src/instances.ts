@@ -41,6 +41,7 @@ import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
+import { NuclearControl, NuclearControlAlias } from "./fabian/interactables/nuclearControl";
 
 
 /**
@@ -90,7 +91,8 @@ export function createNewPlayerSession(): PlayerSession {
         riddleValue: 1,
         oasisPuzzleHints: [0, 0, 0, 0],
         coldWarSolved: false,
-
+        examinedNuclear: false,
+        logPuzzleTried: false
     };
 }
 
@@ -258,6 +260,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case GoldenScarabItemAlias:
             return new GoldenScarabItem();
+
+        case NuclearControlAlias:
+            return new NuclearControl();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
