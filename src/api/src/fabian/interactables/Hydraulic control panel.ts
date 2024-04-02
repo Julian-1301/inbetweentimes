@@ -22,10 +22,10 @@ export class HydraulicControlPanel extends Item implements Examine {
         playerSession.examinedHydraulics = true;
 
         return new TextActionResult([
-            "When You examine the Hydraulic Control Panel you see that it has been sabotaged",
+            "When You examine the <blue>Hydraulic Control Panel</blue> you see that it has been sabotaged",
             "The hydraulic valves are turned haphazardly",
-            "There is a book named 'Manual'",
-            "There is also a button missing, perhaps I can find it somewhere?"
+            "There is a book named <blue>Manual</blue>",
+            "There is also a <blue>button</blue> missing, perhaps I can find it somewhere?"
         ]);
     }
 }

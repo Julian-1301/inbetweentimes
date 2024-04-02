@@ -27,7 +27,7 @@ export type PlayerSession = {
     drygroundValue: number;
     torchesLit: any[]; 
     crackedTileCount: number;
-
+    examinedNuclear: boolean;
     aztecTalkValue: number;
     pickedUpPickaxe: boolean;
     rockBroken:boolean;
@@ -40,5 +40,5 @@ export type PlayerSession = {
     oasisPuzzleHints: any[];
     usedButton: boolean;
     coldWarSolved: boolean
-
+    logPuzzleTried: boolean;
 };

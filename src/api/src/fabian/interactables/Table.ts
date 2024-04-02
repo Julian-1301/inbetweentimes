@@ -23,7 +23,7 @@ export class Table extends Item implements Examine, Pickup {
 
         return new TextActionResult([
             "When You examine the table you see a lot of papers and books",
-            "A book called 'Logbook' catches your eye",
+            "A book called <blue>Logbook</blue> catches your eye",
         ]);
     }
 
@@ -33,7 +33,7 @@ export class Table extends Item implements Examine, Pickup {
         if (!playerSession.tablePickup) {
             playerSession.tablePickup = true;
             return new TextActionResult([
-                "You pick up the tabel",
+                "You pick up the table",
                 "Whilst holding the table you realize this doen't make any sence",
                 "You put the table back down",
             ]);

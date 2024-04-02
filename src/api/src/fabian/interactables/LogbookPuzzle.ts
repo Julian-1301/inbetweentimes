@@ -19,6 +19,7 @@ export class LogbookPuzzle extends Interactable {
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
+        playerSession.logPuzzleTried = true;
 
         switch (choiceId) {
             case 0:
