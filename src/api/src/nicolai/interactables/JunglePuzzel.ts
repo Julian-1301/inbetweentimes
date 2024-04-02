@@ -39,7 +39,7 @@ export class JunglePuzzel extends Interactable implements Examine, Pickup {
                 [
                 new SolveChoiceAction(6, "picture 1"),
                 new SolveChoiceAction(6, "Picture 2"),
-                new SolveChoiceAction(6, "Picture 3"),
+                new SolveChoiceAction(3, "Picture 3"),
                
             ]);
             case 3:

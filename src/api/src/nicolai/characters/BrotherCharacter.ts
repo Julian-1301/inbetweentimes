@@ -7,6 +7,8 @@ import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
 import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
+import { BrotherHeartAlias } from "../items/BrotherHeart";
+
 
 export const BrotherCharacterAlias:string = "Statue's Brother";
 
@@ -64,6 +66,7 @@ export class BrotherCharacter extends Character implements Examine, Pickup{
                     new TalkChoiceAction(11, "No")
                 ]);
             case 10:
+                playerSession.inventory = playerSession.inventory.filter(item => item !== BrotherHeartAlias);
                 return new TalkActionResult(this, ["WOW I haven't seen this in a really long time thank you, small human!!"], [
                     new TalkChoiceAction(12, "Well, can you now finally help me")
                 ]);
