@@ -26,7 +26,7 @@ export class StartupRoom extends Room {
     }
 
     public sounds(): string[] {
-        return ["StartScreen"];
+        return["StartSound"];
     }
 
     public actions(): Action[] {
