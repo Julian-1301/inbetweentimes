@@ -52,9 +52,9 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 return undefined;
             }     
 
-            // if (playerSession.callNumber === 3 && playerSession.currentRoom !== AztecRoomAlias) {
+            if (playerSession.callNumber === 3 && playerSession.currentRoom !== AztecRoomAlias) {
                 locations.push(new SolveChoiceAction(4, "Aztec"));
-            // }
+            }
     
             switch(choiceId) {
                 case 1:
