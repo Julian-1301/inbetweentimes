@@ -26,7 +26,7 @@ export class TabletItem extends Item implements Examine, Pickup {
 
         if (playerSession.pickedUpTablet && egyptianRooms.includes(playerSession.currentRoom)) {
             return new TextActionResult([
-                "To ignite life amidst darkness, let torches two, three, and five blaze alone, while shadows cloak the others in enigma.",
+                "-To ignite life amidst darkness, let torches two, three, and five blaze alone, while shadows cloak the others in enigma.",
                 "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir",
                 "-Unlock the whispers of the earth's secrets with thirteen touches upon the cracked surface, igniting the ancient dance of shifting tiles, an ominous number in the mosaic's rhythm.",
             ]);

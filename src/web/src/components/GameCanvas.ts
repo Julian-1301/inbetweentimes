@@ -196,7 +196,7 @@ export class GameCanvas extends LitElement {
             return html`
                 <div class="sound">
                     ${this.roomSounds.map(
-                        (url) => html`<audio autoplay loop src="/assets/Sound/ambient/${url}.mp3"></audio>`
+                        (url) => html`<audio autoplay loop src="/assets/Sound/Ambient/${url}.mp3"></audio>`
                     )}
                 </div>
             `;
