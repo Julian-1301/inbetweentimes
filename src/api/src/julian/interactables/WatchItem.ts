@@ -14,6 +14,8 @@ import { OfficeRoom, OfficeRoomAlias } from "../rooms/OfficeRoom";
 import { OasisRoomAlias } from "../rooms/OasisRoom";
 import { PyramidRoomAlias } from "../rooms/PyramidRoom";
 import { Pickup, PickupActionAlias } from "../actions/PickupAction";
+import { HydraulicRoomAlias } from "../../fabian/rooms/HydraulicsRoom";
+import { StarmapRoomAlias } from "../../fabian/rooms/StarmapRoom";
 
 export const WatchItemAlias: string = "watch";
 
@@ -36,16 +38,17 @@ export class WatchItem extends Interactable implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
         const locations: any[] = [new SolveChoiceAction(5, "Cancel")];
         const Egyptaliases: any[] = [OasisRoomAlias, PyramidRoomAlias, EgyptianRoomAlias];
+        const coldWarAliases: any[] = [ColdWarRoomAlias, HydraulicRoomAlias, StarmapRoomAlias];
 
             if (playerSession.currentRoom === OfficeRoomAlias){
                 locations.push(new SolveChoiceAction(2, "Egypt"));
                 locations.push(new SolveChoiceAction(3, "Cold War"));
             } else if (Egyptaliases.includes(playerSession.currentRoom)){
                 locations.push(new SolveChoiceAction(1, "Office"));
-                locations.push(new SolveChoiceAction(3, "Cold War")); 
-            } else if (playerSession.currentRoom === ColdWarRoomAlias){
+                locations.push(new SolveChoiceAction(3, "Cold War"));
+            } else if (coldWarAliases.includes(playerSession.currentRoom)){
                 locations.push(new SolveChoiceAction(1, "Office"));
-                locations.push(new SolveChoiceAction(2, "Egypt"));
+                locations.push(new SolveChoiceAction(2, "Egypt")); 
             } else if (playerSession.currentRoom === AztecRoomAlias){
                 locations.push(new SolveChoiceAction(1, "Office"));
             } else {

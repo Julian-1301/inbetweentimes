@@ -6,15 +6,15 @@ import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
 
-export const MuanualItemAlias: string = "Manual";
+export const ManualItemAlias: string = "Manual";
 
-export class MuanualItem extends Item implements Examine, Pickup {
+export class ManualItem extends Item implements Examine, Pickup {
     public constructor() {
-        super(MuanualItemAlias, ExamineActionAlias, PickupActionAlias);
+        super(ManualItemAlias, ExamineActionAlias, PickupActionAlias);
     }
 
     public name(): string {
-        return "Muanual";
+        return "Manual";
     }
 
     public examine(): ActionResult | undefined {
@@ -22,7 +22,7 @@ export class MuanualItem extends Item implements Examine, Pickup {
 
         if (!playerSession.pickedUpManual) {
             return new TextActionResult([
-                "A book with the title: 'Manual'",
+                "A book with the title: <blue>Manual</blue>",
                 "The book looks damaged",
                 "Perhaps I should pick it up"
             ]);
@@ -30,7 +30,7 @@ export class MuanualItem extends Item implements Examine, Pickup {
             playerSession.pickedUpManual && !playerSession.LogbookPuzzleSolved
         ) {
             return new TextActionResult([
-                "When opening the manual you see that alot of pages are torn out",
+                "When opening the <blue>manual</blue> you see that alot of pages are torn out",
                 "Luckely some pages are still there",
                 "The manual seems to be <blue>encrypted</blue>"
             ]);
@@ -45,7 +45,7 @@ export class MuanualItem extends Item implements Examine, Pickup {
             ]);
         } else {
             return new TextActionResult([
-                "It's a yellow hard cover book with the title: 'Manual'",
+                "It's a yellow hard cover book with the title: <blue>Manual</blue>",
                 "Perhaps I should pick it up to investigate further",
             ]);
         }
@@ -57,7 +57,7 @@ export class MuanualItem extends Item implements Examine, Pickup {
         if (!playerSession.pickedUpManual) {
             playerSession.pickedUpManual = true;
 
-            return new TextActionResult(["You pick up the manual"]);
-        } else return new TextActionResult(["You already picked up the manual"]);
+            return new TextActionResult(["You pick up the <blue>manual</blue>"]);
+        } else return new TextActionResult(["You already picked up the <blue>manual</blue>"]);
     }
 }

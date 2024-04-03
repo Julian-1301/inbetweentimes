@@ -25,6 +25,8 @@ export class NotebookItem extends Item implements Examine, Pickup{
         const playerSession: PlayerSession = getPlayerSession();
         const hints: any[] = [];
 
+        if (playerSession.oasisPuzzleHints.includes(1))
+        hints.push("<blue>Elemental clues:</blue>");
         if (playerSession.oasisPuzzleHints[0] === 1) {
         hints.push("-Begin your journey amidst the solidity of the earth, where mountains stand tall and valleys stretch wide.");
         } 
@@ -36,10 +38,18 @@ export class NotebookItem extends Item implements Examine, Pickup{
         } 
         if (playerSession.oasisPuzzleHints[3] === 1) {
             hints.push("-Ignite the flames that dance with passion and fury, consuming all in their path and illuminating the darkest of nights.");
-        } 
+        }
 
-        if (!playerSession.oasisPuzzleHints.includes(1)) {
-            return new TextActionResult(["You haven't written anything down in your notebook yet", "Gather clues and <blue>Examine your <blue>Notebook</blue> to see your hints"]);
+        if (playerSession.oasisPuzzleHints.includes(1) && playerSession.logPuzzleTried) {
+            hints.push(".");
+        }
+        if (playerSession.logPuzzleTried) {
+            hints.push("<blue>Submarine clues:</blue>");
+            hints.push("Since you can almost count the amount of pixels of the <blue>starmap</blue>... <blue>It's October</blue>");
+        }
+
+        if (!playerSession.oasisPuzzleHints.includes(1) && !playerSession.logPuzzleTried) {
+            return new TextActionResult(["You haven't written anything down in your notebook yet", "Gather clues and <blue>Examine your Notebook</blue> to see your hints"]);
         } else {
             return new TextActionResult(hints);
         }

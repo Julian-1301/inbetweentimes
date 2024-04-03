@@ -11,7 +11,7 @@ import { PlayerSession } from "../../types";
 import { SolveAction } from "../../julian/actions/SolveAction";
 import { HydraulicsPuzzle } from "../interactables/HydraulicsPuzzle";
 import { HydraulicControlPanel } from "../interactables/Hydraulic control panel";
-import { MuanualItem } from "../Items/ManualItem";
+import { ManualItem } from "../Items/ManualItem";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ColdWarRoomAlias } from "./ColdWarRoom";
 
@@ -40,7 +40,7 @@ export class HydraulicRoom extends Room {
             images.push("HydraulicsNoButtonNobook");
         }
 
-        if (!playerSession.pickedUpButton && playerSession.usedButton) {
+        if (playerSession.pickedUpButton && playerSession.usedButton) {
             images.push("Hydraulics");
         }
         return images;
@@ -62,24 +62,25 @@ export class HydraulicRoom extends Room {
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
 
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
+        const objects: GameObject[] = [...getGameObjectsFromInventory()];
         console.log(objects);
 
         if (
             !playerSession.hydraulicsPuzzleSolved &&
             playerSession.pickedUpButton &&
-            playerSession.currentRoom === "HydraulicsRoom" &&
+            playerSession.currentRoom === "HydraulicRoom" &&
             playerSession.usedButton
         ) {
             objects.push(new HydraulicsPuzzle());
+            objects.push(new HydraulicControlPanel());
         } else if (!playerSession.pickedUpTablet && playerSession.hydraulicsPuzzleSolved) {
             objects.push(new TabletItem());
         } else {
             objects.push(new HydraulicControlPanel());
         }
 
-        if (playerSession.examinedHydraulics) {
-            objects.push(new MuanualItem());
+        if (playerSession.examinedHydraulics === true) {
+            objects.push(new ManualItem());
         }
         return objects;
     }

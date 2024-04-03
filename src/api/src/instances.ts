@@ -4,7 +4,7 @@ import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base
 import { ExampleCharacterAlias, ExampleCharacter } from "./characters/ExampleCharacter";
 import { BookItemAlias, BookItem } from "./fabian/Items/BookItem";
 import { DecryptionItemAlias, DecryptionItem } from "./fabian/Items/DecryptionItem";
-import { MuanualItemAlias, MuanualItem } from "./fabian/Items/ManualItem";
+import { ManualItemAlias, ManualItem } from "./fabian/Items/ManualItem";
 import { TabletItemAlias, TabletItem } from "./fabian/Items/TabletItem";
 import { HydraulicControlPanelAlias, HydraulicControlPanel } from "./fabian/interactables/Hydraulic control panel";
 import { HydraulicsPuzzleAlias, HydraulicsPuzzle } from "./fabian/interactables/HydraulicsPuzzle";
@@ -41,6 +41,7 @@ import { PlayerSession } from "./types";
 import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
+import { NuclearControl, NuclearControlAlias } from "./fabian/interactables/nuclearControl";
 
 
 /**
@@ -90,7 +91,8 @@ export function createNewPlayerSession(): PlayerSession {
         riddleValue: 1,
         oasisPuzzleHints: [0, 0, 0, 0],
         coldWarSolved: false,
-
+        examinedNuclear: false,
+        logPuzzleTried: false
     };
 }
 
@@ -196,8 +198,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case HydraulicControlPanelAlias:
             return new HydraulicControlPanel();
 
-        case MuanualItemAlias:
-            return new MuanualItem();
+        case ManualItemAlias:
+            return new ManualItem();
 
         case WatchItemAlias:
             return new WatchItem();
@@ -258,6 +260,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case GoldenScarabItemAlias:
             return new GoldenScarabItem();
+
+        case NuclearControlAlias:
+            return new NuclearControl();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

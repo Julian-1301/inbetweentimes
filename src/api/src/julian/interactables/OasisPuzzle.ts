@@ -51,6 +51,7 @@ export class OasisPuzzle extends Interactable implements Examine, Pickup {
             ]); 
             case 4:
                 playerSession.oasisPuzzleSolved = true;
+                playerSession.pickedUpScroll = true;
                 return new TextActionResult(["That seemed to work", "You hear the sound of a chest opening next to you", "There is a button inside of it", "Maybe you should pick it up"]);
             case 7:
                 return new SolveActionResult(this, ["Which button do you press Second?"], 
@@ -80,7 +81,7 @@ export class OasisPuzzle extends Interactable implements Examine, Pickup {
                 playerSession.currentRoom = new GameOverRoom().alias;
                 return new TextActionResult(["You pressed the buttons in the incorrect order", "The floor starts sinking beneath you and you fall down on spikes", "Try again"]);
             case 11:
-                return new TextActionResult(["Maybe you need to get more <blue>Clues</blue> before you attempt this"]);
+                return new TextActionResult(["You should try to find all the <blue>Clues</blue> before you attempt this"]);
         }
 
         return new SolveActionResult(this, ["Which button do you press first?"], 
@@ -94,7 +95,7 @@ export class OasisPuzzle extends Interactable implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This seems like a complicated <blue>Puzzle</blue>", "maybe i should gather some <blue>Clues</blue> before i attempt this"]);
+        return new TextActionResult(["This seems like a complicated <blue>Puzzle</blue>", "there are four buttons with elemtal symbols on them", "maybe i should gather <blue>Clues</blue> to get the correct order before i attempt this"]);
     }
 
     public pickup(): ActionResult | undefined {

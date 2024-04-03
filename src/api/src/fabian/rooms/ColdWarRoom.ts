@@ -16,6 +16,7 @@ import { CustomAction } from "../../base/actions/CustomAction";
 import { HydraulicRoomAlias } from "./HydraulicsRoom";
 import { StarmapRoomAlias } from "./StarmapRoom";
 import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
+import { NuclearControl } from "../interactables/nuclearControl";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
@@ -64,6 +65,10 @@ export class ColdWarRoom extends Room implements Pickup {
 
         if (playerSession.openedBook) {
             objects.push(new DecryptionItem());
+        }
+
+        if (playerSession.LogbookPuzzleSolved && playerSession.hydraulicsPuzzleSolved) {
+            objects.push(new NuclearControl());
         }
 
         return objects;

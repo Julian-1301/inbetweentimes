@@ -67,7 +67,7 @@ export class PyramidRoom extends Room   {
             images.push("PyramidOpen");
         }
 
-        if (!playerSession.pickedupGoldenScarab) {
+        if (!playerSession.pickedupGoldenScarab && playerSession.riddleValue === 5) {
             images.push("GoldenScarabImage");
         }
 
