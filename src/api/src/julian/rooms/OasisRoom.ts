@@ -27,6 +27,10 @@ export class OasisRoom extends Room   {
     public name(): string {
         return "Oasis";
     }
+
+    public sounds(): string[] {
+        return ["DesertSound"];
+    }
     
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();

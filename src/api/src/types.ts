@@ -43,4 +43,5 @@ export type PlayerSession = {
     logPuzzleTried: boolean;
     AztecClue:boolean;
     TheFinalDoor: boolean;
+    FinalDoorCode: string;
 };

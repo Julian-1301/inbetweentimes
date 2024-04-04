@@ -29,6 +29,10 @@ export class PyramidRoom extends Room   {
     public name(): string {
         return "Pyramid";
     }
+
+    public sounds(): string[] {
+        return ["DesertSound"];
+    }
     
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
