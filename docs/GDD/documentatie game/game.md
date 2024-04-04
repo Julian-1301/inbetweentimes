@@ -41,12 +41,11 @@ Zoals eerder vernoemd hadden we een SolveAction aangemaakt. Dit hadden we gedaan
 
 ## Stylistische Keuzes
 
-<<<<<<< HEAD
-We hebben met zijn alle een keuze gemaakt om voor pixel art te gaan omdat we dit allemaal wel een mooi concept vonden voor onze game, een andere reden waarom wij pixelart hebben gekozen is omdat we vonden dat je dan meer naar de gameplay gaat kijken inpv dat je naar de artwork van het spel gaat kijken.
-=======
-We hebben ook voor gekozen om achtergrond geluid als een mogelijkheid toetevoegen aan de game engine. Nu kunnen we de gemaakte ruimtes ook doormiddel van geluid beschrijven en tot leven laten komen in plaats van enkel op een graphische manier.
->>>>>>> 1f3a64432451517b8a6e5bdd7bafa48a862603c3
 
+We hebben met zijn alle een keuze gemaakt om voor pixel art te gaan omdat we dit allemaal wel een mooi concept vonden voor onze game, een andere reden waarom wij pixelart hebben gekozen is omdat we vonden dat je dan meer naar de gameplay gaat kijken inpv dat je naar de artwork van het spel gaat kijken.
+
+We hebben ook voor gekozen om achtergrond geluid als een mogelijkheid toetevoegen aan de game engine. Nu kunnen we de gemaakte ruimtes ook doormiddel van geluid beschrijven en tot leven laten komen in plaats van enkel op een graphische manier.
 Verder hebben we ook besloten om de standaard kleur te veranderen van paars naar blauw om zo ons meer te kunnen onderscheiden ten opzichte van de rest.
 
+We hebben met zijn alle een keuze gemaakt om voor pixel art te gaan omdat we dit allemaal wel een mooi concept vonden voor onze game, een andere reden waarom wij pixelart hebben gekozen is omdat we vonden dat je dan meer naar de gameplay gaat kijken inpv dat je naar de artwork van het spel gaat kijken.
 ---
