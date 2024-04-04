@@ -97,8 +97,7 @@ export function createNewPlayerSession(): PlayerSession {
         logPuzzleTried: false,
         AztecClue: false,
         TheFinalDoor: false,
-        
-        
+        FinalDoorCode: "",       
     };
 }
 

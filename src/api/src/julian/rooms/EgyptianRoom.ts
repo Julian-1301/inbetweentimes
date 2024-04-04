@@ -28,6 +28,10 @@ export class EgyptianRoom extends Room   {
     public name(): string {
         return "Ancient Egypt";
     }
+
+    public sounds(): string[] {
+        return ["DesertSound"];
+    }
     
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
