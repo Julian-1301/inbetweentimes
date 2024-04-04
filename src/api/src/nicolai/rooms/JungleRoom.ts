@@ -13,9 +13,6 @@ import { JunglePuzzel } from "../interactables/JunglePuzzel";
 import { SmallPaper } from "../items/SmallPaper";
 import { AztecRoomAlias } from "./AztecRoom";
 
-
-
-
 export const JungleRoomAlias: string ="Jungle";
 
 export class JungleRoom extends Room   {
@@ -28,9 +25,7 @@ export class JungleRoom extends Room   {
     }
     
     public images(): string[] {
-        return[
-            "AztecImage.png"
-        ];
+        return["Jungle_background"];
     }
     
     public sounds(): string[] {
