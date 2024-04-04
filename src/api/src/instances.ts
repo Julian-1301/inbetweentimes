@@ -98,6 +98,7 @@ export function createNewPlayerSession(): PlayerSession {
         searchedStars: false,
         AztecClue: false,
         TheFinalDoor: false,
+        FinalDoorCode: "",       
     };
 }
 

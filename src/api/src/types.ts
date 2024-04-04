@@ -45,4 +45,5 @@ export type PlayerSession = {
     searchedStars: boolean;
     AztecClue:boolean;
     TheFinalDoor: boolean;
+    FinalDoorCode: string;
 };
