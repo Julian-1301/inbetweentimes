@@ -25,13 +25,10 @@ export class JungleRoom extends Room   {
     }
     
     public images(): string[] {
-<<<<<<< HEAD
+
         return[
             "Jungle_background"
         ];
-=======
-        return["Jungle_background"];
->>>>>>> e8bab0595bb83c8ee4ef9ac8e8d2e6aca62bf4f2
     }
     
     public sounds(): string[] {
