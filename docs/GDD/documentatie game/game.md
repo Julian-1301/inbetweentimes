@@ -39,6 +39,8 @@ Zoals eerder vernoemd hadden we een SolveAction aangemaakt. Dit hadden we gedaan
 
 ## Stylistische Keuzes
 
+We hebben ook voor gekozen om achtergrond geluid als een mogelijkheid toetevoegen aan de game engine. Nu kunnen we de gemaakte ruimtes ook doormiddel van geluid beschrijven en tot leven laten komen in plaats van enkel op een graphische manier.
 
+Verder hebben we ook besloten om de standaard kleur te veranderen van paars naar blauw om zo ons meer te kunnen onderscheiden ten opzichte van de rest.
 
 ---
