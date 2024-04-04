@@ -36,6 +36,15 @@ https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-b-se-bim/
 
 # Julian : 
 
+De Solve-interface definieert een solve methode die bij onze interactable items wordt toegepast. Zo moeten de classes crackedTileItem en ComputerItem allebei de methode implementeren. Hier is sprake van polymorfisme omdat ze deze op verschillende manieren implemteren.  In de klasse ComputerItem wordt een lijst met opties gemaakt op basis van bepaalde voorwaarden en worden verschillende acties uitgevoerd op basis van de keuze van de speler. In de klasse CrackedTileItem wordt de methode solve gebruikt om een specifiek aantal keer op de tile te klikken. En zo heb je bij andere interactables weer andere toepassingen.
 
+SolveAction:
+https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-b-se-bim/blok-3/wuuwaasoodii22/-/blob/main/src/api/src/julian/actions/SolveAction.ts?ref_type=heads
+
+ComputerItem:
+https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-b-se-bim/blok-3/wuuwaasoodii22/-/blob/main/src/api/src/julian/interactables/ComputerItem.ts?ref_type=heads
+
+CrackedTileItem:
+https://gitlab.fdmci.hva.nl/propedeuse-hbo-ict/onderwijs/2023-2024/out-b-se-bim/blok-3/wuuwaasoodii22/-/blob/main/src/api/src/julian/interactables/CrackedTileItem.ts?ref_type=heads
 
 
