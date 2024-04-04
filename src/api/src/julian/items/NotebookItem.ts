@@ -39,17 +39,30 @@ export class NotebookItem extends Item implements Examine, Pickup{
         if (playerSession.oasisPuzzleHints[3] === 1) {
             hints.push("-Ignite the flames that dance with passion and fury, consuming all in their path and illuminating the darkest of nights.");
         }
-
+        
         if (playerSession.oasisPuzzleHints.includes(1) && playerSession.logPuzzleTried) {
             hints.push(".");
         }
-        if (playerSession.logPuzzleTried) {
+        if (playerSession.searchedStars || playerSession.starmapInspected) {
             hints.push("<blue>Submarine clues:</blue>");
+<<<<<<< HEAD
             hints.push("Since you can almost count the amount of pixels of the <blue>Starmap</blue>... <blue>It's October</blue>.");
         }
 
         if (!playerSession.oasisPuzzleHints.includes(1) && !playerSession.logPuzzleTried) {
             return new TextActionResult(["You haven't written anything down in your notebook yet.", "Gather clues and <blue>Examine your Notebook</blue> to see your hints."]);
+=======
+        }
+        if (playerSession.searchedStars) {
+            hints.push("According to Noodle, the stars gradually shift towards the right every month");
+        }
+        if (playerSession.starmapInspected) {
+            hints.push("I should use the <blue>computer</blue> to do some research about <blue>starmaps</blue>");
+        }
+
+        if (!playerSession.oasisPuzzleHints.includes(1) && !playerSession.searchedStars && !playerSession.starmapInspected) {
+            return new TextActionResult(["You haven't written anything down in your notebook yet", "Gather clues and <blue>Examine your Notebook</blue> to see your hints"]);
+>>>>>>> 6b5b34b0b55760f60306a8674f0a2d0e2b19f0c2
         } else {
             return new TextActionResult(hints);
         }
