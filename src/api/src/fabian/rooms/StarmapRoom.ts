@@ -49,7 +49,7 @@ export class StarmapRoom extends Room {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "This is the submarine's <blue>starmap</blue>"
+            "This is the submarine's <blue>Starmap</blue>."
         ]);
     }
 
@@ -64,7 +64,7 @@ export class StarmapRoom extends Room {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = ColdWarRoomAlias;
-            return new TextActionResult(["You walk back"]);
+            return new TextActionResult(["You walk back."]);
         } else return undefined;
     } 
 }

@@ -67,11 +67,11 @@ export class HydraulicsPuzzle extends Interactable {
             case 8:
                 playerSession.hydraulicsPuzzleSolved = true;
                 return new TextActionResult([
-                    "At first nothing happens",
-                    "But then you hear the sound of air rushing through the valves",
+                    "At first nothing happens..",
+                    "But then you hear the sound of air rushing through the valves,",
                     "slowly stuff is starting to move",
-                    "Whilst admiring this past technology you hear a thud on the floor next to you",
-                    "You see a wierd looking tablet...",
+                    "Whilst admiring this past technology you hear a thud on the floor next to you,",
+                    "You see a wierd looking <blue>Tablet</blue>...",
                 ]);
             case 9:
                 return new SolveActionResult(

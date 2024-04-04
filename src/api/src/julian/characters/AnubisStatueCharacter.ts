@@ -47,19 +47,19 @@ export class AnubisStatueCharacter extends Character implements Examine {
             if (playerSession.currentWord === "mummy" && playerSession.riddleValue === 1) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct... come and find me", "The <blue>Statue</blue> starts sinking into the ground but nothing else seems to happen", "You are wondering where it went, Maybe somewhere nearby?"]);
+                return new TextActionResult(["Correct... come and find me.", "The <blue>Statue</blue> starts sinking into the ground but nothing else seems to happen,", "You are wondering where it went, Maybe somewhere nearby?"]);
             } else if (playerSession.currentWord === "pharaoh" && playerSession.riddleValue === 2) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct... come and find me again", "The <blue>Statue</blue> starts sinking into the ground again", "You should look around to see where it went, This time you didn't hear a sound nearby"]);
+                return new TextActionResult(["Correct... come and find me again.", "The <blue>Statue</blue> starts sinking into the ground again,", "You should look around to see where it went, This time you didn't hear a sound nearby."]);
             } else if (playerSession.currentWord === "sphinx" && playerSession.riddleValue === 3) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct... come and find me again", "The <blue>Statue</blue> starts sinking into the ground for the third time", "You know the drill by now, Go chase it down again"]);
+                return new TextActionResult(["Correct... come and find me again.", "The <blue>Statue</blue> starts sinking into the ground for the third time,", "You know the drill by now, Go chase it down again."]);
             } else if (playerSession.currentWord === "pyramid" && playerSession.riddleValue === 4) {
                 playerSession.currentWord = "";
                 playerSession.riddleValue++;
-                return new TextActionResult(["Correct... for answering my riddles I reward you with entrance to my tomb located inside <blue>The Pyramid</blue>"]);
+                return new TextActionResult(["Correct... for answering my riddles I reward you with entrance to my tomb located inside <blue>The Pyramid</blue>."]);
             } else {
                 playerSession.currentWord = "";
                 return new TextActionResult(["Incorrect"]);
@@ -71,13 +71,13 @@ export class AnubisStatueCharacter extends Character implements Examine {
             return new TalkActionResult(this, ["You currently have: " + playerSession.currentWord], choices);
         } else if(choiceId === 30) {
             playerSession.currentWord = "";
-            return new TextActionResult(["Come back when you know the answer to my riddle"]);
+            return new TextActionResult(["Come back when you know the answer to my riddle..."]);
         }
     
         if (playerSession.hierogliphPuzzleSolved) {
             return new TalkActionResult(this, riddle, [
-                new TalkChoiceAction(29, "I know the answer"),
-                new TalkChoiceAction(30, "I don't know the answer")
+                new TalkChoiceAction(29, "I know the answer."),
+                new TalkChoiceAction(30, "I don't know the answer.")
             ]);
         } else {
             return undefined;
@@ -88,7 +88,7 @@ export class AnubisStatueCharacter extends Character implements Examine {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (!playerSession.hierogliphPuzzleSolved) {
-            return new TextActionResult(["A small stone <blue>Statue</blue> that sits in the corner", "It resembles <blue>Anubis</blue> and is made of stone"]);
+            return new TextActionResult(["A small stone <blue>Statue</blue> that sits in the corner,", "It resembles <blue>Anubis</blue> and is made of stone."]);
         } else {
             return new TextActionResult(["The <blue>Statue</blue> spoke to you", "It wants you to answer his <blue>Riddles</blue> to find the truth", "Whatever that means..."]);
         };

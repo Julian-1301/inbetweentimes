@@ -39,7 +39,7 @@ export class BrotherCharacter extends Character implements Examine, Pickup{
             options.push(new TalkChoiceAction(9, "I got something for you"));
         }
         options.push(new TalkChoiceAction(1, "Touch the statue"));
-        
+        options.push(new TalkChoiceAction(13, "Cancel"));        
     
         switch (choiceId) {
             case 1:
@@ -73,7 +73,9 @@ export class BrotherCharacter extends Character implements Examine, Pickup{
             case 11:
                 return new TextActionResult(["then why say you have something?", "Making people happy for nothing tsh..."]);
             case 12:
-                return new TextActionResult(["I'll give you one of the three numbers to the code here", "There is a huge door between me and my brother and it has a code. I'll give you the first number", "The first number is 6"]);
+                return new TextActionResult(["I'll give you one of the three numbers to the code here.", "There is a huge door between me and my brother and it has a code. I'll give you the first number", "The first number is 6"]);
+            case 13: 
+            return new TextActionResult(["Or just dont talk fine."]);
             default:
                 return new TalkActionResult(this, ["What do you want, little human?"], options);
         }

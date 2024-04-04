@@ -27,19 +27,19 @@ export class TabletItem extends Item implements Examine, Pickup {
         if (playerSession.pickedUpTablet && egyptianRooms.includes(playerSession.currentRoom)) {
             return new TextActionResult([
                 "-To ignite life amidst darkness, let torches two, three, and five blaze alone, while shadows cloak the others in enigma.",
-                "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir",
+                "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir.",
                 "-Unlock the whispers of the earth's secrets with thirteen touches upon the cracked surface, igniting the ancient dance of shifting tiles, an ominous number in the mosaic's rhythm.",
             ]);
         } else if (playerSession.pickedUpTablet) {
             return new TextActionResult([
-                "The tablet looks out of place",
-                "You try to look closer but it is too hard to make out",
-                "Maybe it makes more sense in a different place",
+                "The <blue>Tablet</blue> looks out of place.",
+                "You try to look closer but it is too hard to make out.",
+                "Maybe it makes more sense in a different place.",
             ]);
         } else {
             return new TextActionResult([
-                "You can see an ancient looking tablet laying around",
-                "It might seem useful",
+                "You can see an ancient-looking <blue>Tablet</blue> lying around.",
+                "It might seem useful.",
             ]);
         }
     }
@@ -51,7 +51,7 @@ export class TabletItem extends Item implements Examine, Pickup {
             playerSession.pickedUpTablet = true;
             playerSession.inventory.push(TabletItemAlias);
 
-            return new TextActionResult(["You pick up the tablet"]);
-        } else return new TextActionResult(["You already picked up the tablet"]);
+            return new TextActionResult(["You pick up the <blue>Tablet</blue>"]);
+        } else return new TextActionResult(["You already picked up the <blue>Tablet</blue>"]);
     }
 }

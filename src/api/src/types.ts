@@ -39,6 +39,8 @@ export type PlayerSession = {
     riddleValue: number;
     oasisPuzzleHints: any[];
     usedButton: boolean;
-    coldWarSolved: boolean
+    coldWarSolved: boolean;
     logPuzzleTried: boolean;
+    AztecClue:boolean;
+    TheFinalDoor: boolean;
 };

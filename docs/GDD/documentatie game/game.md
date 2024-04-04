@@ -35,10 +35,13 @@ In combinatie daarmee hebben we meer goefend met het gebruiken van arrays. Hierd
 
 Zoals eerder vernoemd hadden we een SolveAction aangemaakt. Dit hadden we gedaan om een speciale actie te hebben om puzzels op te lossen. Na een tijdje hadden we het over een use-actie en we zijn eigenlijk tot het besluit gekomen om de SolveAction te hernoemen en deze te gebruiken voor zowel items als puzzels. Dit hebben we gedaan omdat we het onnodig vonden om een losse actie te hebben voor de puzzels terwijl zowel use als solve de zelfde functie hebben. Daarnaast komen sommige puzzels pas later aan bod en het zien van de solveactie daar kan verwarring veroorzaken in dat soort gevallen.
 
+
+
 ---
 
 ## Stylistische Keuzes
 
+We hebben met zijn alle een keuze gemaakt om voor pixel art te gaan omdat we dit allemaal wel een mooi concept vonden voor onze game, een andere reden waarom wij pixelart hebben gekozen is omdat we vonden dat je dan meer naar de gameplay gaat kijken inpv dat je naar de artwork van het spel gaat kijken.
 
 
 ---

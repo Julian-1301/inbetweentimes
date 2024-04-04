@@ -23,7 +23,6 @@ import { OasisPuzzleAlias, OasisPuzzle } from "./julian/interactables/OasisPuzzl
 import { PhoneItemAlias, PhoneItem } from "./julian/interactables/PhoneItem";
 import { PlantItemAlias, PlantItem } from "./julian/interactables/PlantItem";
 import { WatchItemAlias, WatchItem } from "./julian/interactables/WatchItem";
-import { DrygroundItemAlias, DrygroundItem } from "./julian/items/DryGroundItem";
 import { GoldenScarabItemAlias, GoldenScarabItem } from "./julian/items/GoldenScarabItem";
 import { NotebookItemAlias, NotebookItem } from "./julian/items/NotebookItem";
 import { ScrollItemAlias, ScrollItem } from "./julian/items/ScrollItem";
@@ -42,6 +41,9 @@ import { getRoomByAlias as getRoomByAliasJulian } from "./julian/instances";
 import { getRoomByAlias as getRoomByAliasNicolai } from "./nicolai/instances";
 import { getRoomByAlias as getRoomByAliasFabian } from "./fabian/instances";
 import { NuclearControl, NuclearControlAlias } from "./fabian/interactables/nuclearControl";
+import { AztecClue, AztecClueAlias } from "./nicolai/items/AztecClue";
+import { DrygroundItemAlias, DrygroundItem } from "./julian/interactables/DryGroundItem";
+import { FinalDoor, FinalDoorAlias } from "./nicolai/interactables/TheFinalDoor";
 
 
 /**
@@ -92,7 +94,11 @@ export function createNewPlayerSession(): PlayerSession {
         oasisPuzzleHints: [0, 0, 0, 0],
         coldWarSolved: false,
         examinedNuclear: false,
-        logPuzzleTried: false
+        logPuzzleTried: false,
+        AztecClue: false,
+        TheFinalDoor: false,
+        
+        
     };
 }
 
@@ -263,6 +269,11 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case NuclearControlAlias:
             return new NuclearControl();
+        
+        case AztecClueAlias:
+            return new AztecClue();
+        case FinalDoorAlias:
+            return new FinalDoor();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

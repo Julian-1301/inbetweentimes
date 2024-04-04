@@ -66,25 +66,25 @@ export class BookItem extends Item implements Examine, Pickup {
                 "July 1986",
                 "Atlantic ocean",
                 "This month is like any other, monitoring sonar for enemy activity. No signs yet.",
-                "Routine tasks keep us occupied. Taking breaks to eat and rest, staying vigilant.",
+                "Routine tasks is keeping us occupied. Taking breaks to eat and rest, staying vigilant.",
                 "Another month of patrol in the Atlantic, mission continues.",
                 "",
                 "September 1986",
                 "Atlantic ocean",
                 "It's been 5 months since we left port.",
                 "There has been a lot of tension between the crew as of late, nothing we aren't used to.",
-                "although one of the maintance crew has been acting differntly...",
+                "Although one of the maintance crew has been acting differntly...",
                 "",
                 "October 1986",
                 "Atlantic ocean",
-                "There is a fire in the missle silo",
+                "There is a fire in the missle silo, panice all around me.",
                 "And someone has sabotaged the hydraulics! We are heading straight to the coast of the USA...",
                 "I should reset the hydraulics, there should be something in the manual."
             ]);
         } else {
             return new TextActionResult([
-                "It's a brown soft cover book with the title: <blue>Logbook</blue>",
-                "Perhaps I should pick it up to investigate further",
+                "It's a brown soft cover book with the title: <blue>Logbook</blue>.",
+                "Perhaps I should pick it up to investigate further.",
             ]);
         }
     }
@@ -95,7 +95,7 @@ export class BookItem extends Item implements Examine, Pickup {
         if (!playerSession.pickedUpBook) {
             playerSession.pickedUpBook = true;
 
-            return new TextActionResult(["You pick up the logbook"]);
-        } else return new TextActionResult(["You already picked up the logbook"]);
+            return new TextActionResult(["You pick up the <blue>Logbook</blue>."]);
+        } else return new TextActionResult(["You already picked up the <blue>Logbook</blue>."]);
     }
 }

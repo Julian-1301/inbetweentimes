@@ -22,7 +22,7 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Your trusty old <blue>Computer</blue> is powered on", "You haven't caught up with your e-mails yet", "Maybe you can use it for some detective work"]);
+        return new TextActionResult(["Your trusty old <blue>Computer</blue> is powered on.", "You haven't caught up with your e-mails yet,", "Maybe you can use it for some detective work."]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
@@ -59,21 +59,21 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
                 return new SolveActionResult(this, ["Which files do you want to delete?"], deletables);
             case 6:
                 playerSession.deletedBrowser = true;
-                return new TextActionResult(["You delete your old browser", "You only ever used this to install chrome anyways"]);
+                return new TextActionResult(["You delete your old browser.", "You only ever used this to install chrome anyways."]);
             case 7:
                 playerSession.deletedPictures = true;
-                return new TextActionResult(["You delete your family pictures", "You can't trust anyone nowadays", "Not even your own family"]);
+                return new TextActionResult(["You delete your family pictures.", "You can't trust anyone nowadays,", "Not even your own family."]);
             case 8:
                 playerSession.currentRoom = new GameOverRoom().alias;
-                return new TextActionResult(["You deleted system32", "You lose all your evidence and are fired as a result", "Try again"]);
+                return new TextActionResult(["You deleted system32.", "You lose all your evidence and are fired as a result.", "Try again."]);
             case 9: 
                 playerSession.deletedScript = true;
-                return new TextActionResult(["You delete your movie script", "Time to give up on your lifelong dreams", "You shed a tear"]);
+                return new TextActionResult(["You delete your movie script.", "Time to give up on your lifelong dreams.", "You shed a tear."]);
             case 10:
                 return new TextActionResult(["You decide not to delete anything this time"]);
         }
     
-        return new SolveActionResult(this, ["You log in to your <blue>Computer</blue>", "What will you do?"], [
+        return new SolveActionResult(this, ["You log in to your <blue>Computer</blue>,", "What will you do?"], [
             new SolveChoiceAction(1, "Check e-mail"),
             new SolveChoiceAction(5, "Delete files"),
         ]);

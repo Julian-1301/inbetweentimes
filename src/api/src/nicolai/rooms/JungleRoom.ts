@@ -29,8 +29,12 @@ export class JungleRoom extends Room   {
     
     public images(): string[] {
         return[
-            "Jungle_background"
+            "AztecImage.png"
         ];
+    }
+    
+    public sounds(): string[] {
+        return ["jungleAmbient"];
     }
 
     public actions(): Action[] {
