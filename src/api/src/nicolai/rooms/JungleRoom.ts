@@ -29,7 +29,7 @@ export class JungleRoom extends Room   {
     
     public images(): string[] {
         return[
-            "AztecImage.png"
+            "Jungle_background"
         ];
     }
     
