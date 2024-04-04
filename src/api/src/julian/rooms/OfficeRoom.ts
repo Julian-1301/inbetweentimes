@@ -85,6 +85,6 @@ export class OfficeRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You enter <blue>The Office</blue>"]);
+        return new TextActionResult(["You enter <blue>The Office</blue>."]);
     }
 }

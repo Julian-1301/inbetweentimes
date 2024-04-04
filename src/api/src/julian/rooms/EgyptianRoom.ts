@@ -89,17 +89,17 @@ export class EgyptianRoom extends Room   {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>", "You also spot a small <blue>Oasis</blue> in the distance"]);
+        return new TextActionResult(["You enter <blue>Ancient Egypt</blue>.", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>,", "You also spot a small <blue>Oasis</blue> in the distance."]);
     }
     
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goleft") {
             getPlayerSession().currentRoom = PyramidRoomAlias;
-            return new TextActionResult(["You walk towards <blue>The Pyramid</blue>"]);
+            return new TextActionResult(["You walk towards <blue>The Pyramid</blue>."]);
 
         } else if (alias === "goright") { 
             getPlayerSession().currentRoom = OasisRoomAlias;
-            return new TextActionResult(["You walk towards <blue>The Oasis</blue>"]);
+            return new TextActionResult(["You walk towards <blue>The Oasis</blue>."]);
         } return undefined;
     }
 }

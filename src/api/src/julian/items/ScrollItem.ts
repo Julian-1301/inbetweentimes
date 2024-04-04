@@ -25,7 +25,7 @@ export class ScrollItem extends Item implements Examine, Pickup {
             playerSession.inventory = playerSession.inventory.filter(item => item !== ScrollItemAlias);
             return new TextActionResult(["The <blue>Scroll</blue> is covered in sand, You wipe it clean and read:","<blue>'Ascend into the ethereal domain, where winds carry whispers and storms paint the sky with fury.'</blue>", "<blue>'Ignite the flames that dance with passion and fury, consuming all in their path and illuminating the darkest of nights.'</blue>","You write this down and put the scroll somewhere else"]);
         } else {
-            return new TextActionResult(["Something is covered in sand", "It's impossible to read it like this", "Maybe you should pick it up first"]);
+            return new TextActionResult(["Something is covered in sand.", "It's impossible to read it like this,", "Maybe you should pick it up first?"]);
         }
     }
 
@@ -36,11 +36,11 @@ export class ScrollItem extends Item implements Examine, Pickup {
             playerSession.pickedUpScroll = true;
             playerSession.inventory.push(ScrollItemAlias);
 
-            return new TextActionResult(["You pick up the <blue>Scroll</blue>"]);
+            return new TextActionResult(["You pick up the <blue>Scroll</blue>."]);
         }
         else
         
-        return new TextActionResult(["You already picked up the <blue>Scroll</blue>"]);
+        return new TextActionResult(["You already picked up the <blue>Scroll</blue>."]);
     }
 
 }

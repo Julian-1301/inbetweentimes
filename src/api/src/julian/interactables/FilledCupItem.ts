@@ -24,7 +24,7 @@ export class FilledCupItem extends Interactable implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["The <blue>Cup</blue> is filled to the brim","You should not drink the water", "It might be useful for something"]);
+        return new TextActionResult(["The <blue>Cup</blue> is filled to the brim.","You should not drink the water,", "It might be useful for something."]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
@@ -34,18 +34,18 @@ export class FilledCupItem extends Interactable implements Examine, Pickup {
             case 1:
                 playerSession.drygroundValue++;
                 playerSession.inventory = playerSession.inventory.filter(item => item !== FilledCupItemAlias);
-                return new TextActionResult(["You water your <blue>Plant</blue>", "It looks way better here than it ever did in your <blue>Office</blue>", "A few flowers starts growing from it", "You won't need this <blue>Cup</blue> anymore so you decide to throw it away"]);
+                return new TextActionResult(["You water your <blue>Plant</blue>.", "It looks way better here than it ever did in your <blue>Office</blue>,", "A few flowers starts growing from it.", "You won't need this <blue>Cup</blue> anymore so you decide to throw it away."]);
             case 2:
                 playerSession.inventory = playerSession.inventory.filter(item => item !== FilledCupItemAlias);
                 playerSession.inventory.push(CupItemAlias);
-                return new TextActionResult(["Hey, What is wrong with you", "I am completely soaked now", "I hate you"]);
+                return new TextActionResult(["Hey, What is wrong with you?", "I am completely soaked now.", "I hate you!"]);
             case 3:
-                return new TextActionResult(["You decide to keep your <blue>Cup</blue> for now"]);
+                return new TextActionResult(["You decide to keep your <blue>Cup</blue> for now."]);
             case 4:
-                return new TextActionResult(["There is no reason to waste your water on this now", "Maybe you need to do something else first"]);
+                return new TextActionResult(["There is no reason to waste your water on this now.", "Maybe you need to do something else first?"]);
         }
         if (playerSession.currentRoom === OasisRoomAlias) {
-            return new TextActionResult(["You already filled the <blue>Cup</blue> to the brim"]);
+            return new TextActionResult(["You already filled the <blue>Cup</blue> to the brim."]);
         } 
         
         if (playerSession.currentRoom === EgyptianRoomAlias && playerSession.drygroundValue === 1) {

@@ -23,25 +23,23 @@ export class Pickaxe extends Interactable implements Examine, Pickup{
         
             switch(choiceId){ 
                 case 1:
-                    // Check if the player has the Pickaxe and is in the Aztec Room
+                    
                     if (playerSession.inventory.includes(PickaxeAlias) && playerSession.currentRoom === AztecRoomAlias) {
-                        // Add BrotherHeart to inventory and remove Pickaxe
                         playerSession.inventory.push(BrotherHeartAlias);
                         playerSession.pickedUpBrotherHeart = true;
                         playerSession.inventory = playerSession.inventory.filter(item => item !== PickaxeAlias);
-                        return new TextActionResult (["You broke the stone and got a glowing red orb"]);
+                        return new TextActionResult (["You broke the stone and got a <blue>Heart</blue>."]);
                     } else {
-                        // Return undefined if conditions are not met
+                        
                         return undefined;
                     }
                 case 2: 
                     playerSession.currentRoom = new GameOverRoom().alias;
-                    return new TextActionResult(["You smacked the statue and it got mad", "It let out an ancient roar and a rock fell on you", "You died because of this"]);
+                    return new TextActionResult(["You smacked the <blue>Statue</blue> and it got mad,", "It let out an ancient roar and a rock fell on you.", "You died because of this."]);
                 case 3 : 
-                    return new TextActionResult(["You decide not to use the pickaxe right now"]);
+                    return new TextActionResult(["You decide not to use the <blue>Pickaxe<blue> right now."]);
                 }
         
-            // If the choice is not 1 or 2, and the player has the Pickaxe in the Aztec Room, return SolveActionResult
             if (playerSession.inventory.includes(PickaxeAlias) && playerSession.currentRoom === AztecRoomAlias && (playerSession.aztecTalkValue > 1) ) {
                 return new SolveActionResult(this, ["What do you want to use the <blue>Pickaxe</blue> for?"], [
                     new SolveChoiceAction(1, "Break rock"),
@@ -49,14 +47,14 @@ export class Pickaxe extends Interactable implements Examine, Pickup{
                     new SolveChoiceAction(3, "Cancel")
                 ]);
             } else {
-                // If the player doesn't have the Pickaxe or is not in the Aztec Room, return undefined
-                return new TextActionResult(["You need to know what to use the pickaxe for"]);
+                
+                return new TextActionResult(["You need to know what to use the <blue>Pickaxe<blue> for."]);
             }
         }
             
     
 public examine(): ActionResult | undefined {
-    return new TextActionResult(["Its an iron pickaxe from the spanish invasion"]);
+    return new TextActionResult(["Its an iron <blue>Pickaxe</blue> from the spanish invasion."]);
 }
 
  public name(): string {
@@ -70,7 +68,7 @@ public pickup(): ActionResult | undefined {
     if (!PlayerSession.inventory.includes(PickaxeAlias)){
         PlayerSession.inventory.push(PickaxeAlias);
     }
-    else return new TextActionResult(["You already picked it up"]);
-    return new TextActionResult(["You pick up the Pickaxe from the statue's hands"]) ;
+    else return new TextActionResult(["You already picked it up."]);
+    return new TextActionResult(["You pick up the <blue>Pickaxe</blue> from the <blue>Statue's</blue> hands."]) ;
   }
 }

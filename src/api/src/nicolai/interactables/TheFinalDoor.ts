@@ -7,6 +7,7 @@ import { PlayerSession } from "../../types";
 import { Interactable } from "../../base/gameObjects/Interactable";
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
 import { SolveActionResult } from "../../base/actionResults/SolveActionResult";
+import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
 
 export const FinalDoorAlias: string = "Aztec Door";
 
@@ -33,17 +34,18 @@ export class FinalDoor extends Interactable implements Examine, Pickup {
         } else if (choiceId === 10){
             return new SolveActionResult(this, ["You currently have: " + playerSession.FinalDoorCode], choices);
         } else if (choiceId === 12) {
-            if(playerSession.FinalDoorCode === "267") {
-                return new TextActionResult(["hoi"]);
+            if(playerSession.FinalDoorCode === "692") {
+                return new TextActionResult(["You cracked the code and enterted the final room."]);
             } else {
-                return new TextActionResult(["Game over"]);
+                playerSession.currentRoom = new GameOverRoom().alias;
+                return new TextActionResult(["Game over" ,"So close but yet so far."]);
             }
         } else if (choiceId === 13) {
             playerSession.FinalDoorCode = playerSession.FinalDoorCode.slice(0, -1);
-            return new SolveActionResult(this, ["You currently have: " + playerSession.FinalDoorCode], choices);
+            return new SolveActionResult(this, ["You currently have:  " + playerSession.FinalDoorCode], choices);
         } else if (choiceId === 11) {
             playerSession.FinalDoorCode = "";
-            return new TextActionResult(["asdasd"]);
+            return new TextActionResult(["You decided to stop halfway"]);
         }
 
 

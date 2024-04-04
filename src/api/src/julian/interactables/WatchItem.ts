@@ -30,7 +30,7 @@ export class WatchItem extends Interactable implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-            return new TextActionResult(["You look at your <blue>Watch</blue>", "It has the power to move you through time and space"]);
+            return new TextActionResult(["You look at your <blue>Watch</blue>.", "It has the power to move you through time and space."]);
     }
 
     public solve(choiceId?: number | undefined): ActionResult | undefined {
@@ -66,19 +66,19 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 case 1:
                     room = new OfficeRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You enter <blue>The Office</blue>"]);
+                    return new TextActionResult(["You enter <blue>The Office</blue>."]);
                 case 2:
                     room = new EgyptianRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You enter <blue>Ancient Egypt</blue>", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>", "You also spot a small <blue>Oasis</blue> in the distance"]);
+                    return new TextActionResult(["You enter <blue>Ancient Egypt</blue>,", "You see a <blue>Shady Figure</blue> standing pretty close to the <blue>Pyramid</blue>.", "You also spot a small <blue>Oasis</blue> in the distance."]);
                 case 3:
                     room = new ColdWarRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You step into the <blue>Cold War Submarine</blue>", "You feel a chill in the air"]);
+                    return new TextActionResult(["You step into the <blue>Cold War Submarine</blue>,", "You feel a chill in the air."]);
                 case 4:
                     room = new AztecRoom();
                     playerSession.currentRoom = room.alias;
-                    return new TextActionResult(["You enter the mysterious <blue> Aztec Temple</blue>", "You hear the sound of ancient rituals"]);
+                    return new TextActionResult(["You enter the mysterious <blue> Aztec Temple</blue>,", "You hear the sound of ancient rituals."]);
                 case 5:
                     return new TextActionResult(["You decide to stay"]);
                 }   
@@ -86,6 +86,6 @@ export class WatchItem extends Interactable implements Examine, Pickup {
             }
 
             public pickup(): ActionResult | undefined {
-                return new TextActionResult(["You already picked up the <blue>Travel-Watch</blue>"]);
+                return new TextActionResult(["You already picked up the <blue>Travel-Watch</blue>."]);
             }
         } 

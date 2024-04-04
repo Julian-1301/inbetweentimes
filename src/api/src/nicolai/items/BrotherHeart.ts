@@ -9,7 +9,7 @@ export class BrotherHeart extends Item implements Examine {
         super(BrotherHeartAlias, ExamineActionAlias);
     }
 public examine(): ActionResult | undefined {
-    return new TextActionResult(["Its an red glowing orb it looks like the heart the statue told you about"]);
+    return new TextActionResult(["Its an <blue>Heart</blue> the one that old <blue>Statue</blue> told you about."]);
 }
  public name(): string {
     return "Heart";

@@ -36,7 +36,7 @@ export class GameOverRoom extends Room {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "Reset") {
             resetPlayerSession();
-            return new TextActionResult(["Welcome to Inbetween times, a mystery adventure game"]);
+            return new TextActionResult(["Welcome to Inbetween times, a mystery adventure game!"]);
         } else {
             return undefined;
         }
