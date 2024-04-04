@@ -50,8 +50,8 @@ export class StarmapRoom extends Room {
         const playerSession: PlayerSession = getPlayerSession();
         playerSession.starmapInspected = true;
         return new TextActionResult([
-            "This is the submarine's <blue>starmap</blue>",
-            "When You examine the starmap you see 3 constellations pricked on a board",
+            "This is the submarine's <blue>starmap</blue>.",
+            "When You examine the starmap you see 3 constellations pricked on a board.",
             "Perhaps I should do some <blue>research</blue> about <blue>stars</blue>?"
         ]);
     }
@@ -67,7 +67,7 @@ export class StarmapRoom extends Room {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = ColdWarRoomAlias;
-            return new TextActionResult(["You walk back"]);
+            return new TextActionResult(["You walk back."]);
         } else return undefined;
     } 
 }

@@ -26,17 +26,17 @@ export class ShadyFigureCharacter extends Character implements Examine, Pickup {
             case 4:
             case 5:
             case 6:
-                return new TextActionResult(["Incorrect"]);
+                return new TextActionResult(["Incorrect."]);
             case 7:
                 getPlayerSession().oasisPuzzleHints[2] = 1;
-            return new TextActionResult(["Correct, I will reward you by giving you a clue", "<blue>'Immerse yourself in the fluid embrace, where rivers carve paths and oceans hold mysteries in their depths.'</blue>", "Maybe there are other clues hidden around?"]);
+            return new TextActionResult(["Correct, I will reward you by giving you a clue,", "<blue>'Immerse yourself in the fluid embrace, where rivers carve paths and oceans hold mysteries in their depths.'</blue>", "Maybe there are other clues hidden around?"]);
                 case 8:
-            return new TextActionResult(["I don't even know what that is", "Is that an actual color?", "How is that one of the first colors you think of?"]);
+            return new TextActionResult(["I don't even know what that is.", "Is that an actual color?", "How is that one of the first colors you think of?"]);
                 case 9:
-            return new TextActionResult(["Wowww, how do you not know pink is my favorite color"]);
+            return new TextActionResult(["Wowww, how do you not know pink is my favorite color."]);
         }
 
-        return new TalkActionResult(this, ["If it is information you seek", "tell me one thing.....", "What is my favorite color?"], 
+        return new TalkActionResult(this, ["If it is information you seek,", "tell me one thing.....", "What is my favorite color?"], 
         [
         new TalkChoiceAction(1, "Red"),
         new TalkChoiceAction(2, "Orange"),
@@ -51,10 +51,10 @@ export class ShadyFigureCharacter extends Character implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["The <blue>Shady Figure</blue> stares at you from a distance", "You do not know if he is friendly yet","Should you approach him?"]);
+        return new TextActionResult(["The <blue>Shady Figure</blue> stares at you from a distance..", "You do not know if he is friendly yet,","Should you approach him?"]);
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult(["Hey, what are you doing!", "Put me down right now"]);
+        return new TextActionResult(["Hey, what are you doing!", "Put me down right now!"]);
     }
 }

@@ -5,6 +5,9 @@ import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { Item } from "../../base/gameObjects/Item";
 import { getPlayerSession } from "../../instances";
 import { PlayerSession } from "../../types";
+import { EgyptianRoomAlias } from "../../julian/rooms/EgyptianRoom";
+import { PyramidRoomAlias } from "../../julian/rooms/PyramidRoom";
+import { OasisRoomAlias } from "../../julian/rooms/OasisRoom";
 
 export const TabletItemAlias: string = "Tablet";
 
@@ -19,23 +22,24 @@ export class TabletItem extends Item implements Examine, Pickup {
 
     public examine(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
+        const egyptianRooms: any[] = [OasisRoomAlias, PyramidRoomAlias, EgyptianRoomAlias];
 
-        if (playerSession.pickedUpTablet && playerSession.currentRoom === "egyptian") {
+        if (playerSession.pickedUpTablet && egyptianRooms.includes(playerSession.currentRoom)) {
             return new TextActionResult([
-                "-Breathe life into darkness, let the left torch blaze alone, while shadows shroud the others in mystery",
-                "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir",
-                "-Unlock the whispers of the earth's secrets, as your touch ignites the ancient dance of shifting tiles, an unlucky amount upon the cracked surface",
+                "-To ignite life amidst darkness, let torches two, three, and five blaze alone, while shadows cloak the others in enigma.",
+                "-Nurture hope in barren soil, where thirst reigns supreme, a sapling yearns for a sip of life's elixir.",
+                "-Unlock the whispers of the earth's secrets with thirteen touches upon the cracked surface, igniting the ancient dance of shifting tiles, an ominous number in the mosaic's rhythm.",
             ]);
         } else if (playerSession.pickedUpTablet) {
             return new TextActionResult([
-                "The tablet looks out of place",
-                "You try to look closer but it is too hard to make out",
-                "Maybe it makes more sense in a different place",
+                "The <blue>Tablet</blue> looks out of place.",
+                "You try to look closer but it is too hard to make out.",
+                "Maybe it makes more sense in a different place.",
             ]);
         } else {
             return new TextActionResult([
-                "You can see an ancient looking tablet laying around",
-                "It might seem useful",
+                "You can see an ancient-looking <blue>Tablet</blue> lying around.",
+                "It might seem useful.",
             ]);
         }
     }
@@ -47,7 +51,7 @@ export class TabletItem extends Item implements Examine, Pickup {
             playerSession.pickedUpTablet = true;
             playerSession.inventory.push(TabletItemAlias);
 
-            return new TextActionResult(["You pick up the tablet"]);
-        } else return new TextActionResult(["You already picked up the tablet"]);
+            return new TextActionResult(["You pick up the <blue>Tablet</blue>"]);
+        } else return new TextActionResult(["You already picked up the <blue>Tablet</blue>"]);
     }
 }

@@ -17,6 +17,7 @@ import { HydraulicRoomAlias } from "./HydraulicsRoom";
 import { StarmapRoomAlias } from "./StarmapRoom";
 import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
 import { NuclearControl } from "../interactables/nuclearControl";
+import { AztecClue } from "../../nicolai/items/AztecClue";
 
 export const ColdWarRoomAlias: string = "ColdWarRoom";
 
@@ -70,6 +71,9 @@ export class ColdWarRoom extends Room implements Pickup {
         if (playerSession.LogbookPuzzleSolved && playerSession.hydraulicsPuzzleSolved) {
             objects.push(new NuclearControl());
         }
+        if (playerSession.aztecTalkValue>0){
+            objects.push(new AztecClue());
+        }
 
         return objects;
     }
@@ -79,9 +83,9 @@ export class ColdWarRoom extends Room implements Pickup {
             "As you enter the room, you notice you are surrounded by metal.",
             "Peering through a nearby window, you are met with the deep ocean depths.",
             "You realize you are in a submarine.",
-            "You see a <blue>table</blue> with a book",
-            "You see a <blue>hydraulics</blue> control panel",
-            "You see <blue>starmaps</blue> pinned to the wall",
+            "You see a <blue>Table</blue> with a book.",
+            "You see a <blue>Hydraulics Control Panel</blue>.",
+            "You see <blue>Starmaps</blue> pinned to the wall.",
         ]);
     }
 
@@ -93,7 +97,7 @@ export class ColdWarRoom extends Room implements Pickup {
         return new TextActionResult([
             "You lift up the room and hold it over your head",
             "You think to yourself: 'How is this even possible?'",
-            "At that exact moment your arms give in and your are squashed by the room",
+            "At that exact moment your arms give in and your are squashed by the room.",
         ]);
     }
 
@@ -106,14 +110,14 @@ export class ColdWarRoom extends Room implements Pickup {
 
         if (alias === "goleft" && !playerSession.hydraulicsPuzzleSolved) {
             getPlayerSession().currentRoom = HydraulicRoomAlias;
-            return new TextActionResult(["You walk towards the <blue>hydraulics</blue> control panel"]);
+            return new TextActionResult(["You walk towards the <blue>Hydraulics Control Panel</blue>."]);
         } else if (alias === "goleft" && playerSession.hydraulicsPuzzleSolved) {
-            return new TextActionResult(["I don't need to be here anymore"]);
+            return new TextActionResult(["I don't need to be here anymore."]);
         } else if (alias === "goright" && !playerSession.LogbookPuzzleSolved) {
             getPlayerSession().currentRoom = StarmapRoomAlias;
-            return new TextActionResult(["You walk towards the <blue>starmap</blue>"]);
+            return new TextActionResult(["You walk towards the <blue>Starmap</blue>."]);
         } else if (alias === "goright" && playerSession.LogbookPuzzleSolved) {
-            return new TextActionResult(["I don't need to be here anymore"]);
+            return new TextActionResult(["I don't need to be here anymore."]);
         }
         return undefined;
     }

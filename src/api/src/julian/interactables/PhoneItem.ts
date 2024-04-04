@@ -57,7 +57,7 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
                 playerSession.callNumber++;
                 playerSession.inventory.push(WatchItemAlias);
                 playerSession.inventory.push(NotebookItemAlias);
-                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can <blue>Use</blue> to time travel and your <blue>Notebook</blue>"]);
+                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can <blue>Use</blue> to time travel and your <blue>Notebook</blue> that you can use to <blue>Examine</blue> gathered clues"]);
             case 6:
                 playerSession.callNumber++;
                 return new TextActionResult(["Hmmm... that sounds very interesting, I will take note of this", "Great work Detective", "I think i see some similarities with a new case I have but I need you to make sure you have solved your other case to be sure", "Call me back when you have done so" ]);

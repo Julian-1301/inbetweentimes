@@ -14,7 +14,7 @@ import { SolveAction } from "../actions/SolveAction";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { PyramidRoomAlias } from "./PyramidRoom";
 import { OasisRoomAlias } from "./OasisRoom";
-import { DrygroundItem } from "../items/DryGroundItem";
+import { DrygroundItem } from "../interactables/DryGroundItem";
 import { AnubisStatueCharacter } from "../characters/AnubisStatueCharacter";
 
 

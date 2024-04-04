@@ -51,6 +51,9 @@ export class WatchItem extends Interactable implements Examine, Pickup {
                 locations.push(new SolveChoiceAction(2, "Egypt")); 
             } else if (playerSession.currentRoom === AztecRoomAlias){
                 locations.push(new SolveChoiceAction(1, "Office"));
+                locations.push(new SolveChoiceAction(2, "Egypt")); 
+                locations.push(new SolveChoiceAction(3, "Cold War"));
+
             } else {
                 return undefined;
             }     

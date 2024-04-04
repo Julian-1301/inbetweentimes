@@ -7,6 +7,8 @@ import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
 import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { PlayerSession } from "../../types";
+import { BrotherHeartAlias } from "../items/BrotherHeart";
+
 
 export const BrotherCharacterAlias:string = "Statue's Brother";
 
@@ -37,7 +39,7 @@ export class BrotherCharacter extends Character implements Examine, Pickup{
             options.push(new TalkChoiceAction(9, "I got something for you"));
         }
         options.push(new TalkChoiceAction(1, "Touch the statue"));
-        
+        options.push(new TalkChoiceAction(13, "Cancel"));        
     
         switch (choiceId) {
             case 1:
@@ -64,13 +66,16 @@ export class BrotherCharacter extends Character implements Examine, Pickup{
                     new TalkChoiceAction(11, "No")
                 ]);
             case 10:
+                playerSession.inventory = playerSession.inventory.filter(item => item !== BrotherHeartAlias);
                 return new TalkActionResult(this, ["WOW I haven't seen this in a really long time thank you, small human!!"], [
                     new TalkChoiceAction(12, "Well, can you now finally help me")
                 ]);
             case 11:
                 return new TextActionResult(["then why say you have something?", "Making people happy for nothing tsh..."]);
             case 12:
-                return new TextActionResult(["I'll give you one of the three numbers to the code here", "There is a huge door between me and my brother and it has a code. I'll give you the first number", "The first number is 6"]);
+                return new TextActionResult(["I'll give you one of the three numbers to the code here.", "There is a huge door between me and my brother and it has a code. I'll give you the first number", "The first number is 6"]);
+            case 13: 
+            return new TextActionResult(["Or just dont talk fine."]);
             default:
                 return new TalkActionResult(this, ["What do you want, little human?"], options);
         }

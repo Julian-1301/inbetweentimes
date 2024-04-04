@@ -22,10 +22,10 @@ export class Rock extends Item implements Examine, Pickup{
     public examine(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.aztecTalkValue > 2) {
-            return new TextActionResult (["The Rock looks like it could be broken"]);
+            return new TextActionResult (["The Rock looks like it could be broken."]);
             
         } else {
-            return new TextActionResult(["This is a sturdy rock"]);
+            return new TextActionResult(["This is a sturdy rock."]);
         }
     }
     
