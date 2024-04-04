@@ -41,6 +41,8 @@ export type PlayerSession = {
     usedButton: boolean;
     coldWarSolved: boolean;
     logPuzzleTried: boolean;
+    starmapInspected: boolean;
+    searchedStars: boolean;
     AztecClue:boolean;
     TheFinalDoor: boolean;
     FinalDoorCode: string;
