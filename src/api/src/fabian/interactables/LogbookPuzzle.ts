@@ -25,7 +25,7 @@ export class LogbookPuzzle extends Interactable {
             case 0:
             case 1:
                 playerSession.LogbookPuzzleSolved = true;
-                return new TextActionResult(["That's right! perhaps I should read the logbook again."]
+                return new TextActionResult(["That's right! perhaps I should read the <blue>Logbook</blue> again."]
                 );
             case 2:
                 return new TextActionResult(["hmm... that doesn't seem right..."]

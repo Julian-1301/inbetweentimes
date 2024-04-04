@@ -22,8 +22,8 @@ export class Table extends Item implements Examine, Pickup {
         playerSession.examinedTable = true;
 
         return new TextActionResult([
-            "When You examine the table you see a lot of papers and books",
-            "A book called <blue>Logbook</blue> catches your eye",
+            "When You examine the <blue>Table</blue> you see a lot of papers and books.",
+            "A book called <blue>Logbook</blue> catches your eye.",
         ]);
     }
 
@@ -33,11 +33,11 @@ export class Table extends Item implements Examine, Pickup {
         if (!playerSession.tablePickup) {
             playerSession.tablePickup = true;
             return new TextActionResult([
-                "You pick up the table",
-                "Whilst holding the table you realize this doen't make any sence",
-                "You put the table back down",
+                "You pick up the <blue>Table</blue>.",
+                "Whilst holding the <blue>Table</blue> you realize this doen't make any sence.",
+                "You put the <blue>Table</blue> back down.",
             ]);
-        } else return new TextActionResult(["There is no reason for me to pick up the table again"]);
+        } else return new TextActionResult(["There is no reason for me to pick up the <blue>Table</blue> again."]);
     }
 }
 

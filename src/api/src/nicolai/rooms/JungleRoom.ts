@@ -28,20 +28,13 @@ export class JungleRoom extends Room   {
     }
     
     public images(): string[] {
-        const playerSession: PlayerSession = getPlayerSession();
-        const images: any = [];
-        
-        if (playerSession.junglePuzzleSolved) {
-            images.push("");
-        } else {
-        images.push("");
-        }
-
-        if (playerSession.junglePuzzleSolved && !playerSession.pickedUpSmallPaper) {
-            images.push("");
-        }
-
-        return images;
+        return[
+            "AztecImage.png"
+        ];
+    }
+    
+    public sounds(): string[] {
+        return ["jungleAmbient"];
     }
 
     public actions(): Action[] {
@@ -62,7 +55,6 @@ export class JungleRoom extends Room   {
         } else if (!playerSession.pickedUpSmallPaper) {
             objects.push(new SmallPaper());
         }
-
         return objects;
     }
 

@@ -28,7 +28,7 @@ export class DecryptionItem extends Item implements Examine, Pickup {
         if (playerSession.pickedUpDecryption) {
             playerSession.examinedDecryption = true;
             return new TextActionResult([
-                "When You examine the piece of paper you notice that the contents are <blue>decryption keys</blue>",
+                "When You examine the <blue>Piece of Paper</blue> you notice that the contents are <blue>Decryption Keys</blue>.",
                 "You can distinguish the following keys:",
                 "Lev Kamenev - January",
                 "Joseph Stalin - February",
@@ -45,9 +45,9 @@ export class DecryptionItem extends Item implements Examine, Pickup {
             ]);
         } else
             return new TextActionResult([
-                "The <blue>piece of paper</blue> is laying on the floor",
-                "It's white and has writings on it",
-                "Perhaps I should <blue>pick it up</blue> so I can read it",
+                "The <blue>Piece of Paper</blue> is laying on the floor,",
+                "It's white and has some writings on it",
+                "Perhaps I should pick it up so I can read it.",
             ]);
     }
 
@@ -57,10 +57,10 @@ export class DecryptionItem extends Item implements Examine, Pickup {
         if (playerSession.pickedUpBook && playerSession.openedBook && !playerSession.pickedUpDecryption) {
             playerSession.pickedUpDecryption = true;
 
-            return new TextActionResult(["You pick up the piece of paper"]);
+            return new TextActionResult(["You pick up the <blue>Piece of Paper</blue>."]);
         } else if (playerSession.examinedDecryption) {
-            return new TextActionResult(["You already picked up the decryption keys"]);
-        } else return new TextActionResult(["You already picked up the piece of paper"]);
+            return new TextActionResult(["You already picked up the <blue>Decryption Keys</blue>."]);
+        } else return new TextActionResult(["You already picked up the <blue>Piece of Paper</blue>."]);
     }
 }
 

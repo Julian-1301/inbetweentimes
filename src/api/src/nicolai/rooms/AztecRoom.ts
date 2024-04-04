@@ -13,6 +13,9 @@ import { BrotherCharacter } from "../characters/BrotherCharacter";
 import { PickupAction } from "../../julian/actions/PickupAction";
 import { Pickaxe } from "../interactables/PickAxeItem";
 import { SolveAction } from "../../julian/actions/SolveAction";
+import { JungleRoomAlias } from "./JungleRoom";
+import { FinalDoor } from "../interactables/TheFinalDoor";
+
 
 export const AztecRoomAlias: string = "Aztec";
 export class AztecRoom extends Room {
@@ -41,10 +44,12 @@ export class AztecRoom extends Room {
             objects.push(new ToDoListItem());
         }
 
-        objects.push(new StatueCharacter()),
+            objects.push(new StatueCharacter()),
             objects.push(new BrotherCharacter()),
             objects.push(new Pickaxe());
-
+            objects.push(new FinalDoor());
+            
+            
         return objects;
     }
     public actions(): Action[] {
@@ -65,8 +70,9 @@ export class AztecRoom extends Room {
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "goto-JungleRoom") {
-            getPlayerSession().currentRoom = AztecRoomAlias;
+        if (alias === "goto-JungleRoom") { 
+            getPlayerSession().currentRoom = JungleRoomAlias;
+
             return new TextActionResult(["You walk towards <blue>The Jungle Puzzel</blue>"]);
         }
         return undefined;

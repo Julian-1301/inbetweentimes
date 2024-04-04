@@ -76,7 +76,7 @@ export class StatueCharacter extends Character implements Examine, Pickup{
             
         }
         if(choiceId === 8){
-            if (playerSession.aztecTalkValue > 0) {
+            if (playerSession.aztecTalkValue > 1) {
                 options.push(new TalkChoiceAction(9, "Did you talk to my brother?"));
             }
             return new TalkActionResult(this, ["Ahh you seek answers of this place", "Tell me human", "What do you want to know?"], 

@@ -86,7 +86,7 @@ export class HydraulicRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This the submarines <blue>hydraulics</blue> control panel."]);
+        return new TextActionResult(["This the submarines <blue>Hydraulics Control Panel </blue>."]);
     }
 
     public pickup(): ActionResult | undefined {
@@ -100,7 +100,7 @@ export class HydraulicRoom extends Room {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = ColdWarRoomAlias;
-            return new TextActionResult(["You walk back"]);
+            return new TextActionResult(["You walk back."]);
         } else return undefined;
     }
 }

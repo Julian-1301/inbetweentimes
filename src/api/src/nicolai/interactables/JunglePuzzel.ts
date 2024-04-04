@@ -8,6 +8,8 @@ import { getPlayerSession } from "../../instances";
 import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
 import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
+    
+import { AztecClueAlias } from "../items/AztecClue";
 
 
 export const JunglePuzzelalias: string = "Jungle";
@@ -29,36 +31,40 @@ export class JunglePuzzel extends Interactable implements Examine, Pickup {
             case 1:
                 return new SolveActionResult(this, ["What happend second?"], 
                 [
-                new SolveChoiceAction(2, "Picture 1"),
-                new SolveChoiceAction(5, "Picture 2"),
-                new SolveChoiceAction(5, "Picture 3"),
+                new SolveChoiceAction(2, "Aztec empire"),
+                new SolveChoiceAction(5, "Egypt empire"),
+                new SolveChoiceAction(5, "The Cold War"),
                 
             ]);
             case 2:  
             return new SolveActionResult(this, ["What happend third?"], 
                 [
-                new SolveChoiceAction(6, "picture 1"),
-                new SolveChoiceAction(6, "Picture 2"),
-                new SolveChoiceAction(6, "Picture 3"),
+                new SolveChoiceAction(6, "Aztec empire"),
+                new SolveChoiceAction(6, "Egypt empire"),
+                new SolveChoiceAction(3, "The Cold War"),
                
             ]);
             case 3:
-                playerSession.oasisPuzzleSolved = true;
-                return new TextActionResult(["You solved the puzzel a monkey came out of the tree and dropped a paper near the puzzel itself", "Maybe you should pick it up"]);
+                 {
+                    // Add BrotherHeart to inventory and remove Pickaxe
+                    playerSession.inventory.push(AztecClueAlias);
+                    playerSession.AztecClue = true;
+                    return new TextActionResult(["You solved the puzzle. A monkey came out of the tree and dropped a paper near the puzzle itself.", "You picked it up"]);  
+                }
+                
             case 4:
-                return new SolveActionResult(this, ["What happend Second?"], 
-                    [
-                    new SolveChoiceAction(5, "Picture 1"),
-                    new SolveChoiceAction(5, "Picture 2"),
-                    new SolveChoiceAction(5, "Picture 3"),
-                   
-                    ]); 
+                return new SolveActionResult(this, ["What happened Second?"], [
+                    new SolveChoiceAction(5, "Aztec empire"),
+                    new SolveChoiceAction(5, "Egypt empire"),
+                    new SolveChoiceAction(5, "The Cold War")
+                ]);
+            
             case 5:
                 return new SolveActionResult(this, ["What happend Third?"], 
                     [
-                    new SolveChoiceAction(6, "Picture 1"),
-                    new SolveChoiceAction(6, "Picture 2"),
-                    new SolveChoiceAction(6, "Picture 3"),
+                    new SolveChoiceAction(6, "Aztec empire"),
+                    new SolveChoiceAction(6, "Egypt empire"),
+                    new SolveChoiceAction(6, "The Cold War"),
         
                     ]); 
         
@@ -71,19 +77,21 @@ export class JunglePuzzel extends Interactable implements Examine, Pickup {
 
         return new SolveActionResult(this, ["What happend first?"], 
         [
-        new SolveChoiceAction(4, "Picture 1"),
-        new SolveChoiceAction(1, "Picture 2"),
-        new SolveChoiceAction(4, "Picture 3"),
+        new SolveChoiceAction(4, "Aztec empire"),
+        new SolveChoiceAction(1, "Egypt empire"),
+        new SolveChoiceAction(4, "The Cold War"),
         
         new SolveChoiceAction(7, "Cancel")
     ]);
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Its seems that you need to put the pictures in the right order"]);
+        return new TextActionResult(["Its seems that you need to put the events in the right order"]);
     }
 
     public pickup(): ActionResult | undefined {
         return undefined;
     }
+    
 }
+    

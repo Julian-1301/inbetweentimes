@@ -21,7 +21,7 @@ export class Starmap extends Item implements Examine {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "When You examine the starmap you see 3 constellations pricked on a board",
+            "When You examine the <blue>Starmap</blue> you see 3 constellations pricked on a board.",
             "Perhaps I can use this?"
         ]);
     }
