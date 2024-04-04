@@ -25,9 +25,9 @@ export class PlantItem extends Interactable implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.pickedUpPlant) {
-            return new TextActionResult(["The <blue>Plant</blue> is slowly dying","You should find a nice place to plant it and give it some water so it won't die"]);
+            return new TextActionResult(["The <blue>Plant</blue> is slowly dying,","You should find a nice place to plant it and give it some water so it won't die."]);
         } else {
-            return new TextActionResult(["You look at the random <blue>Plant</blue> in the corner", "This never seemed like the right place for plants"]);
+            return new TextActionResult(["You look at the random <blue>Plant</blue> in the corner.", "This never seemed like the right place for plants..."]);
         }
     }
 
@@ -38,10 +38,10 @@ export class PlantItem extends Interactable implements Examine, Pickup {
             playerSession.pickedUpPlant = true;
             playerSession.inventory.push(PlantItemAlias);
 
-            return new TextActionResult(["You pick up the <blue>Plant</blue>"]);
+            return new TextActionResult(["You pick up the <blue>Plant</blue>."]);
         }
         else {
-            return new TextActionResult(["You already picked up the <blue>Plant</blue>"]);
+            return new TextActionResult(["You already picked up the <blue>Plant</blue>."]);
         } 
     }
 
@@ -52,11 +52,11 @@ export class PlantItem extends Interactable implements Examine, Pickup {
             case 1:
                 playerSession.drygroundValue++;
                 playerSession.inventory = playerSession.inventory.filter(item => item !== PlantItemAlias);
-                return new TextActionResult(["You decide to place your <blue>Plant</blue> into the ground", "It looks like it could use some water in this dryness"]);
+                return new TextActionResult(["You decide to place your <blue>Plant</blue> into the ground,", "It looks like it could use some water in this dryness."]);
             case 2:
-                return new TextActionResult(["Uhhh, thank you but I don't really want that"]);
+                return new TextActionResult(["Uhhh, thank you but I don't really want that."]);
             case 3:
-                return new TextActionResult(["You decide to keep your <blue>Plant</blue> for now"]);
+                return new TextActionResult(["You decide to keep your <blue>Plant</blue> for now."]);
         }
 
         if (playerSession.currentRoom === EgyptianRoomAlias){

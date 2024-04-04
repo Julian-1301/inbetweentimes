@@ -21,11 +21,11 @@ export class TorchesItem extends Item implements Examine {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.torchesLit.includes(0) && playerSession.torchesLit.includes(1)) {
-            return new TextActionResult(["Some <blue>Torches</blue> are lit while some others are not"]);
+            return new TextActionResult(["Some <blue>Torches</blue> are lit while some others are not."]);
         } else if (playerSession.torchesLit.includes(0))
-            return new TextActionResult(["You see six unlit <blue>Torches</blue>", "You might be able to light them if you have a <blue>Lighter</blue>"]);
+            return new TextActionResult(["You see six unlit <blue>Torches</blue>,", "You might be able to light them if you have a <blue>Lighter</blue>."]);
         else {
-            return new TextActionResult(["You see six lit <blue>Torches</blue>", "It is a nice view to see the whole area lit up"]);
+            return new TextActionResult(["You see six lit <blue>Torches</blue>,", "It is a nice view to see the whole area lit up."]);
         }
     }
 }

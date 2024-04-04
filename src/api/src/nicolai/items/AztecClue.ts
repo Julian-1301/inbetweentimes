@@ -14,7 +14,7 @@ export class AztecClue extends Item implements Examine, Pickup{
     }
 
     public examine(): ActionResult | undefined {
-            return new TextActionResult(["Its a small paper from the aztec empire with a number on it.", "it looks like its the last number to the combination.","2"]);
+            return new TextActionResult(["Its a <blue>Small Paper</blue> from the <blue>Aztec Empire</blue> with a number on it.", "it looks like its the last number to the combination.","2"]);
     }
 
     public name(): string {
@@ -28,6 +28,6 @@ export class AztecClue extends Item implements Examine, Pickup{
             PlayerSession.inventory.push(AztecClueAlias);
         }
         else return new TextActionResult(["You already picked it up."]);
-        return new TextActionResult(["You pick up the Clue from the floor."]) ;
+        return new TextActionResult(["You pick up the <blue>Clue</blue> from the floor."]) ;
       }
     }

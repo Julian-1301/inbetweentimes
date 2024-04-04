@@ -14,7 +14,7 @@ export class SmallPaper extends Item implements Examine, Pickup{
     }
 
     public examine(): ActionResult | undefined {
-            return new TextActionResult(["Its a small paper with a number on it", "it looks like its the second number to the combination","9"]);
+            return new TextActionResult(["Its a small paper with a number on it,", "it looks like its the second number to the combination.","9"]);
     }
 
     public name(): string {
@@ -28,7 +28,7 @@ export class SmallPaper extends Item implements Examine, Pickup{
             PlayerSession.inventory.push(SmallPaperAlias);
         }
         else return new TextActionResult(["You already picked it up"]);
-        return new TextActionResult(["You pick up the Small paper from the Rock"]) ;
+        return new TextActionResult(["You pick up the <blue>Small paper</blue> from the Rock where the <blue>Puzzle<blue> was laying on."]) ;
       }
 
 }

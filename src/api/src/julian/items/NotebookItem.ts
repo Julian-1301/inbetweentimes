@@ -18,7 +18,7 @@ export class NotebookItem extends Item implements Examine, Pickup{
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult(["You already picked up the <blue>Notebook</blue>"]);
+        return new TextActionResult(["You already picked up the <blue>Notebook</blue>."]);
     }
 
     public examine(): ActionResult | undefined {
@@ -45,11 +45,11 @@ export class NotebookItem extends Item implements Examine, Pickup{
         }
         if (playerSession.logPuzzleTried) {
             hints.push("<blue>Submarine clues:</blue>");
-            hints.push("Since you can almost count the amount of pixels of the <blue>starmap</blue>... <blue>It's October</blue>");
+            hints.push("Since you can almost count the amount of pixels of the <blue>Starmap</blue>... <blue>It's October</blue>.");
         }
 
         if (!playerSession.oasisPuzzleHints.includes(1) && !playerSession.logPuzzleTried) {
-            return new TextActionResult(["You haven't written anything down in your notebook yet", "Gather clues and <blue>Examine your Notebook</blue> to see your hints"]);
+            return new TextActionResult(["You haven't written anything down in your notebook yet.", "Gather clues and <blue>Examine your Notebook</blue> to see your hints."]);
         } else {
             return new TextActionResult(hints);
         }

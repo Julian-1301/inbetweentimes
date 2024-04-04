@@ -19,7 +19,7 @@ export class GoldenScarabItem extends Item implements Examine, Pickup {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["You spot the <blue>Golden Scarab</blue>", "It looks like a badly faked replica, The golden paint is dripping off", "You should take it back to your <blue>Office</blue> to check for fingerprints", "You should let your boss know you're done here"]);
+        return new TextActionResult(["You spot the <blue>Golden Scarab</blue>.", "It looks like a badly faked replica, The golden paint is dripping off,", "You should take it back to your <blue>Office</blue> to check for fingerprints.", "You should let your <blue>Boss</blue> know you're done here."]);
     }
 
     public pickup(): ActionResult | undefined {
@@ -28,7 +28,7 @@ export class GoldenScarabItem extends Item implements Examine, Pickup {
         if (!playerSession.pickedupGoldenScarab) {
             playerSession.pickedupGoldenScarab = true;
 
-            return new TextActionResult(["You pick up the <blue>Golden Scarab</blue> and send it to the lab by using your <blue>Travel-watch</blue>", "You should call your <blue>Boss</blue> now like you promised"]);
+            return new TextActionResult(["You pick up the <blue>Golden Scarab</blue> and send it to the lab by using your <blue>Travel-watch</blue>,", "You should call your <blue>Boss</blue> now like you promised."]);
         } else {
             return undefined;
         }

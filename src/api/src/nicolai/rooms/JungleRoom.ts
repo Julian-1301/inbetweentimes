@@ -65,7 +65,7 @@ export class JungleRoom extends Room   {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "goback") {
             getPlayerSession().currentRoom = AztecRoomAlias;
-            return new TextActionResult(["You walk back to <blue>The temple</blue>"]);
+            return new TextActionResult(["You walk back to <blue>The Temple</blue>."]);
         } else {
             return undefined;
         } 

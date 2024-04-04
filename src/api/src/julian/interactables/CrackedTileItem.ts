@@ -51,7 +51,7 @@ export class CrackedTileItem extends Interactable implements Examine {
             case 1:
                 playerSession.crackedTileCount++;
                 const countMessage: string = playerSession.crackedTileCount === 1 ? "time" : "times";
-                return new SolveActionResult(this, [`You have pressed the <blue>Cracked Tile</blue> ${playerSession.crackedTileCount} ${countMessage}`, "Do you press it again?"], [
+                return new SolveActionResult(this, [`You have pressed the <blue>Cracked Tile</blue> ${playerSession.crackedTileCount} ${countMessage}.`, "Do you press it again?"], [
                     new SolveChoiceAction(1, "Yes"),
                     new SolveChoiceAction(2, "No"),
                 ]);
@@ -60,10 +60,10 @@ export class CrackedTileItem extends Interactable implements Examine {
                     playerSession.inventory = playerSession.inventory.filter(item => item !== LighterItemAlias);
                     playerSession.inventory = playerSession.inventory.filter(item => item !== NotebookItemAlias);
                     playerSession.hierogliphPuzzleSolved = true;
-                    return new TextActionResult(["It seems like you correctly solved this puzzle", "Your fingers hurt from pressing the <blue>Cracked Tile</blue> that many times and you drop your <blue>Lighter</blue> and your <blue>Notebook</blue>","You can hear a strange voice talking to you now", "Greetings mortal, answer my riddles if you seek to find the truth"]);
+                    return new TextActionResult(["It seems like you correctly solved this puzzle.", "Your fingers hurt from pressing the <blue>Cracked Tile</blue> that many times and you drop your <blue>Lighter</blue> and your <blue>Notebook</blue>.","You can hear a strange voice talking to you now,", "Greetings mortal, answer my riddles if you seek to find the truth"]);
                 } else {
                     playerSession.crackedTileCount = 0; 
-                    return new TextActionResult(["You decide to leave the tile alone"]);
+                    return new TextActionResult(["You decide to leave the tile alone."]);
                 }
         }
     

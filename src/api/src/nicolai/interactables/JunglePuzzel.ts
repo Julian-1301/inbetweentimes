@@ -49,7 +49,7 @@ export class JunglePuzzel extends Interactable implements Examine, Pickup {
                     // Add BrotherHeart to inventory and remove Pickaxe
                     playerSession.inventory.push(AztecClueAlias);
                     playerSession.AztecClue = true;
-                    return new TextActionResult(["You solved the puzzle. A monkey came out of the tree and dropped a paper near the puzzle itself.", "You picked it up"]);  
+                    return new TextActionResult(["You solved the puzzle. A monkey came out of the tree and dropped a <blue>Paper</blue> near the <blue>Puzzle</blue>", "You picked it up"]);  
                 }
                 
             case 4:

@@ -14,7 +14,7 @@ export class ToDoListItem extends Item implements Examine, Pickup{
     }
 
     public examine(): ActionResult | undefined {
-            return new TextActionResult(["Its a To-do list from one of the cult followers..", "On the To-do list are a few check offs","* Finish the puzzles", "* Grab the last artifact", "* Finish the ritual"]);
+            return new TextActionResult(["Its a <blue>To-do list</blue> from one of the <blue>Cult Followers</blue>..", "On the <blue>To-do list</blue> are a few check offs","* Finish the <blue>Puzzles</blue>.", "* Grab the last <blue>Artifact</blue>.", "* Finish the <blue>Ritual</blue>."]);
     }
 
     public name(): string {
@@ -27,8 +27,8 @@ export class ToDoListItem extends Item implements Examine, Pickup{
         if (!PlayerSession.inventory.includes(ToDoListItemAlias)){
             PlayerSession.inventory.push(ToDoListItemAlias);
         }
-        else return new TextActionResult(["You already picked it up"]);
-        return new TextActionResult(["You pick up the To do list from the floor"]) ;
+        else return new TextActionResult(["You already picked it up."]);
+        return new TextActionResult(["You pick up the <blue>To do list</blue> from the floor."]) ;
       }
 
 }

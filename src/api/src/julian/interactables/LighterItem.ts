@@ -25,9 +25,9 @@ export class LighterItem extends Interactable implements Examine, Pickup {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (playerSession.pickedUpLighter) {
-            return new TextActionResult(["This is your old <blue>Lighter</blue>", "You used to smoke but gave it up years ago"]);
+            return new TextActionResult(["This is your old <blue>Lighter</blue>,", "You used to smoke but gave it up years ago."]);
         } else {
-            return new TextActionResult(["You see something metalic on your desk", "It is your old <blue>Lighter</blue>"]);
+            return new TextActionResult(["You see something metalic on your desk,", "It is your old <blue>Lighter</blue>."]);
         }
     }
 
@@ -38,10 +38,10 @@ export class LighterItem extends Interactable implements Examine, Pickup {
             playerSession.pickedUpLighter = true;
             playerSession.inventory.push(LighterItemAlias);
 
-            return new TextActionResult(["You pick up the <blue>Lighter</blue>"]);
+            return new TextActionResult(["You pick up the <blue>Lighter</blue>."]);
         }
         else {
-            return new TextActionResult(["You already picked up the <blue>Lighter</blue>"]);
+            return new TextActionResult(["You already picked up the <blue>Lighter</blue>."]);
         } 
     }
 
@@ -66,13 +66,13 @@ export class LighterItem extends Interactable implements Examine, Pickup {
                     return undefined;
                 }
             case 11:
-                return new TextActionResult(["You decide to leave the <blue>Torches alone</blue>"]);
+                return new TextActionResult(["You decide to leave the <blue>Torches</blue> alone."]);
             case 12:
                 return new SolveActionResult(this, ["Do you want to interact with any of these <blue>Torches</blue>?"], options);
             default:
                 const torchIndex: number = Math.floor((choiceId - 1) / 2);
                 playerSession.torchesLit[torchIndex] = choiceId % 2 === 1 ? 1 : 0;
-                return new SolveActionResult(this, ["Do you want to light another torch?"], [
+                return new SolveActionResult(this, ["Do you want to light another <blue>Torch</blue>?"], [
                     new SolveChoiceAction(12, "Yes"),
                     new SolveChoiceAction(11, "No")
                 ]);

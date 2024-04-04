@@ -36,20 +36,20 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
 
         switch(choiceId) {           
             case 1:
-                return new SolveActionResult(this, ["Good afternoon <blue>Detective</blue>", "I have two new cases for you so get your lazy ass up", "One of them is in <blue>Ancient Egypt</blue> and the other in a <blue>Cold War Submarine</blue>"], [
+                return new SolveActionResult(this, ["Good afternoon <blue>Detective</blue>,", "I have two new cases for you so get your lazy ass up!", "One of them is in <blue>Ancient Egypt</blue> and the other is in a <blue>Cold War Submarine</blue>."], [
                     new SolveChoiceAction(3, "Ask about the first case"),
                     new SolveChoiceAction(4, "Ask about the second case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 2:
-                return new TextActionResult(["You decide to leave the <blue>Phone</blue> alone for now"]);
+                return new TextActionResult(["You decide to leave the <blue>Phone</blue> alone for now."]);
             case 3:
-                return new SolveActionResult(this, ["A <blue>golden scarab</blue> has been stolen from a <blue>Pyramid</blue> and your task is to figure out what happened", "You must solve puzzles and explore the area", "Don't forget that the world around you will look more primitive too"], [
+                return new SolveActionResult(this, ["A <blue>Golden Scarab</blue> has been stolen from a <blue>Pyramid</blue> and your task is to figure out what happened,", "You must solve puzzles and explore the area.", "Don't forget that the world around you will look more primitive too."], [
                     new SolveChoiceAction(4,"Tell me about the Cold War case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
             case 4:
-                return new SolveActionResult(this, ["A submarine has been sabotaged", "If you don't find out what happend it could cause a whole lot of problems", "Don't dissapoint!"], [
+                return new SolveActionResult(this, ["A <blue>Cold War Submarine</blue> has been sabotaged,", "If you don't find out what happend it could cause a whole lot of problems.", "Don't dissapoint!"], [
                     new SolveChoiceAction(3,"Tell me about the Ancient Egypt case"),
                     new SolveChoiceAction(5, "I know enough")
                 ]);
@@ -57,16 +57,16 @@ export class PhoneItem extends Interactable implements Examine, Pickup {
                 playerSession.callNumber++;
                 playerSession.inventory.push(WatchItemAlias);
                 playerSession.inventory.push(NotebookItemAlias);
-                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can <blue>Use</blue> to time travel and your <blue>Notebook</blue> that you can use to <blue>Examine</blue> gathered clues"]);
+                return new TextActionResult(["Good luck <blue>Detective</blue>", "Call me back whenever you solve one of these cases", "You pick up your <blue>Travel-Watch</blue> that you can use to time travel and your <blue>Notebook</blue> that you can use to <blue>Examine</blue> gathered clues"]);
             case 6:
                 playerSession.callNumber++;
-                return new TextActionResult(["Hmmm... that sounds very interesting, I will take note of this", "Great work Detective", "I think i see some similarities with a new case I have but I need you to make sure you have solved your other case to be sure", "Call me back when you have done so" ]);
+                return new TextActionResult(["Hmmm... that sounds very interesting, I will take note of this.", "Great work <blue>Detective</blue>,", "I think i see some similarities with a new case I have but I need you to make sure you have solved your other case to be sure.", "Call me back when you have done so!" ]);
             case 7:
                 playerSession.callNumber++;
                 return new TextActionResult(["Hmmm... peculiar, I'll look into it some more, great work!"]);
             case 8:
                 playerSession.callNumber++;
-                return new TextActionResult(["Thank you for this information detective", "I am putting you on a new case based on your gathered evidence", "You are tasked to track down the cult that is responsible for all this chaos", "There have been sightings at an <blue>Aztec Temple</blue>, Please use your <blue>Travel-watch</blue> to go there and catch these criminals"]);
+                return new TextActionResult(["Thank you for this information <blue>Detective</blue>!", "I am putting you on a new case based on your gathered evidence,", "You are tasked to track down the <blue>Cult</blue> that is responsible for all this chaos,", "There have been sightings at an <blue>Aztec Temple</blue>, Please use your <blue>Travel-watch</blue> to go there and catch these criminals."]);
         }
 
         if (playerSession.callNumber === 0) {

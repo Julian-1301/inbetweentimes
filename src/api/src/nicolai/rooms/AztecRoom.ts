@@ -64,7 +64,7 @@ export class AztecRoom extends Room {
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "You stand outside an ominous temple",
+            "You stand outside an ominous <blue>Aztec Temple</blue>.",
             "You have a gut feeling something isnt right....",
         ]);
     }
@@ -73,7 +73,7 @@ export class AztecRoom extends Room {
         if (alias === "goto-JungleRoom") { 
             getPlayerSession().currentRoom = JungleRoomAlias;
 
-            return new TextActionResult(["You walk towards <blue>The Jungle Puzzel</blue>"]);
+            return new TextActionResult(["You walk towards <blue>The Jungle Puzzle</blue>."]);
         }
         return undefined;
     }
