@@ -8,9 +8,7 @@ import { getPlayerSession } from "../../instances";
 import { Pickup, PickupActionAlias } from "../../julian/actions/PickupAction";
 import { SolveChoiceAction } from "../../julian/actions/SolveAction";
 import { GameOverRoom } from "../../julian/rooms/GameOverRoom";
-    
 import { AztecClueAlias } from "../items/AztecClue";
-
 
 export const JunglePuzzelalias: string = "Jungle";
 
