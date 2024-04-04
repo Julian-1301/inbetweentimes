@@ -9,7 +9,6 @@ import { TabletItemAlias, TabletItem } from "./fabian/Items/TabletItem";
 import { HydraulicControlPanelAlias, HydraulicControlPanel } from "./fabian/interactables/Hydraulic control panel";
 import { HydraulicsPuzzleAlias, HydraulicsPuzzle } from "./fabian/interactables/HydraulicsPuzzle";
 import { LogbookPuzzleAlias, LogbookPuzzle } from "./fabian/interactables/LogbookPuzzle";
-import { StarmapAlias, Starmap } from "./fabian/interactables/Starmaps";
 import { TableAlias, Table } from "./fabian/interactables/Table";
 import { ExampleItemAlias, ExampleItem } from "./items/ExampleItem";
 import { AnubisStatueCharacterAlias, AnubisStatueCharacter } from "./julian/characters/AnubisStatueCharacter";
@@ -92,7 +91,9 @@ export function createNewPlayerSession(): PlayerSession {
         oasisPuzzleHints: [0, 0, 0, 0],
         coldWarSolved: false,
         examinedNuclear: false,
-        logPuzzleTried: false
+        logPuzzleTried: false,
+        starmapInspected: false,
+        searchedStars: false
     };
 }
 
@@ -191,9 +192,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case TableAlias:
             return new Table();
-
-        case StarmapAlias:
-            return new Starmap();
 
         case HydraulicControlPanelAlias:
             return new HydraulicControlPanel();

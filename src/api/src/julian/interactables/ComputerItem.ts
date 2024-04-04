@@ -28,6 +28,7 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
     public solve(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
         const deletables: any[] = [];
+        const searchables: any[] = [];
     
         if (playerSession.deletedBrowser === false) {
             deletables.push(new SolveChoiceAction(6, "Old Webbrowser"));
@@ -40,6 +41,13 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
             deletables.push(new SolveChoiceAction(9, "Movie Script"));
         }
         deletables.push(new SolveChoiceAction(10, "Cancel"));
+
+        if (playerSession.starmapInspected === true) {
+            searchables.push(new SolveChoiceAction(14, "Stars"));
+        }
+        searchables.push(new SolveChoiceAction(12, "The question to life"));
+        searchables.push(new SolveChoiceAction(13, "Animal fact"));
+        searchables.push(new SolveChoiceAction(15, "Cancel"));
         
         switch(choiceId) {
             case 1:
@@ -71,11 +79,23 @@ export class ComputerItem extends Interactable implements Examine, Pickup {
                 return new TextActionResult(["You delete your movie script", "Time to give up on your lifelong dreams", "You shed a tear"]);
             case 10:
                 return new TextActionResult(["You decide not to delete anything this time"]);
+            case 11:
+                return new SolveActionResult(this, ["Search on world's best search engine: Noodle!"], searchables);
+            case 12:
+                return new TextActionResult(["The answer to the ultimate question of life, the universe, and everything is 42"]);
+            case 13:
+                return new TextActionResult(["Fun Fact! Snails can jump up to 4 centimeters!"]);
+            case 14:
+                playerSession.searchedStars = true;
+                return new TextActionResult(["Stars gradually shift to the right every month."]);
+            case 15:
+                return new TextActionResult(["You decide not to search for articles that serve your self-interest."]);
         }
     
         return new SolveActionResult(this, ["You log in to your <blue>Computer</blue>", "What will you do?"], [
             new SolveChoiceAction(1, "Check e-mail"),
             new SolveChoiceAction(5, "Delete files"),
+            new SolveChoiceAction(11, "Noodle search")
         ]);
     }
 

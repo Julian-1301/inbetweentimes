@@ -7,9 +7,10 @@ import { Room } from "../../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../../instances";
 import { PickupAction } from "../../julian/actions/PickupAction";
 import { SolveAction } from "../../julian/actions/SolveAction";
-import { Starmap } from "../interactables/Starmaps";
+// import { Starmap } from "../interactables/Starmaps";
 import { CustomAction } from "../../base/actions/CustomAction";
 import { ColdWarRoomAlias } from "./ColdWarRoom";
+import { PlayerSession } from "../../types";
 
 export const StarmapRoomAlias: string = "StarmapRoom";
 
@@ -42,14 +43,16 @@ export class StarmapRoom extends Room {
     public objects(): GameObject[] {
         const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
         console.log(objects);
-
-        objects.push(new Starmap());
         return objects;
     }
 
     public examine(): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+        playerSession.starmapInspected = true;
         return new TextActionResult([
-            "This is the submarine's <blue>starmap</blue>"
+            "This is the submarine's <blue>starmap</blue>",
+            "When You examine the starmap you see 3 constellations pricked on a board",
+            "Perhaps I should do some <blue>research</blue> about <blue>stars</blue>?"
         ]);
     }
 

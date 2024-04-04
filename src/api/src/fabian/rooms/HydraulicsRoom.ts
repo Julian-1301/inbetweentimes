@@ -34,7 +34,7 @@ export class HydraulicRoom extends Room {
 
         if (playerSession.pickedUpManual && playerSession.usedButton) {
             images.push("HydraulicsNobook");
-        }
+        } 
 
         if (playerSession.pickedUpManual && !playerSession.usedButton) {
             images.push("HydraulicsNoButtonNobook");
