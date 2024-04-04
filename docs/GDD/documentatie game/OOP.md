@@ -10,7 +10,7 @@ Om maar te beginnen wat is polymorphism nou precies? Hier hebben we onderzoek na
 Polymorfisme is een manier van coderen die objecten toestaat te worden behandeld als instanties van hun superklasse of interface, zelfs wanneer ze eigenlijk instanties zijn van een subklasse. Het maakt het mogelijk code te schrijven op een manier die flexibeler, herbruikbaarder en aanpasbaarder is.
 Polymorfisme is belangrijk omdat het code toestaat te worden geschreven op een meer abstracte manier, wat betekent dat het kan werken met objecten op een hoger niveau van algemeenheid. Dit maakt de code flexibeler en beter aanpasbaar aan veranderingen in de vereisten of nieuwe toevoegingen aan het systeem.
 
-Maar dan blijft er nog een andere vraag over, waar hebben wij dit in onze code nou precies gebruikt? Dit hebben we ook uitgezocht en hier hebben we ook allemaal een voorbeeld voor gevonden die we hieronder hebben neergezt:
+Maar dan blijft er nog een andere vraag over. Waar hebben wij dit in onze code nou precies gebruikt? Dit hebben we ook uitgezocht en hier hebben we ook allemaal een voorbeeld voor gevonden die we hieronder hebben neergezt:
 
 ---------------
 # Nicolai:
