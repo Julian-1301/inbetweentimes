@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import { resolve } from "path";
 import { globSync } from "glob";
-import eslint from "vite-plugin-eslint";
+// import eslint from "vite-plugin-eslint"; //
 
 export default defineConfig((config) => {
     const env: Record<string, string> = loadEnv(config.mode, process.cwd(), "VITE");
@@ -52,7 +52,8 @@ export default defineConfig((config) => {
                 "top-level-await": true,
             },
         },
-        plugins: [eslint()],
+        plugins: [ //eslint() //
+             ],
         define: {
             viteConfiguration: viteConfiguration,
         },

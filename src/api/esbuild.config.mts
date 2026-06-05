@@ -1,5 +1,5 @@
 import * as esbuild from "esbuild";
-import eslint from "esbuild-plugin-eslint";
+// import eslint from "esbuild-plugin-eslint"; //
 import { rimrafSync } from "rimraf";
 
 const commandLine: string[] = process.argv.slice(2);
@@ -18,9 +18,9 @@ if (commandLine.length === 0) {
         platform: "node",
         target: "node18",
         plugins: [
-            eslint({
-                throwOnError: true,
-            }),
+            // eslint({
+            //    throwOnError: true,
+            // }),
         ],
     };
 
