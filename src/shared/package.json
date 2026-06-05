@@ -1,0 +1,12 @@
+﻿{
+    "name": "@shared/types",
+    "version": "1.0.0",
+    "private": true,
+    "types": "./types.ts",
+    "exports": {
+        ".": {
+            "import": "./types.ts",
+            "types": "./types.ts"
+        }
+    }
+}

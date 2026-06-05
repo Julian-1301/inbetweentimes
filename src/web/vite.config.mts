@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import { resolve } from "path";
 import { globSync } from "glob";
-// import eslint from "vite-plugin-eslint"; //
 
 export default defineConfig((config) => {
     const env: Record<string, string> = loadEnv(config.mode, process.cwd(), "VITE");
@@ -37,6 +36,7 @@ export default defineConfig((config) => {
         resolve: {
             alias: {
                 "/src": resolve(__dirname, "./src"),
+                "@shared": resolve(__dirname, "../shared"),
             },
         },
         build: {
@@ -48,12 +48,19 @@ export default defineConfig((config) => {
             emptyOutDir: true,
         },
         esbuild: {
+            target: "es2022",  // Important for decorators
             supported: {
                 "top-level-await": true,
             },
+            // This is the key fix for decorators
+            tsconfigRaw: {
+                compilerOptions: {
+                    experimentalDecorators: true,
+                    emitDecoratorMetadata: true,
+                },
+            },
         },
-        plugins: [ //eslint() //
-             ],
+        plugins: [],
         define: {
             viteConfiguration: viteConfiguration,
         },
