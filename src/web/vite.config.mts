@@ -30,7 +30,7 @@ export default defineConfig((config) => {
     });
 
     return {
-        base: "./",
+        base: "/inbetweentimes/",
         root: "wwwroot",
         appType: "mpa",
         resolve: {
