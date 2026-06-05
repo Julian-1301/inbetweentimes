@@ -5,7 +5,7 @@
     "scripts": {
         "start": "node dist/index.js",
         "dev": "tsx watch --clear-screen=false ./src/index.ts",
-        "build": "tsc --noEmit && tsx ./esbuild.config.mts build",
+        "build": "tsc --noEmit && npx tsx ./esbuild.config.mts build",
         "preview": "npm run build && node ../../dist/api/index.js"
     },
     "devDependencies": {
