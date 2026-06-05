@@ -3,6 +3,7 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "useDefineForClassFields": false,
+        "moduleResolution": "node16",
         "paths": {
             "@shared/*": ["../shared/*"]
         }
